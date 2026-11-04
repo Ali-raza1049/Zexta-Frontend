@@ -18,6 +18,13 @@ import {
   Terminal as TerminalIcon,
   Cpu,
   Zap,
+  Search,
+  ArrowUpRight,
+  Activity,
+  Filter,
+  Clock,
+  Target,
+  BarChart3,
 } from 'lucide-react';
 
 const mernLogs = [
@@ -40,6 +47,7 @@ const aiLogs = [
 
 export default function Services() {
   const [activeStackTab, setActiveStackTab] = useState('mern');
+  const [activeAdsTab, setActiveAdsTab] = useState('both'); // 'both' | 'meta' | 'google'
   const [logIndex, setLogIndex] = useState(0);
 
   useEffect(() => {
@@ -752,184 +760,381 @@ export default function Services() {
             </div>
 
             {/* Card 3: Meta and Google Ads */}
-            <div className="bg-white border border-[#E1EAE4] hover:border-[#CADAD0] rounded-[28px] p-6 sm:p-8 shadow-[0_4px_20px_-2px_rgba(18,43,34,0.04)] hover:shadow-[0_10px_30px_rgba(18,43,34,0.07)] transition-all flex flex-col justify-between min-h-[220px]">
+            <div className="bg-white border border-[#E1EAE4] hover:border-[#CADAD0] rounded-[28px] p-6 sm:p-8 shadow-[0_4px_20px_-2px_rgba(18,43,34,0.04)] hover:shadow-[0_10px_30px_rgba(18,43,34,0.07)] transition-all flex flex-col justify-between min-h-[300px] relative overflow-hidden">
+              {/* Header Row: Title & 3-Way Mode Switcher */}
               <div>
-                <h3 className="text-[22px] font-bold text-[#112219] mb-2.5">Meta and Google Ads</h3>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="inline-flex items-center gap-1.5 text-[10.5px] font-bold text-blue-900 bg-blue-50 border border-blue-200/80 px-2.5 py-0.5 rounded-full">
+                        <BarChart3 className="w-3 h-3 text-blue-600" />
+                        <span>Dual-Channel Paid Acquisition</span>
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                        <span>CAPI Verified</span>
+                      </span>
+                    </div>
+                    <h3 className="text-[22px] font-bold text-[#112219]">Meta and Google Ads</h3>
+                  </div>
+
+                  {/* 3-Way Mode Switcher Tabs */}
+                  <div className="inline-flex items-center p-1 bg-[#F3F7F5] border border-[#E2EAE5] rounded-full text-xs font-semibold shadow-inner self-start sm:self-auto">
+                    <button
+                      type="button"
+                      onClick={() => setActiveAdsTab('both')}
+                      className={`px-3 py-1 rounded-full transition-all cursor-pointer text-[11px] ${
+                        activeAdsTab === 'both'
+                          ? 'bg-[#153C2D] text-white shadow-xs font-bold'
+                          : 'text-[#55665D] hover:text-[#112219]'
+                      }`}
+                    >
+                      ⚡ Dual Pipeline
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setActiveAdsTab('meta')}
+                      className={`px-3 py-1 rounded-full transition-all cursor-pointer text-[11px] ${
+                        activeAdsTab === 'meta'
+                          ? 'bg-blue-600 text-white shadow-xs font-bold'
+                          : 'text-[#55665D] hover:text-[#112219]'
+                      }`}
+                    >
+                      Meta (FB &amp; IG)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setActiveAdsTab('google')}
+                      className={`px-3 py-1 rounded-full transition-all cursor-pointer text-[11px] ${
+                        activeAdsTab === 'google'
+                          ? 'bg-[#112219] text-white shadow-xs font-bold'
+                          : 'text-[#55665D] hover:text-[#112219]'
+                      }`}
+                    >
+                      Google Search &amp; PMax
+                    </button>
+                  </div>
+                </div>
+
                 <p className="text-sm text-[#52635A] leading-relaxed">
-                  Ad campaigns on Facebook and Instagram built to capture leads at a cost that makes sense for your business
+                  {activeAdsTab === 'both' &&
+                    'Google Search captures bottom-of-funnel buyers actively searching to hire; Meta scales net-new demand with high-converting video hooks, 2-tap instant forms, and server-side CAPI tracking.'}
+                  {activeAdsTab === 'meta' &&
+                    'Engineered Meta funnels with 8-12 creative variations tested weekly, zero-drop native instant lead forms, and direct cloud server-to-server CAPI bypassing iOS 14.5+ ATT blocks.'}
+                  {activeAdsTab === 'google' &&
+                    'High-commercial-intent Google Search and Performance Max campaigns with 10/10 quality scores and a 1,200+ negative keyword guardrail shield that eliminates 35%+ of wasted ad spend.'}
                 </p>
               </div>
 
-              {/* Complete Visual Pipeline: Ad Networks -> High-Intent Leads -> Outcomes */}
-              <div className="w-full mt-6 bg-[#F9FAF9] rounded-2xl p-3 sm:p-4 border border-[#E8EFEA] overflow-x-auto no-scrollbar">
-                <div className="w-full flex items-center justify-between gap-1 sm:gap-2.5 min-w-[360px] sm:min-w-0">
-                  {/* Left: Official Ad Platforms Ingestion */}
-                  <div className="flex flex-col gap-1.5 shrink-0">
-                    {/* Meta Platform Badge */}
-                    <div
-                      className="inline-flex items-center gap-1.5 bg-white border border-[#DCE6E0] hover:border-[#0081FB] rounded-full px-2.5 py-1 shadow-2xs hover:shadow-xs transition-all group/meta cursor-default"
-                      title="Meta Ads (Facebook & Instagram)"
-                    >
-                      <MetaIcon className="w-3.5 h-3.5 shrink-0 group-hover/meta:scale-110 transition-transform" />
-                      <span className="text-[11px] font-bold text-[#112219] tracking-tight">Meta</span>
+              {/* ---------------------------------------------------------------
+                  MODE 1: DUAL PIPELINE VISUAL STREAM (Default)
+                  --------------------------------------------------------------- */}
+              {activeAdsTab === 'both' && (
+                <div className="w-full mt-6 bg-[#F9FAF9] rounded-2xl p-3 sm:p-4 border border-[#E8EFEA] overflow-x-auto no-scrollbar">
+                  <div className="w-full flex items-center justify-between gap-1 sm:gap-2.5 min-w-[360px] sm:min-w-0">
+                    {/* Left: Official Ad Platforms Ingestion */}
+                    <div className="flex flex-col gap-1.5 shrink-0">
+                      {/* Meta Platform Badge */}
+                      <div
+                        className="inline-flex items-center gap-1.5 bg-white border border-[#DCE6E0] hover:border-[#0081FB] rounded-full px-2.5 py-1 shadow-2xs hover:shadow-xs transition-all group/meta cursor-default"
+                        title="Meta Ads (Facebook & Instagram)"
+                      >
+                        <MetaIcon className="w-3.5 h-3.5 shrink-0 group-hover/meta:scale-110 transition-transform" />
+                        <span className="text-[11px] font-bold text-[#112219] tracking-tight">Meta</span>
+                      </div>
+
+                      {/* Google Ads Platform Badge */}
+                      <div
+                        className="inline-flex items-center gap-1.5 bg-white border border-[#DCE6E0] hover:border-[#4285F4] rounded-full px-2.5 py-1 shadow-2xs hover:shadow-xs transition-all group/google cursor-default"
+                        title="Google Ads (Search & Performance Max)"
+                      >
+                        <GoogleAdsLogo className="w-3.5 h-3.5 shrink-0 group-hover/google:scale-110 transition-transform" />
+                        <span className="text-[11px] font-bold text-[#112219] tracking-tight">Google</span>
+                      </div>
+
+                      {/* Live Campaign Status */}
+                      <div className="flex items-center gap-1.5 pl-1 pt-0.5">
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#10B981]"></span>
+                        </span>
+                        <span className="text-[9.5px] font-semibold text-[#5A6E63] tracking-tight whitespace-nowrap">
+                          Active Campaigns
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Google Ads Platform Badge */}
-                    <div
-                      className="inline-flex items-center gap-1.5 bg-white border border-[#DCE6E0] hover:border-[#4285F4] rounded-full px-2.5 py-1 shadow-2xs hover:shadow-xs transition-all group/google cursor-default"
-                      title="Google Ads (Search & Performance Max)"
-                    >
-                      <GoogleAdsLogo className="w-3.5 h-3.5 shrink-0 group-hover/google:scale-110 transition-transform" />
-                      <span className="text-[11px] font-bold text-[#112219] tracking-tight">Google</span>
+                    {/* Connector 1: Ad Ingestion converging to High-Intent Leads Hub */}
+                    <div className="flex-1 min-w-[20px] max-w-[38px] h-18 flex items-center justify-center shrink-0">
+                      <svg className="w-full h-full overflow-visible" viewBox="0 0 36 60" fill="none" preserveAspectRatio="none">
+                        <defs>
+                          <linearGradient id="adStreamGradMeta" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#0081FB" stopOpacity="0.8" />
+                            <stop offset="100%" stopColor="#10B981" stopOpacity="1" />
+                          </linearGradient>
+                          <linearGradient id="adStreamGradGoogle" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#FBBC04" stopOpacity="0.8" />
+                            <stop offset="100%" stopColor="#10B981" stopOpacity="1" />
+                          </linearGradient>
+                          <filter id="glowBlue" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#0081FB" floodOpacity="0.8" />
+                          </filter>
+                        </defs>
+
+                        {/* 1. Base Dashed Guide Paths converging into center */}
+                        <path d="M 0 16 C 18 16, 18 30, 36 30" stroke="#DCE8E1" strokeWidth="1.5" strokeDasharray="3 3" />
+                        <path d="M 0 44 C 18 44, 18 30, 36 30" stroke="#DCE8E1" strokeWidth="1.5" strokeDasharray="3 3" />
+
+                        {/* 2. Flowing Animated Dashes */}
+                        <path d="M 0 16 C 18 16, 18 30, 36 30" stroke="url(#adStreamGradMeta)" strokeWidth="2" strokeDasharray="4 6" strokeLinecap="round" className="animate-dash-stream" />
+                        <path d="M 0 44 C 18 44, 18 30, 36 30" stroke="url(#adStreamGradGoogle)" strokeWidth="2" strokeDasharray="4 6" strokeLinecap="round" className="animate-dash-stream" />
+
+                        {/* 3. Traveling Comet (Meta Blue) */}
+                        <circle r="2.8" fill="#0081FB" filter="url(#glowBlue)">
+                          <animateMotion path="M 0 16 C 18 16, 18 30, 36 30" dur="1.8s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+                        {/* Traveling Comet (Google Amber) */}
+                        <circle r="2.8" fill="#F59E0B">
+                          <animateMotion path="M 0 44 C 18 44, 18 30, 36 30" dur="1.8s" begin="0.9s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+                      </svg>
                     </div>
 
-                    {/* Live Campaign Status */}
-                    <div className="flex items-center gap-1.5 pl-1 pt-0.5">
-                      <span className="relative flex h-1.5 w-1.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#10B981]"></span>
+                    {/* Center: High-Intent Leads Hub */}
+                    <div className="shrink-0 relative group/hub">
+                      <div className="inline-flex items-center gap-1.5 bg-[#122B22] text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full text-[10.5px] sm:text-[11.5px] font-bold shadow-[0_4px_14px_rgba(18,43,34,0.22)] border border-emerald-500/35">
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#34D399]"></span>
+                        </span>
+                        <span className="tracking-tight whitespace-nowrap">High-Intent Leads</span>
+                      </div>
+                    </div>
+
+                    {/* Connector 2: Branching from Hub to Specific Outcomes */}
+                    <div className="flex-1 min-w-[20px] max-w-[38px] h-22 flex items-center justify-center shrink-0">
+                      <svg className="w-full h-full overflow-visible" viewBox="0 0 36 80" fill="none" preserveAspectRatio="none">
+                        <defs>
+                          <linearGradient id="hubOutflowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#10B981" stopOpacity="0.9" />
+                            <stop offset="50%" stopColor="#34D399" stopOpacity="1" />
+                            <stop offset="100%" stopColor="#A855F7" stopOpacity="0.9" />
+                          </linearGradient>
+                          <filter id="glowPurple" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#A855F7" floodOpacity="0.8" />
+                          </filter>
+                          <filter id="glowGreen2" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#10B981" floodOpacity="0.8" />
+                          </filter>
+                        </defs>
+
+                        {/* 1. Base Dashed Guide Paths */}
+                        <path d="M 0 40 C 16 40, 20 14, 36 14" stroke="#DCE8E1" strokeWidth="1.5" strokeDasharray="3 3" />
+                        <path d="M 0 40 L 36 40" stroke="#DCE8E1" strokeWidth="1.5" strokeDasharray="3 3" />
+                        <path d="M 0 40 C 16 40, 20 66, 36 66" stroke="#DCE8E1" strokeWidth="1.5" strokeDasharray="3 3" />
+
+                        {/* 2. Active Flowing Dashes */}
+                        <path d="M 0 40 C 16 40, 20 14, 36 14" stroke="url(#hubOutflowGrad)" strokeWidth="2" strokeDasharray="4 6" strokeLinecap="round" className="animate-dash-stream" />
+                        <path d="M 0 40 L 36 40" stroke="url(#hubOutflowGrad)" strokeWidth="2" strokeDasharray="4 6" strokeLinecap="round" className="animate-dash-stream" />
+                        <path d="M 0 40 C 16 40, 20 66, 36 66" stroke="url(#hubOutflowGrad)" strokeWidth="2" strokeDasharray="4 6" strokeLinecap="round" className="animate-dash-stream" />
+
+                        {/* 3. Traveling Energy Comets */}
+                        <circle r="2.8" fill="#10B981" filter="url(#glowGreen2)">
+                          <animateMotion path="M 0 40 C 16 40, 20 14, 36 14" dur="2.0s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+                        <circle r="1.4" fill="#FFFFFF">
+                          <animateMotion path="M 0 40 C 16 40, 20 14, 36 14" dur="2.0s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+
+                        <circle r="2.8" fill="#3B82F6" filter="url(#glowBlue)">
+                          <animateMotion path="M 0 40 L 36 40" dur="2.0s" begin="0.4s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+                        <circle r="1.4" fill="#FFFFFF">
+                          <animateMotion path="M 0 40 L 36 40" dur="2.0s" begin="0.4s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+
+                        <circle r="2.8" fill="#A855F7" filter="url(#glowPurple)">
+                          <animateMotion path="M 0 40 C 16 40, 20 66, 36 66" dur="2.0s" begin="0.8s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+                        <circle r="1.4" fill="#FFFFFF">
+                          <animateMotion path="M 0 40 C 16 40, 20 66, 36 66" dur="2.0s" begin="0.8s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+                      </svg>
+                    </div>
+
+                    {/* Right: The 3 Specific Outcomes */}
+                    <div className="flex flex-col gap-1.5 shrink-0 w-[124px] sm:w-[136px]">
+                      {/* Outcome 1: Calls Booked */}
+                      <div className="bg-white border border-[#E2EAE5] hover:border-emerald-400 rounded-lg sm:rounded-xl px-2 py-1 sm:px-2.5 sm:py-1.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs transition-all hover:translate-x-0.5 group/f1">
+                        <div className="w-6 h-6 sm:w-6.5 sm:h-6.5 rounded-md sm:rounded-lg bg-[#E8F8F0] border border-[#C6EBD7] flex items-center justify-center shrink-0">
+                          <Calendar className="w-3 h-3 text-emerald-700 group-hover/f1:scale-110 transition-transform" />
+                        </div>
+                        <div className="text-left min-w-0 flex-1">
+                          <span className="font-bold text-[10px] sm:text-[11px] text-[#112219] block leading-tight truncate">Calls Booked</span>
+                          <span className="text-[8.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">Calendly</span>
+                        </div>
+                      </div>
+
+                      {/* Outcome 2: 5.6× ROAS */}
+                      <div className="bg-white border border-[#E2EAE5] hover:border-blue-400 rounded-lg sm:rounded-xl px-2 py-1 sm:px-2.5 sm:py-1.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs transition-all hover:translate-x-0.5 group/f2">
+                        <div className="w-6 h-6 sm:w-6.5 sm:h-6.5 rounded-md sm:rounded-lg bg-[#EFF6FF] border border-[#BFDBFE] flex items-center justify-center shrink-0">
+                          <TrendingUp className="w-3 h-3 text-blue-600 group-hover/f2:scale-110 transition-transform" />
+                        </div>
+                        <div className="text-left min-w-0 flex-1">
+                          <span className="font-bold text-[10px] sm:text-[11px] text-[#112219] block leading-tight truncate">5.6× ROAS</span>
+                          <span className="text-[8.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">Positive ROI</span>
+                        </div>
+                      </div>
+
+                      {/* Outcome 3: CRM Verified */}
+                      <div className="bg-white border border-[#E2EAE5] hover:border-purple-400 rounded-lg sm:rounded-xl px-2 py-1 sm:px-2.5 sm:py-1.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs transition-all hover:translate-x-0.5 group/f3">
+                        <div className="w-6 h-6 sm:w-6.5 sm:h-6.5 rounded-md sm:rounded-lg bg-[#FAF5FF] border border-[#E9D5FF] flex items-center justify-center shrink-0">
+                          <CheckCircle2 className="w-3 h-3 text-purple-600 group-hover/f3:scale-110 transition-transform" />
+                        </div>
+                        <div className="text-left min-w-0 flex-1">
+                          <span className="font-bold text-[10px] sm:text-[11px] text-[#112219] block leading-tight truncate">CRM Verified</span>
+                          <span className="text-[8.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">HubSpot</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Dual Features Proof Strip */}
+                  <div className="mt-3 pt-3 border-t border-[#EEF4F0] flex flex-wrap items-center justify-between gap-2 text-[10px] text-[#52635A]">
+                    <span className="inline-flex items-center gap-1 font-semibold text-emerald-800">
+                      <Zap className="w-3 h-3 text-emerald-600" />
+                      Server-Side CAPI (iOS 14.5+ Bypassed)
+                    </span>
+                    <span className="inline-flex items-center gap-1 font-semibold text-blue-800">
+                      <Check className="w-3 h-3 text-blue-600" />
+                      8.4% Native Form CVR
+                    </span>
+                    <span className="inline-flex items-center gap-1 font-semibold text-[#112219]">
+                      <Sparkles className="w-3 h-3 text-amber-500" />
+                      10/10 Google Quality Score
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {/* ---------------------------------------------------------------
+                  MODE 2: META ADS DEEP-DIVE SIMULATOR
+                  --------------------------------------------------------------- */}
+              {activeAdsTab === 'meta' && (
+                <div className="w-full mt-5 bg-[#F8FAFD] rounded-2xl p-4 border border-blue-200/80 shadow-xs space-y-3">
+                  <div className="flex items-center justify-between pb-2.5 border-b border-blue-100">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs">
+                        Z
+                      </div>
+                      <div>
+                        <span className="text-xs font-bold text-[#0F1E17] block">Zexta Growth Lab • Meta In-Feed</span>
+                        <span className="text-[10px] text-gray-400">Sponsored • Creative Testing &amp; Native Forms</span>
+                      </div>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded-full">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                      <span>Live CAPI Sync</span>
+                    </span>
+                  </div>
+
+                  {/* Creative Banner */}
+                  <div className="bg-gradient-to-r from-[#0D231A] to-[#164332] rounded-xl p-3.5 text-white flex items-center justify-between gap-3 shadow-2xs">
+                    <div>
+                      <span className="bg-emerald-400 text-[#0A1C15] text-[9px] font-black uppercase px-2 py-0.5 rounded-full tracking-wider inline-block mb-1">
+                        14-Day Calendar Guarantee
                       </span>
-                      <span className="text-[9.5px] font-semibold text-[#5A6E63] tracking-tight whitespace-nowrap">
-                        Active Campaigns
-                      </span>
+                      <h4 className="text-sm font-bold leading-tight">Fill Your Pipeline with 30+ B2B Calls</h4>
+                      <p className="text-[10.5px] text-emerald-200 mt-0.5">Native Instant Forms + 0% page load drop-off.</p>
+                    </div>
+                    <div className="p-2 bg-white/10 rounded-lg text-center shrink-0 border border-white/10">
+                      <span className="text-[9px] text-white/70 block uppercase font-mono">ROAS</span>
+                      <span className="text-sm font-extrabold text-emerald-300 font-mono">5.6x</span>
                     </div>
                   </div>
 
-                  {/* Connector 1: Ad Ingestion converging to High-Intent Leads Hub */}
-                  <div className="flex-1 min-w-[20px] max-w-[38px] h-18 flex items-center justify-center shrink-0">
-                    <svg className="w-full h-full overflow-visible" viewBox="0 0 36 60" fill="none" preserveAspectRatio="none">
-                      <defs>
-                        <linearGradient id="adStreamGradMeta" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#0081FB" stopOpacity="0.8" />
-                          <stop offset="100%" stopColor="#10B981" stopOpacity="1" />
-                        </linearGradient>
-                        <linearGradient id="adStreamGradGoogle" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#FBBC04" stopOpacity="0.8" />
-                          <stop offset="100%" stopColor="#10B981" stopOpacity="1" />
-                        </linearGradient>
-                        <filter id="glowBlue" x="-50%" y="-50%" width="200%" height="200%">
-                          <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#0081FB" floodOpacity="0.8" />
-                        </filter>
-                      </defs>
-
-                      {/* 1. Base Dashed Guide Paths converging into center */}
-                      <path d="M 0 16 C 18 16, 18 30, 36 30" stroke="#DCE8E1" strokeWidth="1.5" strokeDasharray="3 3" />
-                      <path d="M 0 44 C 18 44, 18 30, 36 30" stroke="#DCE8E1" strokeWidth="1.5" strokeDasharray="3 3" />
-
-                      {/* 2. Flowing Animated Dashes */}
-                      <path d="M 0 16 C 18 16, 18 30, 36 30" stroke="url(#adStreamGradMeta)" strokeWidth="2" strokeDasharray="4 6" strokeLinecap="round" className="animate-dash-stream" />
-                      <path d="M 0 44 C 18 44, 18 30, 36 30" stroke="url(#adStreamGradGoogle)" strokeWidth="2" strokeDasharray="4 6" strokeLinecap="round" className="animate-dash-stream" />
-
-                      {/* 3. Traveling Comet (Meta Blue) */}
-                      <circle r="2.8" fill="#0081FB" filter="url(#glowBlue)">
-                        <animateMotion path="M 0 16 C 18 16, 18 30, 36 30" dur="1.8s" repeatCount="indefinite" calcMode="linear" />
-                      </circle>
-                      {/* Traveling Comet (Google Amber) */}
-                      <circle r="2.8" fill="#F59E0B">
-                        <animateMotion path="M 0 44 C 18 44, 18 30, 36 30" dur="1.8s" begin="0.9s" repeatCount="indefinite" calcMode="linear" />
-                      </circle>
-                    </svg>
-                  </div>
-
-                  {/* Center: High-Intent Leads Hub */}
-                  <div className="shrink-0 relative group/hub">
-                    <div className="inline-flex items-center gap-1.5 bg-[#122B22] text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full text-[10.5px] sm:text-[11.5px] font-bold shadow-[0_4px_14px_rgba(18,43,34,0.22)] border border-emerald-500/35">
-                      <span className="relative flex h-1.5 w-1.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#34D399]"></span>
-                      </span>
-                      <span className="tracking-tight whitespace-nowrap">High-Intent Leads</span>
+                  {/* 3 Meta Performance Specs */}
+                  <div className="grid grid-cols-3 gap-2 text-center text-xs">
+                    <div className="p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
+                      <span className="text-[9.5px] text-gray-500 uppercase font-bold block">Avg CTR</span>
+                      <span className="text-xs font-black text-blue-700 font-mono">3.8%</span>
+                      <span className="text-[8.5px] text-gray-400 block">Top 1% Rank</span>
                     </div>
-                  </div>
-
-                  {/* Connector 2: Branching from Hub to Specific Outcomes */}
-                  <div className="flex-1 min-w-[20px] max-w-[38px] h-22 flex items-center justify-center shrink-0">
-                    <svg className="w-full h-full overflow-visible" viewBox="0 0 36 80" fill="none" preserveAspectRatio="none">
-                      <defs>
-                        <linearGradient id="hubOutflowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#10B981" stopOpacity="0.9" />
-                          <stop offset="50%" stopColor="#34D399" stopOpacity="1" />
-                          <stop offset="100%" stopColor="#A855F7" stopOpacity="0.9" />
-                        </linearGradient>
-                        <filter id="glowPurple" x="-50%" y="-50%" width="200%" height="200%">
-                          <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#A855F7" floodOpacity="0.8" />
-                        </filter>
-                        <filter id="glowGreen2" x="-50%" y="-50%" width="200%" height="200%">
-                          <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#10B981" floodOpacity="0.8" />
-                        </filter>
-                      </defs>
-
-                      {/* 1. Base Dashed Guide Paths */}
-                      <path d="M 0 40 C 16 40, 20 14, 36 14" stroke="#DCE8E1" strokeWidth="1.5" strokeDasharray="3 3" />
-                      <path d="M 0 40 L 36 40" stroke="#DCE8E1" strokeWidth="1.5" strokeDasharray="3 3" />
-                      <path d="M 0 40 C 16 40, 20 66, 36 66" stroke="#DCE8E1" strokeWidth="1.5" strokeDasharray="3 3" />
-
-                      {/* 2. Active Flowing Dashes */}
-                      <path d="M 0 40 C 16 40, 20 14, 36 14" stroke="url(#hubOutflowGrad)" strokeWidth="2" strokeDasharray="4 6" strokeLinecap="round" className="animate-dash-stream" />
-                      <path d="M 0 40 L 36 40" stroke="url(#hubOutflowGrad)" strokeWidth="2" strokeDasharray="4 6" strokeLinecap="round" className="animate-dash-stream" />
-                      <path d="M 0 40 C 16 40, 20 66, 36 66" stroke="url(#hubOutflowGrad)" strokeWidth="2" strokeDasharray="4 6" strokeLinecap="round" className="animate-dash-stream" />
-
-                      {/* 3. Traveling Energy Comets */}
-                      <circle r="2.8" fill="#10B981" filter="url(#glowGreen2)">
-                        <animateMotion path="M 0 40 C 16 40, 20 14, 36 14" dur="2.0s" repeatCount="indefinite" calcMode="linear" />
-                      </circle>
-                      <circle r="1.4" fill="#FFFFFF">
-                        <animateMotion path="M 0 40 C 16 40, 20 14, 36 14" dur="2.0s" repeatCount="indefinite" calcMode="linear" />
-                      </circle>
-
-                      <circle r="2.8" fill="#3B82F6" filter="url(#glowBlue)">
-                        <animateMotion path="M 0 40 L 36 40" dur="2.0s" begin="0.4s" repeatCount="indefinite" calcMode="linear" />
-                      </circle>
-                      <circle r="1.4" fill="#FFFFFF">
-                        <animateMotion path="M 0 40 L 36 40" dur="2.0s" begin="0.4s" repeatCount="indefinite" calcMode="linear" />
-                      </circle>
-
-                      <circle r="2.8" fill="#A855F7" filter="url(#glowPurple)">
-                        <animateMotion path="M 0 40 C 16 40, 20 66, 36 66" dur="2.0s" begin="0.8s" repeatCount="indefinite" calcMode="linear" />
-                      </circle>
-                      <circle r="1.4" fill="#FFFFFF">
-                        <animateMotion path="M 0 40 C 16 40, 20 66, 36 66" dur="2.0s" begin="0.8s" repeatCount="indefinite" calcMode="linear" />
-                      </circle>
-                    </svg>
-                  </div>
-
-                  {/* Right: The 3 Specific Outcomes (Clear, Fully Legible, Zero Truncation) */}
-                  <div className="flex flex-col gap-1.5 shrink-0 w-[124px] sm:w-[136px]">
-                    {/* Outcome 1: Calls Booked */}
-                    <div className="bg-white border border-[#E2EAE5] hover:border-emerald-400 rounded-lg sm:rounded-xl px-2 py-1 sm:px-2.5 sm:py-1.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs transition-all hover:translate-x-0.5 group/f1">
-                      <div className="w-6 h-6 sm:w-6.5 sm:h-6.5 rounded-md sm:rounded-lg bg-[#E8F8F0] border border-[#C6EBD7] flex items-center justify-center shrink-0">
-                        <Calendar className="w-3 h-3 text-emerald-700 group-hover/f1:scale-110 transition-transform" />
-                      </div>
-                      <div className="text-left min-w-0 flex-1">
-                        <span className="font-bold text-[10px] sm:text-[11px] text-[#112219] block leading-tight truncate">Calls Booked</span>
-                        <span className="text-[8.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">Calendly</span>
-                      </div>
+                    <div className="p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
+                      <span className="text-[9.5px] text-gray-500 uppercase font-bold block">Form CVR</span>
+                      <span className="text-xs font-black text-emerald-700 font-mono">8.4%</span>
+                      <span className="text-[8.5px] text-gray-400 block">Pre-Filled Info</span>
                     </div>
-
-                    {/* Outcome 2: 4.2× ROAS */}
-                    <div className="bg-white border border-[#E2EAE5] hover:border-blue-400 rounded-lg sm:rounded-xl px-2 py-1 sm:px-2.5 sm:py-1.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs transition-all hover:translate-x-0.5 group/f2">
-                      <div className="w-6 h-6 sm:w-6.5 sm:h-6.5 rounded-md sm:rounded-lg bg-[#EFF6FF] border border-[#BFDBFE] flex items-center justify-center shrink-0">
-                        <TrendingUp className="w-3 h-3 text-blue-600 group-hover/f2:scale-110 transition-transform" />
-                      </div>
-                      <div className="text-left min-w-0 flex-1">
-                        <span className="font-bold text-[10px] sm:text-[11px] text-[#112219] block leading-tight truncate">4.2× ROAS</span>
-                        <span className="text-[8.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">Positive ROI</span>
-                      </div>
-                    </div>
-
-                    {/* Outcome 3: CRM Verified */}
-                    <div className="bg-white border border-[#E2EAE5] hover:border-purple-400 rounded-lg sm:rounded-xl px-2 py-1 sm:px-2.5 sm:py-1.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs transition-all hover:translate-x-0.5 group/f3">
-                      <div className="w-6 h-6 sm:w-6.5 sm:h-6.5 rounded-md sm:rounded-lg bg-[#FAF5FF] border border-[#E9D5FF] flex items-center justify-center shrink-0">
-                        <CheckCircle2 className="w-3 h-3 text-purple-600 group-hover/f3:scale-110 transition-transform" />
-                      </div>
-                      <div className="text-left min-w-0 flex-1">
-                        <span className="font-bold text-[10px] sm:text-[11px] text-[#112219] block leading-tight truncate">CRM Verified</span>
-                        <span className="text-[8.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">HubSpot</span>
-                      </div>
+                    <div className="p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
+                      <span className="text-[9.5px] text-gray-500 uppercase font-bold block">CAPI Match</span>
+                      <span className="text-xs font-black text-emerald-800 font-mono">9.8/10</span>
+                      <span className="text-[8.5px] text-gray-400 block">iOS 14.5+ Bypass</span>
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
+
+              {/* ---------------------------------------------------------------
+                  MODE 3: GOOGLE ADS DEEP-DIVE SIMULATOR
+                  --------------------------------------------------------------- */}
+              {activeAdsTab === 'google' && (
+                <div className="w-full mt-5 bg-[#FAFDFB] rounded-2xl p-4 border border-emerald-200/80 shadow-xs space-y-3">
+                  {/* Google Search Bar Mockup */}
+                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-[#E2ECE6] rounded-xl text-xs">
+                    <Search className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+                    <span className="font-medium text-[#112219] truncate text-[11.5px]">
+                      hire b2b cold outreach agency for saas
+                    </span>
+                    <span className="ml-auto text-[9.5px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 shrink-0">
+                      Exact Match
+                    </span>
+                  </div>
+
+                  {/* Google Sponsored Card */}
+                  <div className="bg-white rounded-xl p-3 border border-[#E2ECE6] space-y-1">
+                    <div className="flex items-center gap-1.5 text-[10.5px]">
+                      <span className="font-bold text-[#202124]">Sponsored</span>
+                      <span className="text-gray-300">•</span>
+                      <span className="text-gray-500 font-mono">zexta.co › b2b-outbound</span>
+                    </div>
+                    <h4 className="text-xs sm:text-[13px] font-bold text-[#1a0dab] hover:underline cursor-pointer leading-snug">
+                      Zexta™ B2B Lead Gen &amp; Paid Ads | Pack Your Pipeline (30+ Calls/Mo)
+                    </h4>
+                    <p className="text-[11px] text-[#4d5156] leading-relaxed">
+                      Stop burning cash on generic clicks. Commercial exact-match Google Search &amp; PMax with negative keyword guardrails.
+                    </p>
+
+                    {/* Sitelinks Mini Grid */}
+                    <div className="grid grid-cols-2 gap-1.5 pt-1">
+                      <span className="text-[10px] text-[#1a0dab] font-semibold bg-[#F6FAF8] p-1.5 rounded border border-[#E2ECE6] truncate">
+                        📊 5.6x Average ROAS
+                      </span>
+                      <span className="text-[10px] text-[#1a0dab] font-semibold bg-[#F6FAF8] p-1.5 rounded border border-[#E2ECE6] truncate">
+                        ⚡ Instant Cal.com Booking
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* 3 Google Performance Specs */}
+                  <div className="grid grid-cols-3 gap-2 text-center text-xs">
+                    <div className="p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
+                      <span className="text-[9.5px] text-gray-500 uppercase font-bold block">Quality Score</span>
+                      <span className="text-xs font-black text-emerald-800 font-mono">10 / 10</span>
+                      <span className="text-[8.5px] text-gray-400 block">Above Average</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
+                      <span className="text-[9.5px] text-gray-500 uppercase font-bold block">Top of Page</span>
+                      <span className="text-xs font-black text-emerald-700 font-mono">94.6%</span>
+                      <span className="text-[8.5px] text-gray-400 block">Impression Share</span>
+                    </div>
+                    <div className="p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
+                      <span className="text-[9.5px] text-gray-500 uppercase font-bold block">Negative Shield</span>
+                      <span className="text-xs font-black text-purple-700 font-mono">1,200+</span>
+                      <span className="text-[8.5px] text-gray-400 block">Wasted Queries Cut</span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

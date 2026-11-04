@@ -31,17 +31,18 @@ export default function HeroCardStack({
     }
   }, []);
 
-  // Responsive resting rotations and offsets tuned for laptop (215px) & desktop (260-280px)
+  // Responsive resting rotations and offsets tuned for stacked card appearance
+  // The top card has 0deg rotation so its typography renders with 100% horizontal pixel clarity (no ClearType blur)
   const restingTransforms = {
     left: [
-      { transform: 'rotate(-2.5deg) translate(0px, 0px)', zIndex: 3 },
-      { transform: 'rotate(2deg) translate(3px, 4px)', zIndex: 2 },
-      { transform: 'rotate(-1.5deg) translate(6px, 8px)', zIndex: 1 },
+      { transform: 'rotate(0deg) translate(0px, 0px)', zIndex: 10 },
+      { transform: 'rotate(2.5deg) translate(4px, 6px)', zIndex: 5 },
+      { transform: 'rotate(-2deg) translate(8px, 12px)', zIndex: 2 },
     ],
     right: [
-      { transform: 'rotate(2.5deg) translate(0px, 0px)', zIndex: 3 },
-      { transform: 'rotate(-2deg) translate(-3px, 4px)', zIndex: 2 },
-      { transform: 'rotate(1.5deg) translate(-6px, 8px)', zIndex: 1 },
+      { transform: 'rotate(0deg) translate(0px, 0px)', zIndex: 10 },
+      { transform: 'rotate(-2.5deg) translate(-4px, 6px)', zIndex: 5 },
+      { transform: 'rotate(2deg) translate(-8px, 12px)', zIndex: 2 },
     ],
   };
 
@@ -76,6 +77,12 @@ export default function HeroCardStack({
   // Only expand on hover if device has genuine mouse hover capability
   const isExpanded = allowExpand && hasHoverSupport && isDeckHovered;
 
+  // Exact uniform card dimensions: every card has the EXACT same height, width, padding & margin
+  // Height 228px comfortably displays full quotes without any truncation or ellipsis
+  const cardHeight = 228;
+  const cardGap = 10;
+  const verticalStep = cardHeight + cardGap; // 238px per slot
+
   const getCardStyle = (idx) => {
     const isThisCardHovered = hoveredCardIdx === idx;
     const order = getCardOrder(idx);
@@ -83,7 +90,7 @@ export default function HeroCardStack({
     // Resting stacked state
     if (!isExpanded) {
       const resting = restingTransforms[side]?.[order] || {
-        transform: `rotate(${order === 1 ? '2deg' : '-2deg'}) translate(${order * 3}px, ${order * 4}px)`,
+        transform: `rotate(${order === 1 ? '2deg' : '-2deg'}) translate(${order * 4}px, ${order * 6}px)`,
         zIndex: 10 - order,
       };
 
@@ -94,18 +101,19 @@ export default function HeroCardStack({
       };
     }
 
-    // Hovered/Expanded state: vertical offset
-    const verticalOffset = idx * 165;
+    // Hovered/Expanded state: all cards move down cleanly with equal spacing and NO overlap
+    const verticalOffset = idx * verticalStep;
 
+    // NO scale() to ensure text stays 100% sharp, crisp, and never blur!
     if (isThisCardHovered) {
       return {
-        transform: `translateY(${verticalOffset - 3}px) scale(1.02)`,
+        transform: `translateY(${verticalOffset - 3}px)`,
         zIndex: 50,
       };
     }
 
     return {
-      transform: `translateY(${verticalOffset}px) scale(1)`,
+      transform: `translateY(${verticalOffset}px)`,
       zIndex: 10 + idx,
     };
   };
@@ -121,10 +129,10 @@ export default function HeroCardStack({
         setHoveredCardIdx(null);
       }}
     >
-      {/* Cards Canvas: expands smoothly from ~195px to 500px on desktop mouse hover */}
+      {/* Cards Canvas: expands smoothly when hovered so all cards move down cleanly */}
       <div
         className={`relative w-full transition-all duration-500 ease-out ${
-          isExpanded ? 'h-[500px]' : 'h-[195px] sm:h-[200px]'
+          isExpanded ? 'h-[725px]' : 'h-[236px] sm:h-[240px]'
         }`}
       >
         {cards.map((card, idx) => {
@@ -142,44 +150,44 @@ export default function HeroCardStack({
               onMouseLeave={() => {
                 if (hasHoverSupport) setHoveredCardIdx(null);
               }}
-              className={`absolute top-0 left-0 right-0 bg-white border rounded-[16px] xl:rounded-[18px] p-2.5 sm:p-3 xl:p-3.5 text-left cursor-pointer flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${
+              className={`absolute top-0 left-0 right-0 h-[228px] bg-white border rounded-[16px] xl:rounded-[18px] p-3 sm:p-3.5 text-left cursor-pointer flex flex-col justify-between transition-all duration-300 ease-out [backface-visibility:hidden] [text-rendering:optimizeLegibility] ${
                 isThisCardHovered || (isTop && !isExpanded)
-                  ? 'border-[#153C2D]/80 shadow-[0_12px_28px_-6px_rgba(21,60,45,0.18)]'
-                  : 'border-[#E2EAE5] shadow-[0_4px_16px_-4px_rgba(18,43,34,0.06)]'
-              } ${isThisCardHovered ? 'ring-1.5 ring-[#153C2D]/20' : ''}`}
+                  ? 'border-emerald-600/80 shadow-[0_12px_28px_-6px_rgba(21,60,45,0.18)] ring-1 ring-emerald-500/20'
+                  : 'border-[#DEE7E1] shadow-[0_4px_16px_-4px_rgba(18,43,34,0.06)] hover:border-emerald-400/50'
+              }`}
               style={style}
             >
               {/* Card Header: Author, Role & Verified Review Pill */}
               <div className="flex items-center justify-between gap-1 pb-1.5 border-b border-[#F0F5F2]">
                 <div className="flex items-center gap-1.5 xl:gap-2 min-w-0">
-                  {/* Gradient Initials Badge */}
-                  <div className="w-5 h-5 xl:w-6 xl:h-6 rounded-full bg-gradient-to-br from-[#122B22] to-[#1E4D3B] text-white text-[8px] xl:text-[9px] font-bold font-sans flex items-center justify-center shrink-0 border border-emerald-100 shadow-2xs">
+                  {/* Initials Badge */}
+                  <div className="w-5 h-5 xl:w-6 xl:h-6 rounded-full bg-gradient-to-br from-[#122B22] to-[#1E4D3B] text-white text-[8.5px] xl:text-[9.5px] font-bold font-sans flex items-center justify-center shrink-0 border border-emerald-100 shadow-2xs">
                     {card.initials || 'CL'}
                   </div>
 
                   <div className="flex flex-col min-w-0">
-                    <h4 className="text-[10.5px] xl:text-[11.5px] font-bold text-[#0F1E17] font-sans truncate leading-tight tracking-tight">
+                    <h4 className="text-[12.5px] xl:text-[13px] font-extrabold text-[#081810] font-sans truncate leading-tight tracking-tight">
                       {card.author}
                     </h4>
-                    <p className="text-[8.5px] xl:text-[9.5px] text-[#55665D] font-medium font-sans truncate leading-tight mt-0.5">
+                    <p className="text-[10px] xl:text-[10.5px] text-[#223B2D] font-semibold font-sans truncate leading-tight mt-0.5">
                       {card.role}
                     </p>
                   </div>
                 </div>
 
-                <span className="inline-flex items-center gap-1 text-[7.5px] xl:text-[8.5px] font-semibold text-[#0E6C38] bg-[#EAF7EE] border border-[#C9EAD5] px-1.5 xl:px-2 py-0.5 rounded-full shrink-0 font-sans shadow-2xs">
+                <span className="inline-flex items-center gap-1 text-[9px] xl:text-[9.5px] font-bold text-[#065F20] bg-[#E8F8EE] border border-[#BDE8C8] px-2 py-0.5 rounded-full shrink-0 font-sans shadow-2xs">
                   <CheckCircle2 className="w-2.5 h-2.5 text-[#14A800] shrink-0" />
                   <span className="whitespace-nowrap">{card.verifiedLabel || 'Verified'}</span>
                 </span>
               </div>
 
               {/* Impact Metric Strip */}
-              <div className="my-1.5 py-1 px-2 xl:px-2.5 bg-[#F6FAF7] border border-[#E3EDE6] rounded-lg flex items-center justify-between">
+              <div className="my-1 py-1 px-2.5 bg-[#F4F9F6] border border-[#DFEDE4] rounded-lg flex items-center justify-between">
                 <div className="flex items-center gap-1.5 min-w-0">
-                  <span className="text-[11px] xl:text-[11.5px] font-bold text-[#0F1E17] font-sans tracking-tight leading-none">
+                  <span className="text-[12.5px] xl:text-[13px] font-black text-[#081810] font-sans tracking-tight leading-none">
                     {card.metric}
                   </span>
-                  <span className="text-[11px] xl:text-[11.5px] font-medium text-[#495D53] font-sans tracking-tight truncate leading-none">
+                  <span className="text-[11px] xl:text-[11.5px] font-bold text-[#223B2D] font-sans tracking-tight truncate leading-none">
                     {card.metricLabel}
                   </span>
                 </div>
@@ -191,18 +199,20 @@ export default function HeroCardStack({
                 </div>
               </div>
 
-              {/* Quotation text */}
-              <p className="text-[9.5px] xl:text-[10.5px] leading-[1.4] xl:leading-[1.5] text-[#34483E] font-normal font-sans italic mb-1.5 line-clamp-3">
-                “{card.quote}”
-              </p>
+              {/* Quotation text: FULLY SHOWN with complete text, crystal-clear dark high-contrast font */}
+              <div className="flex-1 flex items-center py-1">
+                <p className="text-[11px] xl:text-[11.5px] leading-[1.45] text-[#081810] font-semibold font-sans antialiased">
+                  “{card.quote}”
+                </p>
+              </div>
 
               {/* Bottom Tag & Deck Indicator */}
-              <div className="flex items-center justify-between pt-1.5 border-t border-[#EEF4F0] text-[8.5px] xl:text-[9px] text-[#63756C] font-sans">
-                <span className="font-bold text-[#122B22] font-sans truncate max-w-[110px] xl:max-w-[160px]">
+              <div className="flex items-center justify-between pt-1.5 border-t border-[#EEF4F0] text-[9.5px] xl:text-[10px] text-[#223B2D] font-sans">
+                <span className="font-extrabold text-[#081810] font-sans truncate max-w-[130px] xl:max-w-[170px]">
                   {card.tag}
                 </span>
-                <span className="text-[#71857A] text-[8px] xl:text-[8.5px] font-semibold font-sans shrink-0">
-                  {isExpanded ? 'Verified' : hasHoverSupport ? 'Expand ↗' : 'Tap to flip'}
+                <span className="text-[#0A6C25] font-bold font-sans shrink-0">
+                  {isExpanded ? 'Verified Review' : 'Hover to expand ↓'}
                 </span>
               </div>
             </div>
@@ -210,7 +220,7 @@ export default function HeroCardStack({
         })}
       </div>
 
-      {/* Interactive Navigation Dots & Controls: Only shown on mobile when requested or when showControls is true */}
+      {/* Interactive Navigation Dots & Controls */}
       {showControls && (
         <div
           className={`items-center justify-between px-1 pt-2 sm:pt-2.5 ${

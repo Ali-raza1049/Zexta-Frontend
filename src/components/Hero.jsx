@@ -3,7 +3,6 @@ import { ArrowRight, ArrowUpRight, Star } from 'lucide-react';
 import { ClayLogo, HighLevelLogo, MetaLogo, InstantlyLogo, KlaviyoLogo } from './Icons';
 import HeroCardStack from './HeroCardStack';
 import { upworkLeftReviews, upworkRightReviews } from '../data/upworkReviews';
-import karinAvatar from '../assets/avatar_karin.jpg';
 
 import frameFlowgrid from '../assets/frame_flowgrid.png';
 import frameFlowline from '../assets/frame_flowline.png';
@@ -111,7 +110,7 @@ export default function Hero({ onBookCall }) {
         {/* 3-Column Flanking Layout for Laptop & Desktop (Visible from 1024px lg upwards) */}
         <div className="hero-flanking-layout flex items-start justify-between gap-3 lg:gap-4 xl:gap-6 2xl:gap-8 max-w-[1400px] mx-auto">
           {/* Left 3-Cards Stack: visible on laptops (1024px+) & desktops without controls */}
-          <div className="hero-flank-column flank-left hidden lg:block w-[215px] xl:w-[255px] 2xl:w-[275px] flex-shrink-0 text-left pt-2 transition-all duration-300">
+          <div className="hero-flank-column flank-left hidden lg:block w-[258px] xl:w-[285px] 2xl:w-[305px] flex-shrink-0 text-left pt-2 transition-all duration-300">
             <HeroCardStack side="left" cards={leftTestimonialCards} showControls={false} />
           </div>
 
@@ -142,40 +141,21 @@ export default function Hero({ onBookCall }) {
               </button>
             </div>
 
-            {/* Social Proof */}
-            <div className="hero-social-proof inline-flex items-center gap-2.5 sm:gap-4 bg-white/85 backdrop-blur-md px-3.5 sm:px-5 py-2 rounded-full border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow">
-              <div className="avatar-stack flex items-center">
-                <img src={karinAvatar} alt="Client avatar" className="avatar-item w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover" />
-                <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80"
-                  alt="Client avatar"
-                  className="avatar-item w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white -ml-2 object-cover"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80"
-                  alt="Client avatar"
-                  className="avatar-item w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white -ml-2 object-cover"
-                />
-                <div className="avatar-more w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#153C2D] text-white text-[9px] sm:text-[10px] font-bold flex items-center justify-center border-2 border-white -ml-2">
-                  +800
-                </div>
+            {/* Social Proof Rating */}
+            <div className="hero-social-proof inline-flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-gray-200/80 shadow-xs hover:shadow-sm transition-shadow">
+              <div className="stars-row flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                ))}
               </div>
-
-              <div className="stars-review-box flex flex-col items-start text-left">
-                <div className="stars-row flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3 sm:w-3.5 h-3 sm:h-3.5 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <span className="review-count-text text-[11px] sm:text-[11.5px] font-semibold text-[#37473F]">
-                  From 1K reviews
-                </span>
-              </div>
+              <span className="review-count-text text-xs sm:text-[12.5px] font-semibold text-[#2C3E34]">
+                Rated 5.0 from 100+ clients worldwide
+              </span>
             </div>
           </div>
 
           {/* Right 3-Cards Stack: visible on laptops (1024px+) & desktops without controls */}
-          <div className="hero-flank-column flank-right hidden lg:block w-[215px] xl:w-[255px] 2xl:w-[275px] flex-shrink-0 text-left pt-2 transition-all duration-300">
+          <div className="hero-flank-column flank-right hidden lg:block w-[258px] xl:w-[285px] 2xl:w-[305px] flex-shrink-0 text-left pt-2 transition-all duration-300">
             <HeroCardStack side="right" cards={rightTestimonialCards} showControls={false} />
           </div>
         </div>

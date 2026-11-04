@@ -54,29 +54,32 @@ export default function Team({ onBookCall }) {
               {/* Subtle ambient hover glow */}
               <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-br from-emerald-400/15 to-teal-300/0 rounded-full blur-xl group-hover:from-emerald-400/30 group-hover:scale-125 transition-all duration-500 pointer-events-none" />
 
-              {/* Top Section: Compact Round Avatar Frame */}
+              {/* Top Section: Crisp High-Resolution Round Avatar Frame */}
               <div className="w-full flex flex-col items-center">
                 {/* Round Picture Avatar */}
-                <div className="relative mb-3">
+                <div className="relative mb-3.5 transition-transform duration-300 group-hover:scale-[1.03]">
                   {/* Outer Luxury Gradient Ring */}
-                  <div className="w-20 h-20 sm:w-22 sm:h-22 lg:w-20 lg:h-20 xl:w-22 xl:h-22 rounded-full p-1 bg-gradient-to-tr from-emerald-500/30 via-[#153C2D]/15 to-emerald-400/40 group-hover:from-emerald-500 group-hover:to-teal-400 transition-all duration-500 shadow-sm">
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-24 lg:h-24 xl:w-28 xl:h-28 rounded-full p-1 bg-gradient-to-tr from-emerald-500/35 via-[#153C2D]/15 to-emerald-400/40 group-hover:from-emerald-500 group-hover:to-teal-400 transition-all duration-300 shadow-sm">
                     {/* Inner White Border Frame */}
                     <div className="w-full h-full rounded-full overflow-hidden bg-white p-0.5 shadow-inner">
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="w-full h-full rounded-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
-                        loading="lazy"
+                        width={360}
+                        height={360}
+                        loading="eager"
+                        decoding="sync"
+                        className="w-full h-full rounded-full object-cover object-center filter contrast-[1.03] saturate-[1.05]"
                       />
                     </div>
                   </div>
 
                   {/* Verified Indicator Badge Overlay */}
                   <div
-                    className="absolute bottom-0 right-0 bg-white rounded-full p-0.5 shadow-sm border border-[#D5E3DB] flex items-center justify-center"
+                    className="absolute bottom-0.5 right-0.5 bg-white rounded-full p-0.5 shadow-sm border border-[#D5E3DB] flex items-center justify-center"
                     title="Verified Specialist"
                   >
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 fill-emerald-50" />
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 fill-emerald-50" />
                   </div>
                 </div>
 

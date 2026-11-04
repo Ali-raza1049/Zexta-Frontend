@@ -160,7 +160,7 @@ export default function ServicesPage({ onBookCall }) {
 
               <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
                 <a
-                  href="https://upwork.com/freelancers/aslamchanddotme?mp_source=share"
+                  href="https://upwork.com/freelancers/~01bdb47ba4630db792"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gradient-to-r from-[#122B22] via-[#163E2D] to-[#122B22] text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-[0_4px_16px_rgba(18,43,34,0.18)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.3)] hover:-translate-y-0.5 border border-emerald-500/20 transition-all cursor-pointer inline-flex items-center gap-1.5"

@@ -68,7 +68,7 @@ export const teamMembers = [
       'Creative Performance Strategy',
     ],
     linkedinUrl: 'https://pk.linkedin.com/in/aslamchanddotme',
-    upworkUrl: 'https://upwork.com/freelancers/aslamchanddotme?mp_source=share',
+    upworkUrl: 'https://upwork.com/freelancers/~01bdb47ba4630db792',
     calendlyUrl: 'https://calendly.com/shahidnazir/30min',
   },
   {

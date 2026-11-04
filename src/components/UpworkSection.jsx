@@ -9,7 +9,6 @@ const upworkProfiles = [
     url: 'https://www.upwork.com/freelancers/raishahidnazir257',
     description:
       'End-to-end B2B outbound infrastructure, automated mailbox warmups, and personalized Clay campaigns that land in the inbox and book meetings.',
-    tag: 'Top Rated Plus',
     jss: '100% Job Success',
     rating: 'Verified Reviews',
     buttonText: 'View Upwork Profile',
@@ -21,7 +20,6 @@ const upworkProfiles = [
     url: 'https://upwork.com/freelancers/~01549881dcc4c8599c?mp_source=share',
     description:
       'Automated multi-channel flows, CRM pipeline synchronization, and follow-up sequences that nurture every lead and turn them into paying customers.',
-    tag: 'Top Rated Plus',
     jss: '100% Job Success',
     rating: 'Verified Reviews',
     buttonText: 'View Upwork Profile',
@@ -30,10 +28,9 @@ const upworkProfiles = [
   {
     id: 'ads',
     title: 'Meta & Google Ads',
-    url: 'https://upwork.com/freelancers/aslamchanddotme?mp_source=share',
+    url: 'https://upwork.com/freelancers/~01bdb47ba4630db792',
     description:
       'Targeted lead generation campaigns on Facebook, Instagram, and Google Search engineered to capture qualified leads with positive ROAS.',
-    tag: 'Top Rated Plus',
     jss: '100% Job Success',
     rating: 'Verified Reviews',
     buttonText: 'View Upwork Profile',
@@ -65,7 +62,7 @@ export default function UpworkSection({ onBookCall }) {
           </h2>
 
           <p className="text-[15px] sm:text-base text-[#52635A] max-w-lg mx-auto font-normal leading-relaxed">
-            Every profile is Top Rated Plus with a 100% Job Success Score and verified 5-star client reviews.
+            Every profile features a 100% Job Success Score and verified 5-star client reviews.
           </p>
         </div>
 
@@ -80,16 +77,18 @@ export default function UpworkSection({ onBookCall }) {
               <div className="absolute -top-12 -right-12 w-28 h-28 bg-gradient-to-br from-emerald-400/10 to-teal-300/0 rounded-full blur-xl group-hover:from-emerald-400/25 group-hover:scale-125 transition-all duration-500 pointer-events-none" />
 
               <div className="relative z-10">
-                {/* Top Row: Upwork Logo Icon + Top Rated Plus Badge */}
+                {/* Top Row: Upwork Logo Icon */}
                 <div className="flex items-center justify-between gap-3 mb-6">
                   <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200/70 flex items-center justify-center text-emerald-600 shadow-2xs group-hover:scale-105 group-hover:bg-emerald-100/60 group-hover:border-emerald-300 transition-all duration-300">
                     <UpworkLogo className="w-6 h-6 text-emerald-600" />
                   </div>
 
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-900 bg-emerald-50 border border-emerald-200/80 px-3.5 py-1 rounded-full group-hover:border-emerald-300 shadow-2xs transition-colors">
-                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400 shrink-0" />
-                    <span>{profile.tag}</span>
-                  </span>
+                  {profile.tag && (
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-900 bg-emerald-50 border border-emerald-200/80 px-3.5 py-1 rounded-full group-hover:border-emerald-300 shadow-2xs transition-colors">
+                      <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400 shrink-0" />
+                      <span>{profile.tag}</span>
+                    </span>
+                  )}
                 </div>
 
                 {/* Service Title - Harmonized Across All Cards */}
