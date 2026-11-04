@@ -58,28 +58,28 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="py-20 relative">
+    <section id="services" className="py-14 sm:py-20 relative">
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="max-w-2xl mb-12">
+        <div className="max-w-2xl mb-8 sm:mb-12">
           <CornerBadge label="Our Capabilities" />
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#112219] tracking-tight leading-tight mt-3">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#112219] tracking-tight leading-tight mt-3">
             Everything you need to grow and scale,
-            <br />
-            all under one roof.
+            <br className="hidden sm:inline" />
+            {' '}all under one roof.
           </h2>
-          <p className="text-base text-[#52635A] mt-3">
+          <p className="text-xs sm:text-base text-[#52635A] mt-2.5 sm:mt-3 leading-relaxed">
             From cold outreach pipelines and paid ads to custom MERN/PERN platforms and production AI full-stack systems.
           </p>
         </div>
 
         {/* 1. Unified Full-Stack (MERN & PERN) + AI Engineering Flagship Card in One */}
-        <div className="w-full bg-white border border-[#E1EAE4] hover:border-[#CADAD0] rounded-[28px] sm:rounded-[32px] p-6 sm:p-8 lg:p-9 shadow-[0_4px_24px_-4px_rgba(18,43,34,0.04)] hover:shadow-[0_16px_40px_rgba(18,43,34,0.08)] transition-all mb-6">
+        <div className="w-full bg-white border border-[#E1EAE4] hover:border-[#CADAD0] rounded-[22px] sm:rounded-[32px] p-3.5 xs:p-4.5 sm:p-7 lg:p-9 shadow-[0_4px_24px_-4px_rgba(18,43,34,0.04)] hover:shadow-[0_16px_40px_rgba(18,43,34,0.08)] transition-all mb-6">
           {/* Header Row: Badge & 3-Way Switcher */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-5 border-b border-[#EEF4F0]">
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200/80 rounded-full text-xs font-bold shadow-2xs">
-                <Layers className="w-3.5 h-3.5 text-emerald-600" />
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-5 sm:mb-6 pb-4 sm:pb-5 border-b border-[#EEF4F0]">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200/80 rounded-full text-[11px] sm:text-xs font-bold shadow-2xs">
+                <Layers className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                 <span>Full-Stack Engineering & AI Systems</span>
               </span>
               <span className="hidden md:inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
@@ -89,55 +89,58 @@ export default function Services() {
             </div>
 
             {/* 3-Way Stack Switcher: MERN, PERN, and AI Services */}
-            <div className="inline-flex items-center p-1 bg-[#F3F7F5] border border-[#E2EAE5] rounded-full text-xs font-semibold shadow-inner">
+            <div className="w-full sm:w-auto grid grid-cols-3 sm:inline-flex items-center p-1 bg-[#F3F7F5] border border-[#E2EAE5] rounded-xl sm:rounded-full text-[10.5px] sm:text-xs font-semibold shadow-inner text-center">
               <button
                 type="button"
                 onClick={() => setActiveStackTab('mern')}
-                className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+                className={`px-1.5 xs:px-2.5 sm:px-3.5 py-1.5 rounded-lg sm:rounded-full transition-all cursor-pointer truncate ${
                   activeStackTab === 'mern'
                     ? 'bg-[#153C2D] text-white shadow-xs font-bold'
                     : 'text-[#55665D] hover:text-[#112219]'
                 }`}
               >
-                MERN Stack
+                <span className="sm:hidden">MERN</span>
+                <span className="hidden sm:inline">MERN Stack</span>
               </button>
               <button
                 type="button"
                 onClick={() => setActiveStackTab('pern')}
-                className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+                className={`px-1.5 xs:px-2.5 sm:px-3.5 py-1.5 rounded-lg sm:rounded-full transition-all cursor-pointer truncate ${
                   activeStackTab === 'pern'
                     ? 'bg-[#153C2D] text-white shadow-xs font-bold'
                     : 'text-[#55665D] hover:text-[#112219]'
                 }`}
               >
-                PERN Stack
+                <span className="sm:hidden">PERN</span>
+                <span className="hidden sm:inline">PERN Stack</span>
               </button>
               <button
                 type="button"
                 onClick={() => setActiveStackTab('ai')}
-                className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+                className={`px-1.5 xs:px-2.5 sm:px-3.5 py-1.5 rounded-lg sm:rounded-full transition-all cursor-pointer truncate ${
                   activeStackTab === 'ai'
                     ? 'bg-[#153C2D] text-white shadow-xs font-bold'
                     : 'text-[#55665D] hover:text-[#112219]'
                 }`}
               >
-                AI Services & Agents
+                <span className="sm:hidden">AI Agents</span>
+                <span className="hidden sm:inline">AI Services & Agents</span>
               </button>
             </div>
           </div>
 
           {/* 2-Column Responsive Body */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
             {/* Left Column: Stack Narrative & Capabilities */}
             <div className="lg:col-span-6 flex flex-col justify-between text-left">
               <div>
-                <h3 className="text-[22px] sm:text-[24px] font-bold text-[#112219] mb-3 leading-snug">
+                <h3 className="text-[19px] xs:text-[21px] sm:text-[24px] font-bold text-[#112219] mb-2.5 sm:mb-3 leading-snug">
                   {activeStackTab === 'mern' && 'MERN Architecture (MongoDB, Express, React 19, Node.js)'}
                   {activeStackTab === 'pern' && 'PERN Enterprise Platforms (PostgreSQL, Express, React 19, Node.js)'}
                   {activeStackTab === 'ai' && 'Autonomous AI Agents, RAG Pipelines & Multi-Model Systems'}
                 </h3>
 
-                <p className="text-sm sm:text-[15px] text-[#52635A] leading-relaxed mb-6">
+                <p className="text-xs sm:text-[14.5px] text-[#52635A] leading-relaxed mb-4 sm:mb-6">
                   {activeStackTab === 'mern' &&
                     'Fast, reactive, and flexible full-stack web applications with MongoDB document stores, Express REST/GraphQL APIs, React 19/Next.js dynamic frontends, and high-throughput Node.js microservices.'}
                   {activeStackTab === 'pern' &&
@@ -148,71 +151,71 @@ export default function Services() {
               </div>
 
               {/* Stack Tech Pills */}
-              <div className="pt-2">
-                <div className="flex items-center gap-2 flex-wrap mb-4">
+              <div className="pt-1 sm:pt-2">
+                <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap mb-4">
                   {activeStackTab === 'mern' && (
                     <>
-                      <span className="text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2.5 py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         MongoDB Atlas
                       </span>
-                      <span className="text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2.5 py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         Express.js REST
                       </span>
-                      <span className="text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2.5 py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         React 19 / Next.js
                       </span>
-                      <span className="text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2.5 py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         Node.js Runtime
                       </span>
-                      <span className="text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2.5 py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         Redis Cache
                       </span>
                     </>
                   )}
                   {activeStackTab === 'pern' && (
                     <>
-                      <span className="text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2.5 py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         PostgreSQL DB
                       </span>
-                      <span className="text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2.5 py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         Prisma / Drizzle ORM
                       </span>
-                      <span className="text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2.5 py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         Express & GraphQL
                       </span>
-                      <span className="text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2.5 py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         Next.js Server Actions
                       </span>
-                      <span className="text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2.5 py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-[#F0FDF4] text-[#166534] border border-[#DCFCE7] px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-emerald-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         ACID Compliance
                       </span>
                     </>
                   )}
                   {activeStackTab === 'ai' && (
                     <>
-                      <span className="text-xs font-semibold bg-purple-50 text-purple-900 border border-purple-200 px-2.5 py-1 rounded-lg hover:border-purple-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-purple-50 text-purple-900 border border-purple-200 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-purple-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         OpenAI & Claude APIs
                       </span>
-                      <span className="text-xs font-semibold bg-purple-50 text-purple-900 border border-purple-200 px-2.5 py-1 rounded-lg hover:border-purple-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-purple-50 text-purple-900 border border-purple-200 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-purple-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         Pinecone & pgvector
                       </span>
-                      <span className="text-xs font-semibold bg-purple-50 text-purple-900 border border-purple-200 px-2.5 py-1 rounded-lg hover:border-purple-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-purple-50 text-purple-900 border border-purple-200 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-purple-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         LangChain & LlamaIndex
                       </span>
-                      <span className="text-xs font-semibold bg-purple-50 text-purple-900 border border-purple-200 px-2.5 py-1 rounded-lg hover:border-purple-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-purple-50 text-purple-900 border border-purple-200 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-purple-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         Autonomous Agents
                       </span>
-                      <span className="text-xs font-semibold bg-purple-50 text-purple-900 border border-purple-200 px-2.5 py-1 rounded-lg hover:border-purple-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                      <span className="text-[11px] sm:text-xs font-semibold bg-purple-50 text-purple-900 border border-purple-200 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-purple-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                         Streaming UI
                       </span>
                     </>
                   )}
-                  <span className="text-xs font-semibold bg-gray-50 text-gray-700 border border-gray-200 px-2.5 py-1 rounded-lg hover:border-gray-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
+                  <span className="text-[11px] sm:text-xs font-semibold bg-gray-50 text-gray-700 border border-gray-200 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg hover:border-gray-400/80 hover:scale-105 transition-all duration-200 cursor-default shadow-2xs">
                     TypeScript 5.0
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-[#55665D] pt-3 border-t border-[#EEF4F0]">
+                <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 text-xs text-[#55665D] pt-3 border-t border-[#EEF4F0]">
                   <span className="flex items-center gap-2 font-semibold text-emerald-800">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -221,7 +224,7 @@ export default function Services() {
                     {activeStackTab === 'ai' ? 'Zero hallucination guardrails' : 'Sub-second page speeds'}
                   </span>
                   <span className="font-semibold text-[#112219] flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-pulse" />
+                    <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-pulse shrink-0" />
                     {activeStackTab === 'ai' ? 'Real-Time Tool Calling' : '99.9% Uptime SLA'}
                   </span>
                 </div>
@@ -235,7 +238,7 @@ export default function Services() {
 
               {activeStackTab === 'ai' ? (
                 /* AI Live Execution Sandbox */
-                <div className="bg-[#0A1711] rounded-2xl p-5 sm:p-6 border border-emerald-900/60 shadow-[0_12px_40px_rgba(0,0,0,0.35)] text-left relative overflow-hidden backdrop-blur-md">
+                <div className="bg-[#0A1711] rounded-2xl p-3.5 xs:p-4 sm:p-6 border border-emerald-900/60 shadow-[0_12px_40px_rgba(0,0,0,0.35)] text-left relative overflow-hidden backdrop-blur-md">
                   {/* Subtle Scanner Beam */}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-400/[0.04] to-transparent pointer-events-none animate-sweep" style={{ animationDuration: '4.5s' }} />
 
@@ -251,35 +254,35 @@ export default function Services() {
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]"></span>
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2.5 py-0.5 rounded-full border border-emerald-800">
+                    <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-800">
                       Confidence: 99.4%
                     </span>
                   </div>
 
                   {/* 3 Interactive Pipeline Steps with Flowing Connection Connectors */}
-                  <div className="space-y-2.5 text-xs font-mono relative z-10">
-                    <div className="bg-white/[0.04] hover:bg-white/[0.07] rounded-xl p-3 border border-white/5 hover:border-emerald-500/30 flex items-center justify-between transition-all group/step">
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-5 h-5 rounded-md bg-emerald-900/60 border border-emerald-700/50 text-emerald-300 text-[10px] font-bold flex items-center justify-center">1</span>
-                        <span className="text-gray-200">Vector Search (Pinecone / pgvector)</span>
+                  <div className="space-y-2 sm:space-y-2.5 text-xs font-mono relative z-10">
+                    <div className="bg-white/[0.04] hover:bg-white/[0.07] rounded-xl p-2.5 sm:p-3 border border-white/5 hover:border-emerald-500/30 flex items-center justify-between transition-all group/step">
+                      <div className="flex items-center gap-2 min-w-0 flex-1 mr-2">
+                        <span className="w-5 h-5 rounded-md bg-emerald-900/60 border border-emerald-700/50 text-emerald-300 text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
+                        <span className="text-gray-200 truncate text-[11px] sm:text-xs">Vector Search (Pinecone / pgvector)</span>
                       </div>
-                      <span className="text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/60">0.96 Match</span>
+                      <span className="text-emerald-400 font-bold bg-emerald-950/60 px-1.5 sm:px-2 py-0.5 rounded border border-emerald-800/60 text-[10px] sm:text-xs shrink-0">0.96 Match</span>
                     </div>
 
-                    <div className="bg-white/[0.04] hover:bg-white/[0.07] rounded-xl p-3 border border-white/5 hover:border-purple-500/30 flex items-center justify-between transition-all group/step">
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-5 h-5 rounded-md bg-purple-900/60 border border-purple-700/50 text-purple-300 text-[10px] font-bold flex items-center justify-center">2</span>
-                        <span className="text-gray-200">RAG Context Injection & Reasoning</span>
+                    <div className="bg-white/[0.04] hover:bg-white/[0.07] rounded-xl p-2.5 sm:p-3 border border-white/5 hover:border-purple-500/30 flex items-center justify-between transition-all group/step">
+                      <div className="flex items-center gap-2 min-w-0 flex-1 mr-2">
+                        <span className="w-5 h-5 rounded-md bg-purple-900/60 border border-purple-700/50 text-purple-300 text-[10px] font-bold flex items-center justify-center shrink-0">2</span>
+                        <span className="text-gray-200 truncate text-[11px] sm:text-xs">RAG Context &amp; Reasoning</span>
                       </div>
-                      <span className="text-purple-300 font-bold bg-purple-950/60 px-2 py-0.5 rounded border border-purple-800/60">LangChain</span>
+                      <span className="text-purple-300 font-bold bg-purple-950/60 px-1.5 sm:px-2 py-0.5 rounded border border-purple-800/60 text-[10px] sm:text-xs shrink-0">LangChain</span>
                     </div>
 
-                    <div className="bg-white/[0.04] hover:bg-white/[0.07] rounded-xl p-3 border border-white/5 hover:border-teal-500/30 flex items-center justify-between transition-all group/step">
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-5 h-5 rounded-md bg-teal-900/60 border border-teal-700/50 text-teal-300 text-[10px] font-bold flex items-center justify-center">3</span>
-                        <span className="text-gray-200">Multi-Tool Function Calling</span>
+                    <div className="bg-white/[0.04] hover:bg-white/[0.07] rounded-xl p-2.5 sm:p-3 border border-white/5 hover:border-teal-500/30 flex items-center justify-between transition-all group/step">
+                      <div className="flex items-center gap-2 min-w-0 flex-1 mr-2">
+                        <span className="w-5 h-5 rounded-md bg-teal-900/60 border border-teal-700/50 text-teal-300 text-[10px] font-bold flex items-center justify-center shrink-0">3</span>
+                        <span className="text-gray-200 truncate text-[11px] sm:text-xs">Multi-Tool Function Calling</span>
                       </div>
-                      <span className="text-emerald-300 font-bold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/60">Realtime Action</span>
+                      <span className="text-emerald-300 font-bold bg-emerald-950/60 px-1.5 sm:px-2 py-0.5 rounded border border-emerald-800/60 text-[10px] sm:text-xs shrink-0">Realtime</span>
                     </div>
                   </div>
 
@@ -298,12 +301,12 @@ export default function Services() {
                 </div>
               ) : (
                 /* Code Terminal for MERN or PERN with Line Numbers & Real-Time Live Execution */
-                <div className="bg-[#0B1D15] rounded-2xl p-5 sm:p-6 border border-emerald-900/60 shadow-[0_12px_40px_rgba(0,0,0,0.35)] text-left relative overflow-hidden backdrop-blur-md">
+                <div className="bg-[#0B1D15] rounded-2xl p-3.5 xs:p-4 sm:p-6 border border-emerald-900/60 shadow-[0_12px_40px_rgba(0,0,0,0.35)] text-left relative overflow-hidden backdrop-blur-md">
                   {/* Subtle Animated Light Sweep */}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-400/[0.035] to-transparent pointer-events-none animate-sweep" style={{ animationDuration: '4.8s' }} />
 
                   {/* Mac Window Chrome */}
-                  <div className="flex items-center justify-between pb-3.5 border-b border-white/10 mb-4 relative z-10">
+                  <div className="flex items-center justify-between pb-3 sm:pb-3.5 border-b border-white/10 mb-3.5 sm:mb-4 relative z-10">
                     <div className="flex items-center gap-2">
                       {/* Mac Dots */}
                       <div className="flex items-center gap-1.5 mr-1">
@@ -313,28 +316,28 @@ export default function Services() {
                       </div>
 
                       {/* Active File Tab */}
-                      <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-emerald-950/70 border border-emerald-800/50 text-[11px] font-mono text-emerald-300">
+                      <div className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 rounded-md bg-emerald-950/70 border border-emerald-800/50 text-[10px] sm:text-[11px] font-mono text-emerald-300">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span>{activeStackTab === 'mern' ? 'models/LeadPipeline.js' : 'prisma/schema.prisma'}</span>
+                        <span className="truncate max-w-[130px] sm:max-w-none">{activeStackTab === 'mern' ? 'models/LeadPipeline.js' : 'prisma/schema.prisma'}</span>
                       </div>
                     </div>
 
                     {/* Status Indicators */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
                       <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-mono text-emerald-400/90 bg-emerald-950/70 border border-emerald-800/60 px-2 py-0.5 rounded">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
                         <span>Live Stream</span>
                       </span>
-                      <span className="text-[10px] font-mono text-white/50 bg-white/5 px-2 py-0.5 rounded border border-white/5">
-                        TypeScript 5.0
+                      <span className="text-[9.5px] sm:text-[10px] font-mono text-white/50 bg-white/5 px-1.5 sm:px-2 py-0.5 rounded border border-white/5">
+                        TS 5.0
                       </span>
                     </div>
                   </div>
 
                   {/* Code Editor Body with Line Numbers */}
-                  <div className="flex font-mono text-[12px] sm:text-[12.5px] leading-relaxed relative z-10 select-none">
+                  <div className="flex font-mono text-[10.5px] xs:text-[11.5px] sm:text-[12px] lg:text-[12.5px] leading-relaxed relative z-10 select-none">
                     {/* Line Numbers Column */}
-                    <div className="flex flex-col text-right pr-3.5 mr-3.5 border-r border-emerald-900/60 text-emerald-600/50 select-none font-medium">
+                    <div className="flex flex-col text-right pr-2.5 sm:pr-3.5 mr-2.5 sm:mr-3.5 border-r border-emerald-900/60 text-emerald-600/50 select-none font-medium">
                       <span>1</span>
                       <span>2</span>
                       <span>3</span>
@@ -351,17 +354,17 @@ export default function Services() {
                             <span className="text-purple-400 font-semibold">new</span>{' '}
                             <span className="text-yellow-300 font-semibold">Schema</span>({'{'}
                           </p>
-                          <p className="pl-4 text-emerald-300">
+                          <p className="pl-3 sm:pl-4 text-emerald-300">
                             client: <span className="text-blue-200">String</span>, leadsCount:{' '}
                             <span className="text-yellow-200">Number</span>, status:{' '}
                             <span className="text-emerald-400 font-semibold">'SCALING'</span>,
                           </p>
-                          <p className="pl-4 text-gray-300">
+                          <p className="pl-3 sm:pl-4 text-gray-300">
                             cache: <span className="text-blue-300 font-semibold">RedisCluster</span>.<span className="text-yellow-300 font-semibold">fastRoute</span>({'{'} ttl: <span className="text-emerald-400">3600</span> {'}'})
                           </p>
                           <p className="text-gray-300">
                             {'}'});
-                            <span className="inline-block w-2 h-4 bg-emerald-400 ml-1.5 animate-pulse align-middle shadow-[0_0_8px_#10B981]" />
+                            <span className="inline-block w-1.5 sm:w-2 h-3.5 sm:h-4 bg-emerald-400 ml-1.5 animate-pulse align-middle shadow-[0_0_8px_#10B981]" />
                           </p>
                         </>
                       ) : (
@@ -369,18 +372,18 @@ export default function Services() {
                           <p className="text-purple-400 font-semibold">
                             model <span className="text-yellow-300 font-semibold">EnterpriseClient</span> {'{'}
                           </p>
-                          <p className="pl-4 text-emerald-300">
+                          <p className="pl-3 sm:pl-4 text-emerald-300">
                             id <span className="text-blue-200">String</span> @id @default(uuid())
                           </p>
-                          <p className="pl-4 text-emerald-300">
+                          <p className="pl-3 sm:pl-4 text-emerald-300">
                             dbEngine <span className="text-blue-200">PostgreSQL</span> @relation(fields: [pgId])
                           </p>
-                          <p className="pl-4 text-gray-300">
+                          <p className="pl-3 sm:pl-4 text-gray-300">
                             perfScore <span className="text-yellow-200">Float</span> @default(<span className="text-emerald-400">99.8</span>)
                           </p>
                           <p className="text-purple-400">
                             {'}'}
-                            <span className="inline-block w-2 h-4 bg-emerald-400 ml-1.5 animate-pulse align-middle shadow-[0_0_8px_#10B981]" />
+                            <span className="inline-block w-1.5 sm:w-2 h-3.5 sm:h-4 bg-emerald-400 ml-1.5 animate-pulse align-middle shadow-[0_0_8px_#10B981]" />
                           </p>
                         </>
                       )}
@@ -409,68 +412,68 @@ export default function Services() {
         </div>
 
         {/* 2. Outreach & Lead Gen Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6 items-stretch">
           {/* Card 1: Cold Email Campaign (Tall Left Card) with Animated Envelope & Floating Pills */}
-          <div className="group/parcel lg:col-span-5 bg-white border border-[#E1EAE4] hover:border-emerald-500/40 rounded-[28px] p-6 sm:p-8 shadow-[0_4px_20px_-2px_rgba(18,43,34,0.04)] hover:shadow-[0_16px_36px_rgba(18,43,34,0.08)] transition-all flex flex-col justify-between min-h-[480px] relative overflow-hidden">
+          <div className="group/parcel lg:col-span-5 bg-white border border-[#E1EAE4] hover:border-emerald-500/40 rounded-[24px] sm:rounded-[28px] p-4 xs:p-5 sm:p-7 lg:p-6 xl:p-8 shadow-[0_4px_20px_-2px_rgba(18,43,34,0.04)] hover:shadow-[0_16px_36px_rgba(18,43,34,0.08)] transition-all flex flex-col justify-between min-h-[440px] sm:min-h-[480px] lg:h-full relative overflow-hidden">
             <div>
-              <h3 className="text-[22px] font-bold text-[#112219] mb-2.5">Cold Email Infrastructure</h3>
-              <p className="text-sm text-[#52635A] leading-relaxed">
+              <h3 className="text-[19px] xs:text-[20px] sm:text-[22px] font-bold text-[#112219] mb-2 sm:mb-2.5">Cold Email Infrastructure</h3>
+              <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
                 We set up your domains, mailboxes, SPF, DKIM, DMARC, and warmup, then write and run campaigns that land in the inbox and get replies.
               </p>
 
               {/* Infrastructure Health & Deliverability Control Strip */}
-              <div className="mt-4 sm:mt-5 bg-[#F9FAF9] rounded-2xl p-3 sm:p-3.5 border border-[#E8EFEA] relative overflow-hidden group-hover/parcel:border-emerald-500/30 transition-colors">
-                <div className="flex items-center justify-between mb-2.5 sm:mb-3">
-                  <div className="flex items-center gap-2">
+              <div className="mt-3.5 sm:mt-5 bg-[#F9FAF9] rounded-2xl p-2.5 xs:p-3 sm:p-3.5 border border-[#E8EFEA] relative overflow-hidden group-hover/parcel:border-emerald-500/30 transition-colors">
+                <div className="flex items-center justify-between mb-2 sm:mb-3">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]"></span>
                     </span>
-                    <span className="text-[11.5px] font-bold text-[#112219] tracking-tight">Active Deliverability Engine</span>
+                    <span className="text-[10.5px] xs:text-[11px] sm:text-[11.5px] font-bold text-[#112219] tracking-tight">Active Deliverability Engine</span>
                   </div>
-                  <span className="text-[9.5px] font-bold text-[#0A6C25] bg-[#E8F8F0] px-2 py-0.5 rounded-full border border-[#C6EBD7]">
+                  <span className="text-[8.5px] xs:text-[9px] sm:text-[9.5px] font-bold text-[#0A6C25] bg-[#E8F8F0] px-2 py-0.5 rounded-full border border-[#C6EBD7]">
                     100% HEALTH
                   </span>
                 </div>
 
                 {/* Protocol Badges & Live Deliverability Specs */}
-                <div className="grid grid-cols-3 gap-2">
-                  <div className="bg-white rounded-xl p-2 sm:p-2.5 border border-[#E2EAE5] text-center shadow-2xs hover:border-emerald-400/60 transition-colors">
-                    <div className="flex items-center justify-center gap-1 text-[9.5px] text-[#697E72] font-semibold">
-                      <Mail className="w-3 h-3 text-emerald-600" />
-                      <span>Mailboxes</span>
+                <div className="grid grid-cols-3 gap-1 xs:gap-1.5 sm:gap-2">
+                  <div className="bg-white rounded-xl p-1.5 xs:p-2 sm:p-2.5 border border-[#E2EAE5] text-center shadow-2xs hover:border-emerald-400/60 transition-colors">
+                    <div className="flex items-center justify-center gap-1 text-[8px] xs:text-[8.5px] sm:text-[9.5px] text-[#697E72] font-semibold">
+                      <Mail className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-emerald-600 shrink-0" />
+                      <span className="truncate">Mailboxes</span>
                     </div>
-                    <span className="text-[12.5px] sm:text-[13px] font-extrabold text-[#112219] block mt-0.5">15 Inboxes</span>
-                    <span className="text-[8.5px] sm:text-[9px] text-[#0A6C25] font-semibold block">Rotated daily</span>
+                    <span className="text-[11px] xs:text-[12px] sm:text-[13px] font-extrabold text-[#112219] block mt-0.5 truncate">15 Inboxes</span>
+                    <span className="text-[7.5px] xs:text-[8px] sm:text-[9px] text-[#0A6C25] font-semibold block truncate">Rotated daily</span>
                   </div>
 
-                  <div className="bg-white rounded-xl p-2 sm:p-2.5 border border-[#E2EAE5] text-center shadow-2xs hover:border-emerald-400/60 transition-colors">
-                    <div className="flex items-center justify-center gap-1 text-[9.5px] text-[#697E72] font-semibold">
-                      <ShieldCheck className="w-3 h-3 text-emerald-600" />
-                      <span>Protocols</span>
+                  <div className="bg-white rounded-xl p-1.5 xs:p-2 sm:p-2.5 border border-[#E2EAE5] text-center shadow-2xs hover:border-emerald-400/60 transition-colors">
+                    <div className="flex items-center justify-center gap-1 text-[8px] xs:text-[8.5px] sm:text-[9.5px] text-[#697E72] font-semibold">
+                      <ShieldCheck className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-emerald-600 shrink-0" />
+                      <span className="truncate">Protocols</span>
                     </div>
-                    <span className="text-[12.5px] sm:text-[13px] font-extrabold text-emerald-700 block mt-0.5">SPF • DKIM</span>
-                    <span className="text-[8.5px] sm:text-[9px] text-[#5A6E63] font-medium block">DMARC Passed</span>
+                    <span className="text-[11px] xs:text-[12px] sm:text-[13px] font-extrabold text-emerald-700 block mt-0.5 truncate">SPF • DKIM</span>
+                    <span className="text-[7.5px] xs:text-[8px] sm:text-[9px] text-[#5A6E63] font-medium block truncate">DMARC Passed</span>
                   </div>
 
-                  <div className="bg-white rounded-xl p-2 sm:p-2.5 border border-[#E2EAE5] text-center shadow-2xs hover:border-emerald-400/60 transition-colors">
-                    <div className="flex items-center justify-center gap-1 text-[9.5px] text-[#697E72] font-semibold">
-                      <Sparkles className="w-3 h-3 text-amber-500" />
-                      <span>Placement</span>
+                  <div className="bg-white rounded-xl p-1.5 xs:p-2 sm:p-2.5 border border-[#E2EAE5] text-center shadow-2xs hover:border-emerald-400/60 transition-colors">
+                    <div className="flex items-center justify-center gap-1 text-[8px] xs:text-[8.5px] sm:text-[9.5px] text-[#697E72] font-semibold">
+                      <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-amber-500 shrink-0" />
+                      <span className="truncate">Placement</span>
                     </div>
-                    <span className="text-[12.5px] sm:text-[13px] font-extrabold text-[#112219] block mt-0.5">99.4% Inbox</span>
-                    <span className="text-[8.5px] sm:text-[9px] text-emerald-700 font-semibold block">Spam Shielded</span>
+                    <span className="text-[11px] xs:text-[12px] sm:text-[13px] font-extrabold text-[#112219] block mt-0.5 truncate">99.4% Inbox</span>
+                    <span className="text-[7.5px] xs:text-[8px] sm:text-[9px] text-emerald-700 font-semibold block truncate">Spam Shielded</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Custom Interactive Parcel Graphic with All 7 Animated Floating Buttons */}
-            <div className="mt-6 mb-2 relative flex-1 flex justify-center items-center py-6 select-none min-h-[220px]">
+            <div className="mt-4 sm:mt-6 mb-2 relative flex-1 flex justify-center items-center py-3 xs:py-4 sm:py-6 select-none min-h-[190px] sm:min-h-[220px] overflow-hidden">
               {/* Ethereal background radial glow */}
               <div className="absolute w-52 h-44 bg-emerald-100/40 rounded-full blur-2xl pointer-events-none -z-0" />
 
-              <div className="relative w-[280px] sm:w-[310px] h-[200px] flex items-center justify-center">
+              <div className="relative w-[270px] sm:w-[300px] h-[180px] sm:h-[195px] flex items-center justify-center scale-[0.76] xs:scale-[0.84] sm:scale-[0.92] lg:scale-[0.84] xl:scale-100 origin-center transition-transform">
                 {/* 1. Complete Envelope Graphic (Back Wall, Emerging Letter, Front Pocket, Flap, and Radar Pulse) */}
                 <svg className="w-full h-full absolute inset-0 block overflow-visible select-none" viewBox="0 0 280 180" fill="none">
                   <defs>
@@ -542,59 +545,59 @@ export default function Services() {
                   </circle>
                 </svg>
 
-                {/* 2. ALL 7 ANIMATED BUTTONS (With all exact original headings & smooth organic levitation) */}
+                {/* 2. ALL 7 ANIMATED BUTTONS (Optimized coordinates so they never clip card boundaries) */}
 
                 {/* Button 1: Outreach (Top Center) */}
-                <div className="absolute top-[-26px] left-1/2 -translate-x-1/2 z-30 animate-float">
-                  <div className="inline-flex items-center gap-1.5 bg-[#D1FAE5] text-[#065F46] text-[11.5px] font-bold px-3 py-1 rounded-full border border-[#A7F3D0] shadow-[0_4px_12px_rgba(6,95,70,0.15)] hover:scale-105 transition-transform cursor-default">
+                <div className="absolute top-[-22px] left-1/2 -translate-x-1/2 z-30 animate-float">
+                  <div className="inline-flex items-center gap-1.5 bg-[#D1FAE5] text-[#065F46] text-[11px] sm:text-[11.5px] font-bold px-2.5 sm:px-3 py-1 rounded-full border border-[#A7F3D0] shadow-[0_4px_12px_rgba(6,95,70,0.15)] hover:scale-105 transition-transform cursor-default">
                     <Send className="w-3.5 h-3.5 text-emerald-700" />
                     <span>Outreach</span>
                   </div>
                 </div>
 
                 {/* Button 2: Launch (Top Left) */}
-                <div className="absolute top-[2px] left-[-10px] sm:left-[-2px] z-30 animate-float-delayed">
-                  <div className="inline-flex items-center gap-1.5 bg-[#11261D] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-[0_4px_14px_rgba(17,38,29,0.3)] border border-emerald-500/40 hover:scale-105 transition-transform cursor-default">
+                <div className="absolute top-[4px] left-[2px] sm:left-[6px] z-30 animate-float-delayed">
+                  <div className="inline-flex items-center gap-1.5 bg-[#11261D] text-white text-[10.5px] sm:text-[11px] font-bold px-2.5 sm:px-3 py-1 rounded-full shadow-[0_4px_14px_rgba(17,38,29,0.3)] border border-emerald-500/40 hover:scale-105 transition-transform cursor-default">
                     <Rocket className="w-3.5 h-3.5 text-emerald-400" />
                     <span>Launch</span>
                   </div>
                 </div>
 
                 {/* Button 3: 99.4% Inbox (Top Right) */}
-                <div className="absolute top-[2px] right-[-10px] sm:right-[-2px] z-30 animate-float">
-                  <div className="inline-flex items-center gap-1.5 bg-gradient-to-r from-emerald-600 to-teal-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-[0_4px_12px_rgba(16,185,129,0.25)] hover:scale-105 transition-transform cursor-default">
+                <div className="absolute top-[4px] right-[2px] sm:right-[6px] z-30 animate-float">
+                  <div className="inline-flex items-center gap-1.5 bg-gradient-to-r from-emerald-600 to-teal-500 text-white text-[10.5px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full shadow-[0_4px_12px_rgba(16,185,129,0.25)] hover:scale-105 transition-transform cursor-default">
                     <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                     <span>99.4% Inbox</span>
                   </div>
                 </div>
 
                 {/* Button 4: Verify lead list (Mid Left) */}
-                <div className="absolute top-[68px] left-[-24px] sm:left-[-16px] z-30 animate-float">
-                  <div className="inline-flex items-center gap-1.5 bg-white text-[#1C3C2E] text-[11px] font-bold px-3 py-1 rounded-full border border-[#D5E2DA] shadow-[0_4px_12px_rgba(0,0,0,0.06)] hover:border-emerald-400 hover:scale-105 transition-all cursor-default">
+                <div className="absolute top-[64px] left-[-10px] sm:left-[-6px] z-30 animate-float">
+                  <div className="inline-flex items-center gap-1.5 bg-white text-[#1C3C2E] text-[10.5px] sm:text-[11px] font-bold px-2.5 sm:px-3 py-1 rounded-full border border-[#D5E2DA] shadow-[0_4px_12px_rgba(0,0,0,0.06)] hover:border-emerald-400 hover:scale-105 transition-all cursor-default">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                     <span>Verify lead list</span>
                   </div>
                 </div>
 
                 {/* Button 5: Fix spam & DNS (Mid Right) */}
-                <div className="absolute top-[68px] right-[-24px] sm:right-[-16px] z-30 animate-float-delayed">
-                  <div className="inline-flex items-center gap-1.5 bg-white text-[#1C3C2E] text-[11px] font-bold px-3 py-1 rounded-full border border-[#D5E2DA] shadow-[0_4px_12px_rgba(0,0,0,0.06)] hover:border-emerald-400 hover:scale-105 transition-all cursor-default">
+                <div className="absolute top-[64px] right-[-10px] sm:right-[-6px] z-30 animate-float-delayed">
+                  <div className="inline-flex items-center gap-1.5 bg-white text-[#1C3C2E] text-[10.5px] sm:text-[11px] font-bold px-2.5 sm:px-3 py-1 rounded-full border border-[#D5E2DA] shadow-[0_4px_12px_rgba(0,0,0,0.06)] hover:border-emerald-400 hover:scale-105 transition-all cursor-default">
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                     <span>Fix spam & DNS</span>
                   </div>
                 </div>
 
                 {/* Button 6: Test subject lines (Bottom Left) */}
-                <div className="absolute bottom-[-14px] left-[2px] sm:left-[12px] z-30 animate-float-delayed">
-                  <div className="inline-flex items-center gap-1.5 bg-white text-[#1C3C2E] text-[10.5px] font-bold px-3 py-1 rounded-full border border-[#D5E2DA] shadow-[0_4px_12px_rgba(0,0,0,0.06)] hover:border-emerald-400 hover:scale-105 transition-all cursor-default">
+                <div className="absolute bottom-[-8px] left-[8px] sm:left-[16px] z-30 animate-float-delayed">
+                  <div className="inline-flex items-center gap-1.5 bg-white text-[#1C3C2E] text-[10px] sm:text-[10.5px] font-bold px-2.5 sm:px-3 py-1 rounded-full border border-[#D5E2DA] shadow-[0_4px_12px_rgba(0,0,0,0.06)] hover:border-emerald-400 hover:scale-105 transition-all cursor-default">
                     <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                     <span>Test subject lines</span>
                   </div>
                 </div>
 
                 {/* Button 7: SPF • DKIM (Bottom Right) */}
-                <div className="absolute bottom-[-14px] right-[2px] sm:right-[12px] z-30 animate-float">
-                  <div className="inline-flex items-center gap-1.5 bg-[#F0FDF4] text-[#0A6C25] text-[10.5px] font-bold px-2.5 py-1 rounded-full border border-[#C6EBD7] shadow-[0_4px_12px_rgba(10,108,37,0.08)] hover:scale-105 transition-all cursor-default">
+                <div className="absolute bottom-[-8px] right-[8px] sm:right-[16px] z-30 animate-float">
+                  <div className="inline-flex items-center gap-1.5 bg-[#F0FDF4] text-[#0A6C25] text-[10px] sm:text-[10.5px] font-bold px-2.5 py-1 rounded-full border border-[#C6EBD7] shadow-[0_4px_12px_rgba(10,108,37,0.08)] hover:scale-105 transition-all cursor-default">
                     <Check className="w-3 h-3 text-[#14A800]" />
                     <span>SPF • DKIM</span>
                   </div>
@@ -606,33 +609,33 @@ export default function Services() {
           {/* Right Column with Card 2 & Card 3 */}
           <div className="lg:col-span-7 flex flex-col gap-6">
             {/* Card 2: Lead Generation and List Building */}
-            <div className="bg-white border border-[#E1EAE4] hover:border-[#CADAD0] rounded-[28px] p-6 sm:p-8 shadow-[0_4px_20px_-2px_rgba(18,43,34,0.04)] hover:shadow-[0_10px_30px_rgba(18,43,34,0.07)] transition-all flex flex-col justify-between min-h-[220px]">
+            <div className="bg-white border border-[#E1EAE4] hover:border-[#CADAD0] rounded-[24px] sm:rounded-[28px] p-4 xs:p-5 sm:p-7 shadow-[0_4px_20px_-2px_rgba(18,43,34,0.04)] hover:shadow-[0_10px_30px_rgba(18,43,34,0.07)] transition-all flex flex-col justify-between min-h-[220px]">
               <div>
-                <h3 className="text-[22px] font-bold text-[#112219] mb-2.5">Lead Generation and List Building</h3>
-                <p className="text-sm text-[#52635A] leading-relaxed">
+                <h3 className="text-[19px] xs:text-[20px] sm:text-[22px] font-bold text-[#112219] mb-2 sm:mb-2.5">Lead Generation and List Building</h3>
+                <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
                   Targeted, verified B2B lead lists built with Apollo, Clay, and LinkedIn, matched to your ideal customer profile
                 </p>
               </div>
 
               {/* Visual Flow: Mini Chart connecting dynamically to Clay, Modash, Apollo */}
-              <div className="overflow-x-auto no-scrollbar mt-6 bg-[#F9FAF9] rounded-2xl p-4 sm:p-5 border border-[#E8EFEA]">
-                <div className="w-full flex items-center justify-between gap-2 sm:gap-3 min-w-[390px] sm:min-w-0 pr-1">
+              <div className="overflow-x-auto no-scrollbar mt-4 sm:mt-6 bg-[#F9FAF9] rounded-2xl p-2 xs:p-2.5 sm:p-5 border border-[#E8EFEA]">
+                <div className="w-full flex items-center justify-between gap-1 sm:gap-2.5">
                   {/* Source Data Box */}
-                  <div className="bg-white border border-[#E4EDE7] rounded-xl p-3 w-[140px] shadow-xs shrink-0 relative group/chart hover:border-emerald-500/40 transition-colors">
-                    <div className="flex justify-between items-center mb-1.5">
-                      <div className="flex items-center gap-1.5">
-                        <span className="relative flex h-2 w-2">
+                  <div className="bg-white border border-[#E4EDE7] rounded-xl p-1.5 xs:p-2 sm:p-3 w-[84px] xs:w-[100px] sm:w-[130px] md:w-[140px] shadow-xs shrink-0 relative group/chart hover:border-emerald-500/40 transition-colors">
+                    <div className="flex justify-between items-center mb-1">
+                      <div className="flex items-center gap-1 sm:gap-1.5 min-w-0">
+                        <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2 shrink-0">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-[#10B981]"></span>
                         </span>
-                        <span className="text-[13px] font-bold text-[#153628]">$20,007</span>
+                        <span className="text-[10.5px] xs:text-[11.5px] sm:text-[13px] font-bold text-[#153628] truncate">$20,007</span>
                       </div>
-                      <span className="text-[9px] font-bold text-[#0A6C25] bg-[#E8F8F0] px-1.5 py-0.5 rounded border border-[#C6EBD7]">
+                      <span className="text-[7.5px] xs:text-[8px] sm:text-[9px] font-bold text-[#0A6C25] bg-[#E8F8F0] px-1 sm:px-1.5 py-0.5 rounded border border-[#C6EBD7]">
                         LIVE
                       </span>
                     </div>
 
-                    <div className="flex items-end gap-1.5 h-11">
+                    <div className="flex items-end gap-1 sm:gap-1.5 h-7 xs:h-8 sm:h-11">
                       <div className="flex-1 bg-[#E2EBE5] rounded-t-xs animate-bar-live-1" style={{ height: '35%' }}></div>
                       <div className="flex-1 bg-[#E2EBE5] rounded-t-xs animate-bar-live-2" style={{ height: '55%' }}></div>
                       <div className="flex-1 bg-[#E2EBE5] rounded-t-xs animate-bar-live-3" style={{ height: '45%' }}></div>
@@ -641,15 +644,15 @@ export default function Services() {
                       <div className="flex-1 bg-[#E2EBE5] rounded-t-xs" style={{ height: '50%' }}></div>
                     </div>
 
-                    <div className="mt-1.5 pt-1.5 border-t border-[#F0F5F2] flex items-center justify-between text-[10px] text-[#63796D] font-medium">
+                    <div className="mt-1 xs:mt-1.5 pt-1 xs:pt-1.5 border-t border-[#F0F5F2] flex items-center justify-between text-[8px] xs:text-[9px] sm:text-[10px] text-[#63796D] font-medium">
                       <span>Stream</span>
                       <span className="text-emerald-700 font-bold">+24%</span>
                     </div>
                   </div>
 
                   {/* Animated Branching Lines SVG */}
-                  <div className="w-20 sm:w-24 h-28 flex items-center justify-center shrink-0">
-                    <svg className="w-full h-full overflow-visible" viewBox="0 0 90 120" fill="none">
+                  <div className="w-8 xs:w-12 sm:w-20 md:w-24 h-18 xs:h-22 sm:h-28 flex items-center justify-center shrink-0">
+                    <svg className="w-full h-full overflow-visible" viewBox="0 0 90 120" fill="none" preserveAspectRatio="none">
                       <defs>
                         <linearGradient id="leadLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                           <stop offset="0%" stopColor="#10B981" stopOpacity="0.8" />
@@ -679,78 +682,78 @@ export default function Services() {
 
                       {/* 3. Traveling Energy Comets */}
                       {/* Comet 1: Heading to Clay */}
-                      <circle r="4" fill="#10B981" filter="url(#glowGreen)">
+                      <circle r="3.5" fill="#10B981" filter="url(#glowGreen)">
                         <animateMotion path="M 0 60 C 42 60, 48 20, 90 20" dur="2.2s" repeatCount="indefinite" calcMode="linear" />
                       </circle>
-                      <circle r="1.8" fill="#FFFFFF">
+                      <circle r="1.5" fill="#FFFFFF">
                         <animateMotion path="M 0 60 C 42 60, 48 20, 90 20" dur="2.2s" repeatCount="indefinite" calcMode="linear" />
                       </circle>
 
                       {/* Comet 2: Heading to Modash */}
-                      <circle r="4" fill="#EC4899" filter="url(#glowPink)">
+                      <circle r="3.5" fill="#EC4899" filter="url(#glowPink)">
                         <animateMotion path="M 0 60 L 90 60" dur="2.2s" begin="0.45s" repeatCount="indefinite" calcMode="linear" />
                       </circle>
-                      <circle r="1.8" fill="#FFFFFF">
+                      <circle r="1.5" fill="#FFFFFF">
                         <animateMotion path="M 0 60 L 90 60" dur="2.2s" begin="0.45s" repeatCount="indefinite" calcMode="linear" />
                       </circle>
 
                       {/* Comet 3: Heading to Apollo */}
-                      <circle r="4" fill="#F59E0B" filter="url(#glowAmber)">
+                      <circle r="3.5" fill="#F59E0B" filter="url(#glowAmber)">
                         <animateMotion path="M 0 60 C 42 60, 48 100, 90 100" dur="2.2s" begin="0.9s" repeatCount="indefinite" calcMode="linear" />
                       </circle>
-                      <circle r="1.8" fill="#FFFFFF">
+                      <circle r="1.5" fill="#FFFFFF">
                         <animateMotion path="M 0 60 C 42 60, 48 100, 90 100" dur="2.2s" begin="0.9s" repeatCount="indefinite" calcMode="linear" />
                       </circle>
                     </svg>
                   </div>
 
                   {/* Specific Functionalities / Tools Column */}
-                  <div className="flex flex-col gap-2 w-[180px] shrink-0">
+                  <div className="flex flex-col gap-1 xs:gap-1.5 sm:gap-2 w-[100px] xs:w-[120px] sm:w-[155px] md:w-[170px] shrink-0">
                     {/* Tool 1: Clay */}
-                    <div className="bg-white border border-[#E2EAE5] hover:border-emerald-400 rounded-xl px-3 py-2 flex items-center justify-between shadow-xs transition-all hover:translate-x-1">
-                      <div className="flex items-center gap-2">
-                        <span className="relative flex h-3 w-3">
+                    <div className="bg-white border border-[#E2EAE5] hover:border-emerald-400 rounded-xl px-1.5 py-1 xs:px-2 xs:py-1.5 sm:px-3 sm:py-2 flex items-center justify-between shadow-xs transition-all hover:translate-x-0.5">
+                      <div className="flex items-center gap-1 sm:gap-2 min-w-0">
+                        <span className="relative flex h-2 w-2 sm:h-3 sm:w-3 shrink-0">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00D26A] opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00D26A]"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 sm:h-3 sm:w-3 bg-[#00D26A]"></span>
                         </span>
-                        <div>
-                          <span className="font-bold text-xs text-[#112219] block leading-none">Clay</span>
-                          <span className="text-[9.5px] text-[#697E72] font-medium leading-tight">Enrichment</span>
+                        <div className="min-w-0">
+                          <span className="font-bold text-[10px] xs:text-[11px] sm:text-xs text-[#112219] block leading-none truncate">Clay</span>
+                          <span className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] text-[#697E72] font-medium leading-tight truncate">Enrichment</span>
                         </div>
                       </div>
-                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.5 rounded">
+                      <span className="text-[8px] xs:text-[9px] sm:text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1 sm:px-1.5 py-0.5 rounded shrink-0">
                         +12%
                       </span>
                     </div>
 
                     {/* Tool 2: Modash */}
-                    <div className="bg-white border border-[#E2EAE5] hover:border-pink-400 rounded-xl px-3 py-2 flex items-center justify-between shadow-xs transition-all hover:translate-x-1">
-                      <div className="flex items-center gap-2">
-                        <span className="w-3.5 h-3.5 rounded-full bg-[#EC4899] text-white text-[9px] font-bold flex items-center justify-center shrink-0">
+                    <div className="bg-white border border-[#E2EAE5] hover:border-pink-400 rounded-xl px-1.5 py-1 xs:px-2 xs:py-1.5 sm:px-3 sm:py-2 flex items-center justify-between shadow-xs transition-all hover:translate-x-0.5">
+                      <div className="flex items-center gap-1 sm:gap-2 min-w-0">
+                        <span className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full bg-[#EC4899] text-white text-[7.5px] sm:text-[9px] font-bold flex items-center justify-center shrink-0">
                           m
                         </span>
-                        <div>
-                          <span className="font-bold text-xs text-[#112219] block leading-none">Modash</span>
-                          <span className="text-[9.5px] text-[#697E72] font-medium leading-tight">Creators</span>
+                        <div className="min-w-0">
+                          <span className="font-bold text-[10px] xs:text-[11px] sm:text-xs text-[#112219] block leading-none truncate">Modash</span>
+                          <span className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] text-[#697E72] font-medium leading-tight truncate">Creators</span>
                         </div>
                       </div>
-                      <span className="text-[10px] font-bold text-pink-700 bg-pink-50 border border-pink-200/80 px-1.5 py-0.5 rounded">
+                      <span className="text-[8px] xs:text-[9px] sm:text-[10px] font-bold text-pink-700 bg-pink-50 border border-pink-200/80 px-1 sm:px-1.5 py-0.5 rounded shrink-0">
                         +12%
                       </span>
                     </div>
 
                     {/* Tool 3: Apollo */}
-                    <div className="bg-white border border-[#E2EAE5] hover:border-amber-400 rounded-xl px-3 py-2 flex items-center justify-between shadow-xs transition-all hover:translate-x-1">
-                      <div className="flex items-center gap-2">
-                        <span className="w-3.5 h-3.5 rounded-full bg-[#F59E0B] text-white text-[10px] flex items-center justify-center shrink-0">
+                    <div className="bg-white border border-[#E2EAE5] hover:border-amber-400 rounded-xl px-1.5 py-1 xs:px-2 xs:py-1.5 sm:px-3 sm:py-2 flex items-center justify-between shadow-xs transition-all hover:translate-x-0.5">
+                      <div className="flex items-center gap-1 sm:gap-2 min-w-0">
+                        <span className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full bg-[#F59E0B] text-white text-[8px] sm:text-[10px] flex items-center justify-center shrink-0">
                           ☀
                         </span>
-                        <div>
-                          <span className="font-bold text-xs text-[#112219] block leading-none">Apollo</span>
-                          <span className="text-[9.5px] text-[#697E72] font-medium leading-tight">B2B Contacts</span>
+                        <div className="min-w-0">
+                          <span className="font-bold text-[10px] xs:text-[11px] sm:text-xs text-[#112219] block leading-none truncate">Apollo</span>
+                          <span className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] text-[#697E72] font-medium leading-tight truncate">B2B Contacts</span>
                         </div>
                       </div>
-                      <span className="text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200/80 px-1.5 py-0.5 rounded">
+                      <span className="text-[8px] xs:text-[9px] sm:text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200/80 px-1 sm:px-1.5 py-0.5 rounded shrink-0">
                         +12%
                       </span>
                     </div>
@@ -760,63 +763,66 @@ export default function Services() {
             </div>
 
             {/* Card 3: Meta and Google Ads */}
-            <div className="bg-white border border-[#E1EAE4] hover:border-[#CADAD0] rounded-[28px] p-6 sm:p-8 shadow-[0_4px_20px_-2px_rgba(18,43,34,0.04)] hover:shadow-[0_10px_30px_rgba(18,43,34,0.07)] transition-all flex flex-col justify-between min-h-[300px] relative overflow-hidden">
+            <div className="bg-white border border-[#E1EAE4] hover:border-[#CADAD0] rounded-[24px] sm:rounded-[28px] p-4 xs:p-5 sm:p-7 lg:p-7 xl:p-8 shadow-[0_4px_20px_-2px_rgba(18,43,34,0.04)] hover:shadow-[0_10px_30px_rgba(18,43,34,0.07)] transition-all flex flex-col justify-between min-h-[300px] relative overflow-hidden">
               {/* Header Row: Title & 3-Way Mode Switcher */}
               <div>
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+                <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-3 mb-3">
                   <div>
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <span className="inline-flex items-center gap-1.5 text-[10.5px] font-bold text-blue-900 bg-blue-50 border border-blue-200/80 px-2.5 py-0.5 rounded-full">
-                        <BarChart3 className="w-3 h-3 text-blue-600" />
+                    <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 flex-wrap">
+                      <span className="inline-flex items-center gap-1.5 text-[9px] xs:text-[9.5px] sm:text-[10.5px] font-bold text-blue-900 bg-blue-50 border border-blue-200/80 px-2 sm:px-2.5 py-0.5 rounded-full">
+                        <BarChart3 className="w-3 h-3 text-blue-600 shrink-0" />
                         <span>Dual-Channel Paid Acquisition</span>
                       </span>
-                      <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                      <span className="inline-flex items-center gap-1 text-[9px] xs:text-[9.5px] sm:text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
                         <span>CAPI Verified</span>
                       </span>
                     </div>
-                    <h3 className="text-[22px] font-bold text-[#112219]">Meta and Google Ads</h3>
+                    <h3 className="text-[19px] xs:text-[20px] sm:text-[22px] font-bold text-[#112219]">Meta and Google Ads</h3>
                   </div>
 
                   {/* 3-Way Mode Switcher Tabs */}
-                  <div className="inline-flex items-center p-1 bg-[#F3F7F5] border border-[#E2EAE5] rounded-full text-xs font-semibold shadow-inner self-start sm:self-auto">
+                  <div className="w-full xl:w-auto grid grid-cols-3 sm:inline-flex items-center p-1 bg-[#F3F7F5] border border-[#E2EAE5] rounded-xl sm:rounded-full text-[10px] xs:text-[10.5px] sm:text-[11px] font-semibold shadow-inner text-center">
                     <button
                       type="button"
                       onClick={() => setActiveAdsTab('both')}
-                      className={`px-3 py-1 rounded-full transition-all cursor-pointer text-[11px] ${
+                      className={`px-1.5 xs:px-2 sm:px-3 py-1 rounded-lg sm:rounded-full transition-all cursor-pointer truncate ${
                         activeAdsTab === 'both'
                           ? 'bg-[#153C2D] text-white shadow-xs font-bold'
                           : 'text-[#55665D] hover:text-[#112219]'
                       }`}
                     >
-                      ⚡ Dual Pipeline
+                      <span className="sm:hidden">Dual Flow</span>
+                      <span className="hidden sm:inline">⚡ Dual Pipeline</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => setActiveAdsTab('meta')}
-                      className={`px-3 py-1 rounded-full transition-all cursor-pointer text-[11px] ${
+                      className={`px-1.5 xs:px-2 sm:px-3 py-1 rounded-lg sm:rounded-full transition-all cursor-pointer truncate ${
                         activeAdsTab === 'meta'
                           ? 'bg-blue-600 text-white shadow-xs font-bold'
                           : 'text-[#55665D] hover:text-[#112219]'
                       }`}
                     >
-                      Meta (FB &amp; IG)
+                      <span className="sm:hidden">Meta Ads</span>
+                      <span className="hidden sm:inline">Meta (FB &amp; IG)</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => setActiveAdsTab('google')}
-                      className={`px-3 py-1 rounded-full transition-all cursor-pointer text-[11px] ${
+                      className={`px-1.5 xs:px-2 sm:px-3 py-1 rounded-lg sm:rounded-full transition-all cursor-pointer truncate ${
                         activeAdsTab === 'google'
                           ? 'bg-[#112219] text-white shadow-xs font-bold'
                           : 'text-[#55665D] hover:text-[#112219]'
                       }`}
                     >
-                      Google Search &amp; PMax
+                      <span className="sm:hidden">Google Ads</span>
+                      <span className="hidden sm:inline">Google Search &amp; PMax</span>
                     </button>
                   </div>
                 </div>
 
-                <p className="text-sm text-[#52635A] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
                   {activeAdsTab === 'both' &&
                     'Google Search captures bottom-of-funnel buyers actively searching to hire; Meta scales net-new demand with high-converting video hooks, 2-tap instant forms, and server-side CAPI tracking.'}
                   {activeAdsTab === 'meta' &&
@@ -830,42 +836,42 @@ export default function Services() {
                   MODE 1: DUAL PIPELINE VISUAL STREAM (Default)
                   --------------------------------------------------------------- */}
               {activeAdsTab === 'both' && (
-                <div className="w-full mt-6 bg-[#F9FAF9] rounded-2xl p-3 sm:p-4 border border-[#E8EFEA] overflow-x-auto no-scrollbar">
-                  <div className="w-full flex items-center justify-between gap-1 sm:gap-2.5 min-w-[360px] sm:min-w-0">
+                <div className="w-full mt-4 sm:mt-6 bg-[#F9FAF9] rounded-2xl p-2 xs:p-2.5 sm:p-4 border border-[#E8EFEA] overflow-x-auto no-scrollbar">
+                  <div className="w-full flex items-center justify-between gap-1 sm:gap-2">
                     {/* Left: Official Ad Platforms Ingestion */}
-                    <div className="flex flex-col gap-1.5 shrink-0">
+                    <div className="flex flex-col gap-1 sm:gap-1.5 shrink-0 w-[58px] xs:w-[66px] sm:w-auto">
                       {/* Meta Platform Badge */}
                       <div
-                        className="inline-flex items-center gap-1.5 bg-white border border-[#DCE6E0] hover:border-[#0081FB] rounded-full px-2.5 py-1 shadow-2xs hover:shadow-xs transition-all group/meta cursor-default"
+                        className="inline-flex items-center gap-1 sm:gap-1.5 bg-white border border-[#DCE6E0] hover:border-[#0081FB] rounded-full px-1.5 xs:px-2 sm:px-2.5 py-0.5 sm:py-1 shadow-2xs hover:shadow-xs transition-all group/meta cursor-default"
                         title="Meta Ads (Facebook & Instagram)"
                       >
-                        <MetaIcon className="w-3.5 h-3.5 shrink-0 group-hover/meta:scale-110 transition-transform" />
-                        <span className="text-[11px] font-bold text-[#112219] tracking-tight">Meta</span>
+                        <MetaIcon className="w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-3.5 sm:h-3.5 shrink-0 group-hover/meta:scale-110 transition-transform" />
+                        <span className="text-[9px] xs:text-[10px] sm:text-[11px] font-bold text-[#112219] tracking-tight">Meta</span>
                       </div>
 
                       {/* Google Ads Platform Badge */}
                       <div
-                        className="inline-flex items-center gap-1.5 bg-white border border-[#DCE6E0] hover:border-[#4285F4] rounded-full px-2.5 py-1 shadow-2xs hover:shadow-xs transition-all group/google cursor-default"
+                        className="inline-flex items-center gap-1 sm:gap-1.5 bg-white border border-[#DCE6E0] hover:border-[#4285F4] rounded-full px-1.5 xs:px-2 sm:px-2.5 py-0.5 sm:py-1 shadow-2xs hover:shadow-xs transition-all group/google cursor-default"
                         title="Google Ads (Search & Performance Max)"
                       >
-                        <GoogleAdsLogo className="w-3.5 h-3.5 shrink-0 group-hover/google:scale-110 transition-transform" />
-                        <span className="text-[11px] font-bold text-[#112219] tracking-tight">Google</span>
+                        <GoogleAdsLogo className="w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-3.5 sm:h-3.5 shrink-0 group-hover/google:scale-110 transition-transform" />
+                        <span className="text-[9px] xs:text-[10px] sm:text-[11px] font-bold text-[#112219] tracking-tight">Google</span>
                       </div>
 
                       {/* Live Campaign Status */}
-                      <div className="flex items-center gap-1.5 pl-1 pt-0.5">
+                      <div className="flex items-center gap-1 pl-0.5 sm:pl-1 pt-0.5">
                         <span className="relative flex h-1.5 w-1.5">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#10B981]"></span>
                         </span>
-                        <span className="text-[9.5px] font-semibold text-[#5A6E63] tracking-tight whitespace-nowrap">
-                          Active Campaigns
+                        <span className="text-[8px] xs:text-[8.5px] sm:text-[9.5px] font-semibold text-[#5A6E63] tracking-tight whitespace-nowrap">
+                          Active Ads
                         </span>
                       </div>
                     </div>
 
                     {/* Connector 1: Ad Ingestion converging to High-Intent Leads Hub */}
-                    <div className="flex-1 min-w-[20px] max-w-[38px] h-18 flex items-center justify-center shrink-0">
+                    <div className="flex-1 min-w-[8px] xs:min-w-[12px] sm:min-w-[16px] max-w-[42px] h-12 xs:h-14 sm:h-18 flex items-center justify-center shrink-0">
                       <svg className="w-full h-full overflow-visible" viewBox="0 0 36 60" fill="none" preserveAspectRatio="none">
                         <defs>
                           <linearGradient id="adStreamGradMeta" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -902,8 +908,8 @@ export default function Services() {
 
                     {/* Center: High-Intent Leads Hub */}
                     <div className="shrink-0 relative group/hub">
-                      <div className="inline-flex items-center gap-1.5 bg-[#122B22] text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full text-[10.5px] sm:text-[11.5px] font-bold shadow-[0_4px_14px_rgba(18,43,34,0.22)] border border-emerald-500/35">
-                        <span className="relative flex h-1.5 w-1.5">
+                      <div className="inline-flex items-center gap-1 sm:gap-1.5 bg-[#122B22] text-white px-1.5 xs:px-2 sm:px-3 py-1 sm:py-2 rounded-full text-[8.5px] xs:text-[9.5px] sm:text-[11.5px] font-bold shadow-[0_4px_14px_rgba(18,43,34,0.22)] border border-emerald-500/35">
+                        <span className="relative flex h-1.5 w-1.5 shrink-0">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#34D399]"></span>
                         </span>
@@ -912,7 +918,7 @@ export default function Services() {
                     </div>
 
                     {/* Connector 2: Branching from Hub to Specific Outcomes */}
-                    <div className="flex-1 min-w-[20px] max-w-[38px] h-22 flex items-center justify-center shrink-0">
+                    <div className="flex-1 min-w-[8px] xs:min-w-[12px] sm:min-w-[16px] max-w-[42px] h-14 xs:h-16 sm:h-22 flex items-center justify-center shrink-0">
                       <svg className="w-full h-full overflow-visible" viewBox="0 0 36 80" fill="none" preserveAspectRatio="none">
                         <defs>
                           <linearGradient id="hubOutflowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -963,55 +969,55 @@ export default function Services() {
                     </div>
 
                     {/* Right: The 3 Specific Outcomes */}
-                    <div className="flex flex-col gap-1.5 shrink-0 w-[124px] sm:w-[136px]">
+                    <div className="flex flex-col gap-1 sm:gap-1.5 shrink-0 w-[84px] xs:w-[94px] sm:w-[136px]">
                       {/* Outcome 1: Calls Booked */}
-                      <div className="bg-white border border-[#E2EAE5] hover:border-emerald-400 rounded-lg sm:rounded-xl px-2 py-1 sm:px-2.5 sm:py-1.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs transition-all hover:translate-x-0.5 group/f1">
-                        <div className="w-6 h-6 sm:w-6.5 sm:h-6.5 rounded-md sm:rounded-lg bg-[#E8F8F0] border border-[#C6EBD7] flex items-center justify-center shrink-0">
-                          <Calendar className="w-3 h-3 text-emerald-700 group-hover/f1:scale-110 transition-transform" />
+                      <div className="bg-white border border-[#E2EAE5] hover:border-emerald-400 rounded-lg sm:rounded-xl px-1.5 py-0.5 xs:py-1 sm:px-2.5 sm:py-1.5 flex items-center gap-1 sm:gap-2 shadow-2xs transition-all hover:translate-x-0.5 group/f1">
+                        <div className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6.5 sm:h-6.5 rounded-md sm:rounded-lg bg-[#E8F8F0] border border-[#C6EBD7] flex items-center justify-center shrink-0">
+                          <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-emerald-700 group-hover/f1:scale-110 transition-transform" />
                         </div>
                         <div className="text-left min-w-0 flex-1">
-                          <span className="font-bold text-[10px] sm:text-[11px] text-[#112219] block leading-tight truncate">Calls Booked</span>
-                          <span className="text-[8.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">Calendly</span>
+                          <span className="font-bold text-[8px] xs:text-[9px] sm:text-[11px] text-[#112219] block leading-tight truncate">Calls Booked</span>
+                          <span className="text-[7px] xs:text-[7.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">Calendly</span>
                         </div>
                       </div>
 
                       {/* Outcome 2: 5.6× ROAS */}
-                      <div className="bg-white border border-[#E2EAE5] hover:border-blue-400 rounded-lg sm:rounded-xl px-2 py-1 sm:px-2.5 sm:py-1.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs transition-all hover:translate-x-0.5 group/f2">
-                        <div className="w-6 h-6 sm:w-6.5 sm:h-6.5 rounded-md sm:rounded-lg bg-[#EFF6FF] border border-[#BFDBFE] flex items-center justify-center shrink-0">
-                          <TrendingUp className="w-3 h-3 text-blue-600 group-hover/f2:scale-110 transition-transform" />
+                      <div className="bg-white border border-[#E2EAE5] hover:border-blue-400 rounded-lg sm:rounded-xl px-1.5 py-0.5 xs:py-1 sm:px-2.5 sm:py-1.5 flex items-center gap-1 sm:gap-2 shadow-2xs transition-all hover:translate-x-0.5 group/f2">
+                        <div className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6.5 sm:h-6.5 rounded-md sm:rounded-lg bg-[#EFF6FF] border border-[#BFDBFE] flex items-center justify-center shrink-0">
+                          <TrendingUp className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-blue-600 group-hover/f2:scale-110 transition-transform" />
                         </div>
                         <div className="text-left min-w-0 flex-1">
-                          <span className="font-bold text-[10px] sm:text-[11px] text-[#112219] block leading-tight truncate">5.6× ROAS</span>
-                          <span className="text-[8.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">Positive ROI</span>
+                          <span className="font-bold text-[8px] xs:text-[9px] sm:text-[11px] text-[#112219] block leading-tight truncate">5.6× ROAS</span>
+                          <span className="text-[7px] xs:text-[7.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">Positive ROI</span>
                         </div>
                       </div>
 
                       {/* Outcome 3: CRM Verified */}
-                      <div className="bg-white border border-[#E2EAE5] hover:border-purple-400 rounded-lg sm:rounded-xl px-2 py-1 sm:px-2.5 sm:py-1.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs transition-all hover:translate-x-0.5 group/f3">
-                        <div className="w-6 h-6 sm:w-6.5 sm:h-6.5 rounded-md sm:rounded-lg bg-[#FAF5FF] border border-[#E9D5FF] flex items-center justify-center shrink-0">
-                          <CheckCircle2 className="w-3 h-3 text-purple-600 group-hover/f3:scale-110 transition-transform" />
+                      <div className="bg-white border border-[#E2EAE5] hover:border-purple-400 rounded-lg sm:rounded-xl px-1.5 py-0.5 xs:py-1 sm:px-2.5 sm:py-1.5 flex items-center gap-1 sm:gap-2 shadow-2xs transition-all hover:translate-x-0.5 group/f3">
+                        <div className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6.5 sm:h-6.5 rounded-md sm:rounded-lg bg-[#FAF5FF] border border-[#E9D5FF] flex items-center justify-center shrink-0">
+                          <CheckCircle2 className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-purple-600 group-hover/f3:scale-110 transition-transform" />
                         </div>
                         <div className="text-left min-w-0 flex-1">
-                          <span className="font-bold text-[10px] sm:text-[11px] text-[#112219] block leading-tight truncate">CRM Verified</span>
-                          <span className="text-[8.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">HubSpot</span>
+                          <span className="font-bold text-[8px] xs:text-[9px] sm:text-[11px] text-[#112219] block leading-tight truncate">CRM Verified</span>
+                          <span className="text-[7px] xs:text-[7.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">HubSpot</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Dual Features Proof Strip */}
-                  <div className="mt-3 pt-3 border-t border-[#EEF4F0] flex flex-wrap items-center justify-between gap-2 text-[10px] text-[#52635A]">
-                    <span className="inline-flex items-center gap-1 font-semibold text-emerald-800">
+                  <div className="mt-3 pt-2.5 sm:pt-3 border-t border-[#EEF4F0] flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 text-[8.5px] xs:text-[9px] sm:text-[10px] text-[#52635A]">
+                    <span className="inline-flex items-center gap-1 font-semibold text-emerald-800 shrink-0">
                       <Zap className="w-3 h-3 text-emerald-600" />
-                      Server-Side CAPI (iOS 14.5+ Bypassed)
+                      <span>Server-Side CAPI (iOS Bypassed)</span>
                     </span>
-                    <span className="inline-flex items-center gap-1 font-semibold text-blue-800">
+                    <span className="inline-flex items-center gap-1 font-semibold text-blue-800 shrink-0">
                       <Check className="w-3 h-3 text-blue-600" />
-                      8.4% Native Form CVR
+                      <span>8.4% Native Form CVR</span>
                     </span>
-                    <span className="inline-flex items-center gap-1 font-semibold text-[#112219]">
+                    <span className="inline-flex items-center gap-1 font-semibold text-[#112219] shrink-0">
                       <Sparkles className="w-3 h-3 text-amber-500" />
-                      10/10 Google Quality Score
+                      <span>10/10 Quality Score</span>
                     </span>
                   </div>
                 </div>
@@ -1039,36 +1045,36 @@ export default function Services() {
                   </div>
 
                   {/* Creative Banner */}
-                  <div className="bg-gradient-to-r from-[#0D231A] to-[#164332] rounded-xl p-3.5 text-white flex items-center justify-between gap-3 shadow-2xs">
+                  <div className="bg-gradient-to-r from-[#0D231A] to-[#164332] rounded-xl p-3 sm:p-3.5 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-3 shadow-2xs">
                     <div>
-                      <span className="bg-emerald-400 text-[#0A1C15] text-[9px] font-black uppercase px-2 py-0.5 rounded-full tracking-wider inline-block mb-1">
+                      <span className="bg-emerald-400 text-[#0A1C15] text-[8.5px] sm:text-[9px] font-black uppercase px-2 py-0.5 rounded-full tracking-wider inline-block mb-1">
                         14-Day Calendar Guarantee
                       </span>
-                      <h4 className="text-sm font-bold leading-tight">Fill Your Pipeline with 30+ B2B Calls</h4>
-                      <p className="text-[10.5px] text-emerald-200 mt-0.5">Native Instant Forms + 0% page load drop-off.</p>
+                      <h4 className="text-xs sm:text-sm font-bold leading-tight">Fill Your Pipeline with 30+ B2B Calls</h4>
+                      <p className="text-[10px] sm:text-[10.5px] text-emerald-200 mt-0.5">Native Instant Forms + 0% page load drop-off.</p>
                     </div>
-                    <div className="p-2 bg-white/10 rounded-lg text-center shrink-0 border border-white/10">
-                      <span className="text-[9px] text-white/70 block uppercase font-mono">ROAS</span>
-                      <span className="text-sm font-extrabold text-emerald-300 font-mono">5.6x</span>
+                    <div className="p-1.5 sm:p-2 bg-white/10 rounded-lg text-center shrink-0 border border-white/10 self-end sm:self-auto min-w-[56px]">
+                      <span className="text-[8.5px] sm:text-[9px] text-white/70 block uppercase font-mono">ROAS</span>
+                      <span className="text-xs sm:text-sm font-extrabold text-emerald-300 font-mono">5.6x</span>
                     </div>
                   </div>
 
                   {/* 3 Meta Performance Specs */}
-                  <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                    <div className="p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
-                      <span className="text-[9.5px] text-gray-500 uppercase font-bold block">Avg CTR</span>
-                      <span className="text-xs font-black text-blue-700 font-mono">3.8%</span>
-                      <span className="text-[8.5px] text-gray-400 block">Top 1% Rank</span>
+                  <div className="grid grid-cols-3 gap-1.5 sm:gap-2 text-center text-xs">
+                    <div className="p-1.5 sm:p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
+                      <span className="text-[8.5px] sm:text-[9.5px] text-gray-500 uppercase font-bold block truncate">Avg CTR</span>
+                      <span className="text-[11px] sm:text-xs font-black text-blue-700 font-mono">3.8%</span>
+                      <span className="text-[8px] sm:text-[8.5px] text-gray-400 block truncate">Top 1% Rank</span>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
-                      <span className="text-[9.5px] text-gray-500 uppercase font-bold block">Form CVR</span>
-                      <span className="text-xs font-black text-emerald-700 font-mono">8.4%</span>
-                      <span className="text-[8.5px] text-gray-400 block">Pre-Filled Info</span>
+                    <div className="p-1.5 sm:p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
+                      <span className="text-[8.5px] sm:text-[9.5px] text-gray-500 uppercase font-bold block truncate">Form CVR</span>
+                      <span className="text-[11px] sm:text-xs font-black text-emerald-700 font-mono">8.4%</span>
+                      <span className="text-[8px] sm:text-[8.5px] text-gray-400 block truncate">Pre-Filled</span>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
-                      <span className="text-[9.5px] text-gray-500 uppercase font-bold block">CAPI Match</span>
-                      <span className="text-xs font-black text-emerald-800 font-mono">9.8/10</span>
-                      <span className="text-[8.5px] text-gray-400 block">iOS 14.5+ Bypass</span>
+                    <div className="p-1.5 sm:p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
+                      <span className="text-[8.5px] sm:text-[9.5px] text-gray-500 uppercase font-bold block truncate">CAPI Match</span>
+                      <span className="text-[11px] sm:text-xs font-black text-emerald-800 font-mono">9.8/10</span>
+                      <span className="text-[8px] sm:text-[8.5px] text-gray-400 block truncate">iOS Bypass</span>
                     </div>
                   </div>
                 </div>
@@ -1078,59 +1084,59 @@ export default function Services() {
                   MODE 3: GOOGLE ADS DEEP-DIVE SIMULATOR
                   --------------------------------------------------------------- */}
               {activeAdsTab === 'google' && (
-                <div className="w-full mt-5 bg-[#FAFDFB] rounded-2xl p-4 border border-emerald-200/80 shadow-xs space-y-3">
+                <div className="w-full mt-5 bg-[#FAFDFB] rounded-2xl p-3 sm:p-4 border border-emerald-200/80 shadow-xs space-y-2.5 sm:space-y-3">
                   {/* Google Search Bar Mockup */}
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-[#E2ECE6] rounded-xl text-xs">
+                  <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 bg-white border border-[#E2ECE6] rounded-xl text-xs">
                     <Search className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                    <span className="font-medium text-[#112219] truncate text-[11.5px]">
+                    <span className="font-medium text-[#112219] truncate text-[10.5px] sm:text-[11.5px]">
                       hire b2b cold outreach agency for saas
                     </span>
-                    <span className="ml-auto text-[9.5px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 shrink-0">
+                    <span className="ml-auto text-[8.5px] sm:text-[9.5px] font-mono text-emerald-700 bg-emerald-50 px-1.5 sm:px-2 py-0.5 rounded border border-emerald-200 shrink-0">
                       Exact Match
                     </span>
                   </div>
 
                   {/* Google Sponsored Card */}
-                  <div className="bg-white rounded-xl p-3 border border-[#E2ECE6] space-y-1">
-                    <div className="flex items-center gap-1.5 text-[10.5px]">
+                  <div className="bg-white rounded-xl p-2.5 sm:p-3 border border-[#E2ECE6] space-y-1">
+                    <div className="flex items-center gap-1.5 text-[10px] sm:text-[10.5px]">
                       <span className="font-bold text-[#202124]">Sponsored</span>
                       <span className="text-gray-300">•</span>
-                      <span className="text-gray-500 font-mono">zexta.co › b2b-outbound</span>
+                      <span className="text-gray-500 font-mono text-[9.5px] sm:text-[10.5px] truncate">zexta.co › b2b-outbound</span>
                     </div>
-                    <h4 className="text-xs sm:text-[13px] font-bold text-[#1a0dab] hover:underline cursor-pointer leading-snug">
+                    <h4 className="text-[11.5px] sm:text-[13px] font-bold text-[#1a0dab] hover:underline cursor-pointer leading-snug">
                       Zexta™ B2B Lead Gen &amp; Paid Ads | Pack Your Pipeline (30+ Calls/Mo)
                     </h4>
-                    <p className="text-[11px] text-[#4d5156] leading-relaxed">
+                    <p className="text-[10px] sm:text-[11px] text-[#4d5156] leading-relaxed">
                       Stop burning cash on generic clicks. Commercial exact-match Google Search &amp; PMax with negative keyword guardrails.
                     </p>
 
                     {/* Sitelinks Mini Grid */}
-                    <div className="grid grid-cols-2 gap-1.5 pt-1">
-                      <span className="text-[10px] text-[#1a0dab] font-semibold bg-[#F6FAF8] p-1.5 rounded border border-[#E2ECE6] truncate">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1">
+                      <span className="text-[9.5px] sm:text-[10px] text-[#1a0dab] font-semibold bg-[#F6FAF8] p-1.5 rounded border border-[#E2ECE6] truncate">
                         📊 5.6x Average ROAS
                       </span>
-                      <span className="text-[10px] text-[#1a0dab] font-semibold bg-[#F6FAF8] p-1.5 rounded border border-[#E2ECE6] truncate">
+                      <span className="text-[9.5px] sm:text-[10px] text-[#1a0dab] font-semibold bg-[#F6FAF8] p-1.5 rounded border border-[#E2ECE6] truncate">
                         ⚡ Instant Cal.com Booking
                       </span>
                     </div>
                   </div>
 
                   {/* 3 Google Performance Specs */}
-                  <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                    <div className="p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
-                      <span className="text-[9.5px] text-gray-500 uppercase font-bold block">Quality Score</span>
-                      <span className="text-xs font-black text-emerald-800 font-mono">10 / 10</span>
-                      <span className="text-[8.5px] text-gray-400 block">Above Average</span>
+                  <div className="grid grid-cols-3 gap-1.5 sm:gap-2 text-center text-xs">
+                    <div className="p-1.5 sm:p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
+                      <span className="text-[8.5px] sm:text-[9.5px] text-gray-500 uppercase font-bold block truncate">Quality Score</span>
+                      <span className="text-[11px] sm:text-xs font-black text-emerald-800 font-mono">10 / 10</span>
+                      <span className="text-[8px] sm:text-[8.5px] text-gray-400 block truncate">Above Avg</span>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
-                      <span className="text-[9.5px] text-gray-500 uppercase font-bold block">Top of Page</span>
-                      <span className="text-xs font-black text-emerald-700 font-mono">94.6%</span>
-                      <span className="text-[8.5px] text-gray-400 block">Impression Share</span>
+                    <div className="p-1.5 sm:p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
+                      <span className="text-[8.5px] sm:text-[9.5px] text-gray-500 uppercase font-bold block truncate">Top of Page</span>
+                      <span className="text-[11px] sm:text-xs font-black text-emerald-700 font-mono">94.6%</span>
+                      <span className="text-[8px] sm:text-[8.5px] text-gray-400 block truncate">Impression</span>
                     </div>
-                    <div className="p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
-                      <span className="text-[9.5px] text-gray-500 uppercase font-bold block">Negative Shield</span>
-                      <span className="text-xs font-black text-purple-700 font-mono">1,200+</span>
-                      <span className="text-[8.5px] text-gray-400 block">Wasted Queries Cut</span>
+                    <div className="p-1.5 sm:p-2 bg-white rounded-lg border border-[#E2ECE6] shadow-2xs">
+                      <span className="text-[8.5px] sm:text-[9.5px] text-gray-500 uppercase font-bold block truncate">Negative Shield</span>
+                      <span className="text-[11px] sm:text-xs font-black text-purple-700 font-mono">1,200+</span>
+                      <span className="text-[8px] sm:text-[8.5px] text-gray-400 block truncate">Waste Cut</span>
                     </div>
                   </div>
                 </div>
@@ -1140,61 +1146,61 @@ export default function Services() {
         </div>
 
         {/* 3. Automation & Influencer Outreach Row with Interactive Micro-Workflows */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white border border-[#E1EAE4] hover:border-emerald-500/50 rounded-[24px] p-6 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
-            <div className="flex items-start gap-4">
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-800 shrink-0 group-hover:scale-110 group-hover:bg-emerald-100 transition-all">
-                <Bot className="w-5 h-5 text-emerald-700 animate-pulse" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <div className="bg-white border border-[#E1EAE4] hover:border-emerald-500/50 rounded-[20px] sm:rounded-[24px] p-4 xs:p-5 sm:p-6 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+            <div className="flex items-start gap-2.5 xs:gap-3 sm:gap-4">
+              <div className="w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-800 shrink-0 group-hover:scale-110 group-hover:bg-emerald-100 transition-all">
+                <Bot className="w-4 h-4 xs:w-5 xs:h-5 text-emerald-700 animate-pulse" />
               </div>
               <div>
-                <h4 className="text-base font-bold text-[#112219] mb-1">Marketing Automation</h4>
-                <p className="text-sm text-[#52635A] leading-relaxed">
+                <h4 className="text-[14.5px] xs:text-[15px] sm:text-base font-bold text-[#112219] mb-1">Marketing Automation</h4>
+                <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
                   Multi-channel follow-ups, CRM syncing, and automated lead routing so no prospect ever slips through the cracks.
                 </p>
               </div>
             </div>
 
             {/* Interactive Live Automation Flow Ribbon */}
-            <div className="mt-4 pt-3.5 border-t border-[#F0F5F2] flex items-center justify-between text-[10.5px] font-semibold text-[#153C2D] gap-1 select-none">
-              <span className="flex items-center gap-1.5 bg-[#F4F9F6] border border-[#D5E5DC] px-2 py-1 rounded-full shrink-0">
+            <div className="mt-3.5 sm:mt-4 pt-3 border-t border-[#F0F5F2] flex items-center justify-between text-[8.5px] xs:text-[9.5px] sm:text-[10.5px] font-semibold text-[#153C2D] gap-1 select-none overflow-x-auto no-scrollbar">
+              <span className="flex items-center gap-1 sm:gap-1.5 bg-[#F4F9F6] border border-[#D5E5DC] px-1.5 xs:px-2 py-0.5 xs:py-1 rounded-full shrink-0">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
                 <span>Form Webhook</span>
               </span>
-              <span className="text-emerald-500 font-bold animate-pulse">──►</span>
-              <span className="bg-[#F4F9F6] border border-[#D5E5DC] px-2 py-1 rounded-full shrink-0">
+              <span className="text-emerald-500 font-bold animate-pulse shrink-0">→</span>
+              <span className="bg-[#F4F9F6] border border-[#D5E5DC] px-1.5 xs:px-2 py-0.5 xs:py-1 rounded-full shrink-0">
                 CRM Routing
               </span>
-              <span className="text-emerald-500 font-bold animate-pulse">──►</span>
-              <span className="bg-emerald-50 border border-emerald-200 text-emerald-800 px-2 py-1 rounded-full font-bold shrink-0">
+              <span className="text-emerald-500 font-bold animate-pulse shrink-0">→</span>
+              <span className="bg-emerald-50 border border-emerald-200 text-emerald-800 px-1.5 xs:px-2 py-0.5 xs:py-1 rounded-full font-bold shrink-0">
                 Fast Follow-up
               </span>
             </div>
           </div>
 
-          <div className="bg-white border border-[#E1EAE4] hover:border-emerald-500/50 rounded-[24px] p-6 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
-            <div className="flex items-start gap-4">
-              <div className="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-800 shrink-0 group-hover:scale-110 group-hover:bg-emerald-100 transition-all">
-                <Sparkles className="w-5 h-5 text-amber-500 animate-pulse" />
+          <div className="bg-white border border-[#E1EAE4] hover:border-emerald-500/50 rounded-[20px] sm:rounded-[24px] p-4 xs:p-5 sm:p-6 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+            <div className="flex items-start gap-2.5 xs:gap-3 sm:gap-4">
+              <div className="w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-800 shrink-0 group-hover:scale-110 group-hover:bg-emerald-100 transition-all">
+                <Sparkles className="w-4 h-4 xs:w-5 xs:h-5 text-amber-500 animate-pulse" />
               </div>
               <div>
-                <h4 className="text-base font-bold text-[#112219] mb-1">Influencer Sourcing and Outreach</h4>
-                <p className="text-sm text-[#52635A] leading-relaxed">
+                <h4 className="text-[14.5px] xs:text-[15px] sm:text-base font-bold text-[#112219] mb-1">Influencer Sourcing and Outreach</h4>
+                <p className="text-xs sm:text-sm text-[#52635A] leading-relaxed">
                   Targeted creator vetting, custom outreach templates, and negotiation for high-ROI influencer partnerships.
                 </p>
               </div>
             </div>
 
             {/* Interactive Creator Badges Ribbon */}
-            <div className="mt-4 pt-3.5 border-t border-[#F0F5F2] flex items-center justify-between text-[11px] gap-2 select-none">
-              <div className="flex items-center gap-1.5">
+            <div className="mt-3.5 sm:mt-4 pt-3 border-t border-[#F0F5F2] flex items-center justify-between text-[9px] xs:text-[10px] sm:text-[11px] gap-2 select-none overflow-x-auto no-scrollbar">
+              <div className="flex items-center gap-1.5 shrink-0">
                 <div className="flex -space-x-1.5">
-                  <span className="w-6 h-6 rounded-full bg-[#122B22] text-emerald-300 text-[9px] font-bold flex items-center justify-center border-2 border-white shadow-2xs">YT</span>
-                  <span className="w-6 h-6 rounded-full bg-gradient-to-tr from-amber-500 to-pink-600 text-white text-[9px] font-bold flex items-center justify-center border-2 border-white shadow-2xs">IG</span>
-                  <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-[9px] font-bold flex items-center justify-center border-2 border-white shadow-2xs">X</span>
+                  <span className="w-4.5 h-4.5 xs:w-5 xs:h-5 sm:w-6 sm:h-6 rounded-full bg-[#122B22] text-emerald-300 text-[7.5px] xs:text-[8px] sm:text-[9px] font-bold flex items-center justify-center border-2 border-white shadow-2xs">YT</span>
+                  <span className="w-4.5 h-4.5 xs:w-5 xs:h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-tr from-amber-500 to-pink-600 text-white text-[7.5px] xs:text-[8px] sm:text-[9px] font-bold flex items-center justify-center border-2 border-white shadow-2xs">IG</span>
+                  <span className="w-4.5 h-4.5 xs:w-5 xs:h-5 sm:w-6 sm:h-6 rounded-full bg-blue-600 text-white text-[7.5px] xs:text-[8px] sm:text-[9px] font-bold flex items-center justify-center border-2 border-white shadow-2xs">X</span>
                 </div>
-                <span className="text-[10.5px] font-semibold text-[#153C2D]">500+ Creators Vetted</span>
+                <span className="text-[9.5px] xs:text-[10px] sm:text-[10.5px] font-semibold text-[#153C2D]">500+ Creators Vetted</span>
               </div>
-              <span className="inline-flex items-center gap-1 bg-[#F2FAF5] border border-[#CDE5D8] text-emerald-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full">
+              <span className="inline-flex items-center gap-1 bg-[#F2FAF5] border border-[#CDE5D8] text-emerald-800 text-[8.5px] xs:text-[9.5px] sm:text-[10px] font-bold px-1.5 xs:px-2 sm:px-2.5 py-0.5 rounded-full shrink-0">
                 <Check className="w-3 h-3 text-[#10B981]" />
                 <span>Verified ROI</span>
               </span>

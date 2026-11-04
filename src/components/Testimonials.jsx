@@ -397,9 +397,28 @@ export default function Testimonials() {
                 </p>
 
                 {/* Quotation Feedback */}
-                <p className="text-[12px] leading-[1.6] text-[#2D3F36] italic mb-4">
+                <p className="text-[12px] leading-[1.6] text-[#2D3F36] italic mb-3">
                   "{review.quote}"
                 </p>
+
+                {/* Endorsed by Client Badges if available */}
+                {review.skills && review.skills.length > 0 && (
+                  <div className="mb-3.5 pt-2 border-t border-[#F2F7F4]">
+                    <span className="text-[9px] font-semibold text-[#6C7E75] block mb-1">
+                      Endorsed by client
+                    </span>
+                    <div className="flex flex-wrap gap-1">
+                      {review.skills.map((skill, sIdx) => (
+                        <span
+                          key={sIdx}
+                          className="text-[9.5px] font-medium text-[#1E3B2B] bg-[#EDF5F0] border border-[#D5E6DC] px-2 py-0.5 rounded-md"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Card Footer: Date */}

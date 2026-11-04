@@ -99,7 +99,45 @@ export const upworkRightReviews = [
 ];
 
 export const allUpworkReviews = [
-  // 1. Arlenny Abreu (Resend Automation)
+  // 1. Jens Oliver (Facebook Ads Manager)
+  {
+    id: 'upwork-jens-oliver',
+    author: 'Jens Oliver',
+    role: 'Facebook Ads Manager',
+    job: 'Facebook Ads Manager',
+    metric: 'Exceeded',
+    metricLabel: 'High Quality',
+    quote: 'Very good freelancer who exceeded my expectations. Highly recommended.',
+    initials: 'JO',
+    tag: 'Facebook Ads Manager',
+    skills: ['Committed to Quality', 'Solution Oriented', 'Clear Communicator'],
+    verifiedLabel: 'Upwork Verified',
+    rating: 5,
+    category: 'ads',
+    categoryLabel: 'Meta & Google Ads',
+    date: 'Mar 5, 2026 - Mar 12, 2026',
+    featured: true,
+  },
+  // 2. Damilola Yakubu (Facebook Media Buyer)
+  {
+    id: 'upwork-damilola-yakubu',
+    author: 'Damilola Yakubu',
+    role: 'Facebook Media Buyer',
+    job: 'Facebook Media Buyer',
+    metric: '5.0★',
+    metricLabel: 'Outcome Driven',
+    quote: 'Thank you for your effort !',
+    initials: 'DY',
+    tag: 'Facebook Media Buyer',
+    skills: ['Facebook Ads Manager', 'Accountable for Outcomes'],
+    verifiedLabel: 'Upwork Verified',
+    rating: 5,
+    category: 'ads',
+    categoryLabel: 'Meta & Google Ads',
+    date: 'Jul 25, 2026 - Aug 26, 2026',
+    featured: true,
+  },
+  // 3. Arlenny Abreu (Resend Automation)
   {
     id: 'upwork-arlenny-1',
     author: 'Arlenny Abreu',
