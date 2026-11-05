@@ -1,7 +1,7 @@
 import React from 'react';
-import { LinkedInIcon, CornerBadge } from './Icons';
+import { LinkedInIcon, CornerBadge, TopRatedIcon } from './Icons';
 import { teamMembers } from '../data/teamMembers';
-import { CheckCircle2, ArrowUpRight, BadgeCheck } from 'lucide-react';
+import { CheckCircle2, ArrowUpRight } from 'lucide-react';
 
 export default function Team({ onBookCall }) {
   return (
@@ -102,9 +102,9 @@ export default function Team({ onBookCall }) {
 
                 {/* Proof Strip: Top Rated & JSS */}
                 <div className="w-full py-1 px-2.5 bg-[#F9FCFA] border border-[#E5EFE9] rounded-xl flex items-center justify-between text-[10.5px] mb-3">
-                  <span className="inline-flex items-center gap-1 text-[#0A6C25] font-bold truncate max-w-[115px]">
-                    <BadgeCheck className="w-3 h-3 text-[#14A800] shrink-0" />
-                    <span className="truncate">{member.badge}</span>
+                  <span className="inline-flex items-center gap-1.5 text-[#0A6C25] font-bold truncate max-w-[125px]">
+                    <TopRatedIcon className="w-3.5 h-3.5 shrink-0" />
+                    <span className="truncate">{member.badge === 'Top Rated Plus' ? 'Top Rated' : (member.badge || 'Top Rated')}</span>
                   </span>
                   <span className="font-bold text-[#153C2D] shrink-0 ml-1">
                     {member.jss || '100% JSS'}

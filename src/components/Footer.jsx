@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import zextaFullLogo from '../assets/zexta-full-logo.png';
 import { ArrowUpRight } from 'lucide-react';
+import { TopRatedIcon } from './Icons';
 
 export default function Footer({ onBookCall }) {
   return (
@@ -93,7 +94,7 @@ export default function Footer({ onBookCall }) {
                   <span className="text-[#14A800]">★</span> 100% Upwork Job Success ↗
                 </a>
               </li>
-              <li className="flex items-center gap-1.5"><span className="text-emerald-600">⚡</span> Top Rated Plus Agency</li>
+              <li className="flex items-center gap-1.5"><TopRatedIcon className="w-3.5 h-3.5 shrink-0" /> Top Rated Agency</li>
               <li className="flex items-center gap-1.5"><span className="text-emerald-600">✔</span> Clay Certified Partner</li>
               <li className="flex items-center gap-1.5"><span className="text-emerald-600">✔</span> Apollo Certified</li>
               <li className="flex items-center gap-1.5"><span className="text-emerald-600">✔</span> Meta Business Verified</li>

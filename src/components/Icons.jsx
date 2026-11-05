@@ -256,4 +256,26 @@ export function MetaIcon({ className = "w-5 h-5" }) {
   );
 }
 
+export function TopRatedIcon({ className = "w-3.5 h-3.5" }) {
+  return (
+    <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Official Upwork Top Rated Royal Blue Hexagon with Rounded Corners */}
+      <path
+        d="M45.5 8.2C48.3 6.6 51.7 6.6 54.5 8.2L85.2 25.9C88 27.5 89.7 30.5 89.7 33.7V66.3C89.7 69.5 88 72.5 85.2 74.1L54.5 91.8C51.7 93.4 48.3 93.4 45.5 91.8L14.8 74.1C12 72.5 10.3 69.5 10.3 66.3V33.7C10.3 30.5 12 27.5 14.8 25.9L45.5 8.2Z"
+        fill="#1C58C6"
+      />
+      {/* Inner White Outlined Star with Rounded Joints */}
+      <path
+        d="M50 26.5L56.3 41.2L72.2 42.5L60.1 53L63.8 68.7L50 60.3L36.2 68.7L39.9 53L27.8 42.5L43.7 41.2Z"
+        fill="#1C58C6"
+        stroke="#FFFFFF"
+        strokeWidth="6"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+
 
