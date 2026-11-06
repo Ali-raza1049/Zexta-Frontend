@@ -24,7 +24,7 @@ export const teamMembers = [
     ],
     linkedinUrl: 'https://www.linkedin.com',
     upworkUrl: 'https://www.upwork.com/freelancers/raishahidnazir257',
-    calendlyUrl: 'https://calendly.com/shahidnazir/30min',
+    calendlyUrl: 'https://cal.com/zexta',
   },
   {
     id: 'zain-asghar',
@@ -47,7 +47,7 @@ export const teamMembers = [
     ],
     linkedinUrl: 'https://www.linkedin.com/in/muhammad-zain-asghar-51483541a/',
     upworkUrl: null,
-    calendlyUrl: 'https://calendly.com/shahidnazir/30min',
+    calendlyUrl: 'https://cal.com/zexta',
   },
   {
     id: 'muhammad-aslam',
@@ -69,7 +69,7 @@ export const teamMembers = [
     ],
     linkedinUrl: 'https://pk.linkedin.com/in/aslamchanddotme',
     upworkUrl: 'https://upwork.com/freelancers/~01bdb47ba4630db792',
-    calendlyUrl: 'https://calendly.com/shahidnazir/30min',
+    calendlyUrl: 'https://cal.com/zexta',
   },
   {
     id: 'ali-raza',
@@ -91,6 +91,6 @@ export const teamMembers = [
     ],
     linkedinUrl: 'https://www.linkedin.com',
     upworkUrl: null,
-    calendlyUrl: 'https://calendly.com/shahidnazir/30min',
+    calendlyUrl: 'https://cal.com/zexta',
   },
 ];

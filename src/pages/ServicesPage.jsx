@@ -170,7 +170,7 @@ export default function ServicesPage({ onBookCall }) {
                   <span>Hire on Upwork ↗</span>
                 </a>
                 <a
-                  href="https://calendly.com/shahidnazir/30min"
+                  href="https://cal.com/zexta"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full xs:w-auto text-center justify-center bg-[#122B22] hover:bg-[#183F30] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-md transition-all cursor-pointer inline-flex items-center gap-2"
@@ -593,7 +593,7 @@ export default function ServicesPage({ onBookCall }) {
                   <span>Hire on Upwork ↗</span>
                 </a>
                 <a
-                  href="https://calendly.com/shahidnazir/30min"
+                  href="https://cal.com/zexta"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full xs:w-auto justify-center bg-[#122B22] hover:bg-[#183F30] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-md transition-all cursor-pointer inline-flex items-center gap-2"
@@ -770,7 +770,7 @@ export default function ServicesPage({ onBookCall }) {
                   <span>Hire on Upwork ↗</span>
                 </a>
                 <a
-                  href="https://calendly.com/shahidnazir/30min"
+                  href="https://cal.com/zexta"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full xs:w-auto justify-center bg-[#122B22] hover:bg-[#183F30] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-md transition-all cursor-pointer inline-flex items-center gap-2"

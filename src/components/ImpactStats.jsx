@@ -85,7 +85,7 @@ export default function ImpactStats() {
             </div>
 
             <a
-              href="https://calendly.com/shahidnazir/30min"
+              href="https://cal.com/zexta"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 bg-[#122B22] hover:bg-[#1A4D39] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-md hover:-translate-y-0.5 transition-all cursor-pointer shrink-0"

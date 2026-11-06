@@ -351,7 +351,7 @@ export default function TestimonialsPage({ onBookCall }) {
                   <span>Hire on Upwork ↗</span>
                 </a>
                 <a
-                  href="https://calendly.com/shahidnazir/30min"
+                  href="https://cal.com/zexta"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto text-center justify-center bg-white text-[#0D231A] hover:bg-[#E8F7EE] px-6 py-3 sm:py-3.5 rounded-full font-bold text-xs sm:text-sm shadow-md transition-all cursor-pointer inline-flex items-center gap-1.5"

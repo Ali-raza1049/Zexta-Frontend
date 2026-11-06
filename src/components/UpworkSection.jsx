@@ -135,7 +135,7 @@ export default function UpworkSection({ onBookCall }) {
           ))}
         </div>
 
-        {/* Dedicated Direct Calendly Booking Banner */}
+        {/* Dedicated Direct Cal.com Booking Banner */}
         <div className="mt-14 max-w-4xl mx-auto">
           <div className="relative overflow-hidden bg-gradient-to-r from-[#0D231A] via-[#122B22] to-[#163E2D] border border-emerald-500/20 rounded-[28px] p-6 sm:p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[0_12px_36px_rgba(10,28,21,0.25)]">
             {/* Ambient Background Aura */}
@@ -150,13 +150,13 @@ export default function UpworkSection({ onBookCall }) {
                   Prefer a direct 1-on-1 strategy call first?
                 </h4>
                 <p className="text-xs sm:text-sm text-emerald-100/70 mt-1">
-                  Pick a 30-minute slot directly on Shahid Nazir's Calendly calendar.
+                  Pick a 30-minute slot directly on Cal.com.
                 </p>
               </div>
             </div>
 
             <a
-              href="https://calendly.com/shahidnazir/30min"
+              href="https://cal.com/zexta"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-400 to-teal-300 hover:from-teal-300 hover:to-emerald-400 text-[#0A1C15] px-6 sm:px-7 py-3.5 rounded-full font-bold text-sm shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:shadow-[0_6px_22px_rgba(16,185,129,0.45)] transition-all hover:scale-[1.03] shrink-0 cursor-pointer relative z-10"

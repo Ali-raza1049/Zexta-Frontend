@@ -977,7 +977,7 @@ export default function Services() {
                         </div>
                         <div className="text-left min-w-0 flex-1">
                           <span className="font-bold text-[8px] xs:text-[9px] sm:text-[11px] text-[#112219] block leading-tight truncate">Calls Booked</span>
-                          <span className="text-[7px] xs:text-[7.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">Calendly</span>
+                          <span className="text-[7px] xs:text-[7.5px] sm:text-[9px] text-[#697E72] font-medium leading-none block truncate mt-0.5">Cal.com</span>
                         </div>
                       </div>
 

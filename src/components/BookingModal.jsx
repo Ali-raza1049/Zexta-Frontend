@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, CheckCircle2, Calendar, Clock, ArrowRight, Sparkles, ArrowUpRight } from 'lucide-react';
 import { ZextaLogo } from './Icons';
 
@@ -8,9 +8,23 @@ export default function BookingModal({ isOpen, onClose }) {
     email: '',
     company: '',
     targetRevenue: '$50k - $100k / mo',
-    channels: ['Cold Email'],
+    channels: [],
   });
   const [booked, setBooked] = useState(false);
+
+  // Reset form whenever modal opens so no channel is pre-selected
+  useEffect(() => {
+    if (isOpen) {
+      setBooked(false);
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        targetRevenue: '$50k - $100k / mo',
+        channels: [],
+      });
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -34,7 +48,8 @@ export default function BookingModal({ isOpen, onClose }) {
     const params = new URLSearchParams();
     if (formData.name) params.set('name', formData.name);
     if (formData.email) params.set('email', formData.email);
-    window.open(`https://calendly.com/shahidnazir/30min?${params.toString()}`, '_blank');
+    const queryString = params.toString() ? `?${params.toString()}` : '';
+    window.open(`https://cal.com/zexta${queryString}`, '_blank');
   };
 
   const handleReset = () => {
@@ -72,10 +87,10 @@ export default function BookingModal({ isOpen, onClose }) {
               </p>
             </div>
 
-            {/* Direct Calendly Instant Scheduler Banner */}
+            {/* Direct Cal.com Instant Scheduler Banner */}
             <div className="mb-6">
               <a
-                href="https://calendly.com/shahidnazir/30min"
+                href="https://cal.com/zexta"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50/40 border border-emerald-300 hover:border-emerald-500 text-[#0F2B1D] font-bold text-xs sm:text-sm transition-all group shadow-xs hover:shadow-md"
@@ -86,11 +101,11 @@ export default function BookingModal({ isOpen, onClose }) {
                   </div>
                   <div className="text-left">
                     <span className="block font-extrabold text-[#112219]">Instant 1-Click Scheduling</span>
-                    <span className="text-[11px] text-[#55665D] font-normal">Pick a 30-min slot directly on Shahid Nazir's Calendly</span>
+                    <span className="text-[11px] text-[#55665D] font-normal">Pick a 30-min slot directly on Cal.com</span>
                   </div>
                 </div>
                 <span className="inline-flex items-center gap-1 bg-[#153C2D] text-white text-xs font-bold px-3 py-1.5 rounded-full group-hover:bg-[#1A4D39] transition-colors shrink-0">
-                  <span>Calendly ↗</span>
+                  <span>Cal.com ↗</span>
                 </span>
               </a>
             </div>
@@ -205,7 +220,7 @@ export default function BookingModal({ isOpen, onClose }) {
                 type="submit"
                 className="w-full inline-flex items-center justify-center gap-2 bg-[#153C2D] hover:bg-[#1E523D] text-white py-3.5 px-6 rounded-full font-bold text-sm shadow-md transition-all cursor-pointer mt-4"
               >
-                <span>Continue to Calendly Slot Confirmation</span>
+                <span>Continue to Cal.com Slot Confirmation</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </form>
@@ -217,16 +232,16 @@ export default function BookingModal({ isOpen, onClose }) {
             </div>
             <h3 className="text-2xl font-bold mb-2 text-[#112219]">Strategy Call Requested!</h3>
             <p className="text-gray-600 mb-6 max-w-sm mx-auto text-sm leading-relaxed">
-              We've opened Shahid Nazir's 30-min calendar. If the window did not open automatically, click the button below:
+              We've opened the 30-min Cal.com booking window. If it did not open automatically, click the button below:
             </p>
             <div className="flex flex-col gap-3">
               <a
-                href={`https://calendly.com/shahidnazir/30min?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}`}
+                href={`https://cal.com/zexta?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#153C2D] hover:bg-[#1E523D] text-white font-bold text-sm shadow-md transition-all cursor-pointer"
               >
-                <span>Select 30-Min Slot on Calendly ↗</span>
+                <span>Select 30-Min Slot on Cal.com ↗</span>
                 <ArrowUpRight className="w-4 h-4 text-emerald-400" />
               </a>
               <button

@@ -68,7 +68,7 @@ export default function Footer({ onBookCall }) {
               <li><Link to="/#process" className="hover:text-[#112219] hover:translate-x-0.5 transition-all">Our 5-Step Process</Link></li>
               <li>
                 <a
-                  href="https://calendly.com/shahidnazir/30min"
+                  href="https://cal.com/zexta"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-sm text-emerald-700 hover:text-emerald-800 font-bold transition-colors cursor-pointer"
@@ -116,12 +116,12 @@ export default function Footer({ onBookCall }) {
             <Link to="/testimonials" className="hover:text-[#112219] transition-colors font-medium">Testimonials</Link>
             <span>•</span>
             <a
-              href="https://calendly.com/shahidnazir/30min"
+              href="https://cal.com/zexta"
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-700 hover:text-emerald-800 font-semibold transition-colors"
             >
-              Calendly 30-Min Call ↗
+              Cal.com 30-Min Call ↗
             </a>
           </div>
         </div>

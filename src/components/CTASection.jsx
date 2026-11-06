@@ -10,7 +10,7 @@ export default function CTASection({ onBookCall }) {
     e.preventDefault();
     if (email) {
       setSubmitted(true);
-      window.open(`https://calendly.com/shahidnazir/30min?email=${encodeURIComponent(email)}`, '_blank');
+      window.open(`https://cal.com/zexta?email=${encodeURIComponent(email)}`, '_blank');
       setTimeout(() => {
         if (onBookCall) onBookCall();
       }, 500);
@@ -65,16 +65,16 @@ export default function CTASection({ onBookCall }) {
               </div>
             </form>
 
-            {/* Direct Calendly Instant Booking Secondary CTA */}
+            {/* Direct Cal.com Instant Booking Secondary CTA */}
             <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-10 text-xs sm:text-sm text-center px-2">
               <span className="text-emerald-100/60">Prefer immediate scheduling?</span>
               <a
-                href="https://calendly.com/shahidnazir/30min"
+                href="https://cal.com/zexta"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 font-bold text-emerald-300 hover:text-white underline underline-offset-4 decoration-emerald-400/60 transition-colors cursor-pointer"
               >
-                <span>Book 30-Min Call Directly on Calendly</span>
+                <span>Book 30-Min Call Directly on Cal.com</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-emerald-300" />
               </a>
             </div>
