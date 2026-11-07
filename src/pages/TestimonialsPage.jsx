@@ -101,7 +101,7 @@ const detailedStories = [
 
 const reviewCards = allUpworkReviews;
 
-export default function TestimonialsPage({ onBookCall }) {
+export default function TestimonialsPage({ onBookCall, onOpenContact }) {
   const [activeFilter, setActiveFilter] = useState('all');
 
   const filteredReviews =

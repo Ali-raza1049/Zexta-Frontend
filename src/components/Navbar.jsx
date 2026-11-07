@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import zextaFullLogo from '../assets/zexta-full-logo.png';
 import { ChevronRight, Menu, X } from 'lucide-react';
 
-export default function Navbar({ onBookCall }) {
+export default function Navbar({ onBookCall, onOpenContact }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -85,7 +85,7 @@ export default function Navbar({ onBookCall }) {
 
           <button
             type="button"
-            onClick={onBookCall}
+            onClick={onOpenContact}
             className="text-white/80 hover:text-white text-sm font-semibold transition-colors duration-200 cursor-pointer"
           >
             Contact
@@ -191,6 +191,18 @@ export default function Navbar({ onBookCall }) {
           >
             Our Process
           </a>
+
+          <button
+            type="button"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onOpenContact();
+            }}
+            className="w-full text-left text-white/90 text-base font-semibold py-1.5 border-b border-white/10 flex items-center justify-between cursor-pointer"
+          >
+            <span>Contact Us</span>
+            <span className="text-[11px] text-emerald-300 font-medium">WhatsApp • Calendly • Email</span>
+          </button>
 
           <button
             type="button"

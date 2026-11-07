@@ -4,7 +4,7 @@ import zextaFullLogo from '../assets/zexta-full-logo.png';
 import { ArrowUpRight, Mail } from 'lucide-react';
 import { TopRatedIcon, WhatsAppIcon } from './Icons';
 
-export default function Footer({ onBookCall }) {
+export default function Footer({ onBookCall, onOpenContact }) {
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-[#F7FAF8] via-[#F2F7F4] to-[#EAF2ED] border-t border-[#DDE7E1] pt-16 pb-12 text-[#112219]">
       {/* Subtle Luxury Typographic Background Watermark of the "Zexta" Brand in the Middle */}
@@ -67,15 +67,24 @@ export default function Footer({ onBookCall }) {
               <li><Link to="/services" className="hover:text-[#112219] hover:translate-x-0.5 transition-all">All Services & Pricing</Link></li>
               <li><Link to="/#process" className="hover:text-[#112219] hover:translate-x-0.5 transition-all">Our 5-Step Process</Link></li>
               <li>
-                <a
-                  href="https://cal.com/zexta"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={onOpenContact}
+                  className="inline-flex items-center gap-1.5 text-sm text-[#112219] hover:text-emerald-800 font-bold transition-colors cursor-pointer"
+                >
+                  <span>Contact Us (WhatsApp • Calendly • Email)</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-emerald-700" />
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={onBookCall}
                   className="inline-flex items-center gap-1 text-sm text-emerald-700 hover:text-emerald-800 font-bold transition-colors cursor-pointer"
                 >
-                  <span>Book a Strategy Call</span>
+                  <span>Book a Strategy Call (Calendly)</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
+                </button>
               </li>
               <li>
                 <a
@@ -139,14 +148,21 @@ export default function Footer({ onBookCall }) {
             <span>•</span>
             <Link to="/testimonials" className="hover:text-[#112219] transition-colors font-medium">Testimonials</Link>
             <span>•</span>
-            <a
-              href="https://cal.com/zexta"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-emerald-700 hover:text-emerald-800 font-semibold transition-colors"
+            <button
+              type="button"
+              onClick={onOpenContact}
+              className="text-[#112219] hover:text-emerald-800 font-semibold transition-colors cursor-pointer"
             >
-              Cal.com ↗
-            </a>
+              Contact
+            </button>
+            <span>•</span>
+            <button
+              type="button"
+              onClick={onBookCall}
+              className="text-emerald-700 hover:text-emerald-800 font-semibold transition-colors cursor-pointer"
+            >
+              Book Call (Calendly) ↗
+            </button>
             <span>•</span>
             <a
               href="https://wa.me/923001767257"

@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import CTASection from '../components/CTASection';
 
-export default function ServicesPage({ onBookCall }) {
+export default function ServicesPage({ onBookCall, onOpenContact }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [activeStackTab, setActiveStackTab] = useState('mern');
   

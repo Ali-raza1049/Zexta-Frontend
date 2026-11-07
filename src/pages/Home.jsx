@@ -9,7 +9,7 @@ import Team from '../components/Team';
 import Process from '../components/Process';
 import CTASection from '../components/CTASection';
 
-export default function Home({ onBookCall }) {
+export default function Home({ onBookCall, onOpenContact }) {
   return (
     <main id="main-content">
       {/* 1. Hero Section with Aura Glow, Playing Cards & Live Reel */}
