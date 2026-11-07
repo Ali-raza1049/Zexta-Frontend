@@ -1,3 +1,4 @@
+// Core Growth Team Members - Official Studio Portraits
 import shahidNazirImg from '../assets/team/shahid_nazir.jpg';
 import zainAsgharImg from '../assets/team/zain_asghar.jpg';
 import muhammadAslamImg from '../assets/team/muhammad_aslam.jpg';

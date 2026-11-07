@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import zextaFullLogo from '../assets/zexta-full-logo.png';
-import { ArrowUpRight } from 'lucide-react';
-import { TopRatedIcon } from './Icons';
+import { ArrowUpRight, Mail } from 'lucide-react';
+import { TopRatedIcon, WhatsAppIcon } from './Icons';
 
 export default function Footer({ onBookCall }) {
   return (
@@ -77,6 +77,30 @@ export default function Footer({ onBookCall }) {
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://wa.me/923001767257?text=Hi%20Zexta%20team,%20I'd%20like%20to%20inquire%20about%20your%20services"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-[#128C7E] hover:text-[#075E54] font-semibold transition-colors cursor-pointer"
+                >
+                  <WhatsAppIcon className="w-3.5 h-3.5 fill-[#25D366]" />
+                  <span>Chat on WhatsApp</span>
+                  <ArrowUpRight className="w-3 h-3 text-[#128C7E]" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=zextastudio@gmail.com&su=Project%20Inquiry%20via%20Zexta%20Website"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-gray-700 hover:text-[#112219] font-semibold transition-colors cursor-pointer"
+                >
+                  <Mail className="w-3.5 h-3.5 text-gray-500" />
+                  <span>Send Direct Email</span>
+                  <ArrowUpRight className="w-3 h-3 text-gray-500" />
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -108,7 +132,7 @@ export default function Footer({ onBookCall }) {
             © {new Date().getFullYear()} Zexta Inc. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <Link to="/" className="hover:text-[#112219] transition-colors font-medium">Home</Link>
             <span>•</span>
             <Link to="/services" className="hover:text-[#112219] transition-colors font-medium">Services</Link>
@@ -121,7 +145,16 @@ export default function Footer({ onBookCall }) {
               rel="noopener noreferrer"
               className="text-emerald-700 hover:text-emerald-800 font-semibold transition-colors"
             >
-              Cal.com 30-Min Call ↗
+              Cal.com ↗
+            </a>
+            <span>•</span>
+            <a
+              href="https://wa.me/923001767257"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#128C7E] hover:text-[#075E54] font-semibold transition-colors"
+            >
+              WhatsApp ↗
             </a>
           </div>
         </div>

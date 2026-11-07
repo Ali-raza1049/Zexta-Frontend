@@ -1,259 +1,180 @@
-import React, { useState, useEffect } from 'react';
-import { X, CheckCircle2, Calendar, Clock, ArrowRight, Sparkles, ArrowUpRight } from 'lucide-react';
-import { ZextaLogo } from './Icons';
+import React from 'react';
+import { X, Calendar, Clock, ArrowUpRight, Sparkles, Mail } from 'lucide-react';
+import { ZextaLogo, WhatsAppIcon } from './Icons';
 
 export default function BookingModal({ isOpen, onClose }) {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    targetRevenue: '$50k - $100k / mo',
-    channels: [],
-  });
-  const [booked, setBooked] = useState(false);
-
-  // Reset form whenever modal opens so no channel is pre-selected
-  useEffect(() => {
-    if (isOpen) {
-      setBooked(false);
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        targetRevenue: '$50k - $100k / mo',
-        channels: [],
-      });
-    }
-  }, [isOpen]);
-
   if (!isOpen) return null;
-
-  const toggleChannel = (channel) => {
-    if (formData.channels.includes(channel)) {
-      setFormData({
-        ...formData,
-        channels: formData.channels.filter((c) => c !== channel),
-      });
-    } else {
-      setFormData({
-        ...formData,
-        channels: [...formData.channels, channel],
-      });
-    }
-  };
-
-  const handleBook = (e) => {
-    e.preventDefault();
-    setBooked(true);
-    const params = new URLSearchParams();
-    if (formData.name) params.set('name', formData.name);
-    if (formData.email) params.set('email', formData.email);
-    const queryString = params.toString() ? `?${params.toString()}` : '';
-    window.open(`https://cal.com/zexta${queryString}`, '_blank');
-  };
-
-  const handleReset = () => {
-    setBooked(false);
-    onClose();
-  };
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-md animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-lg bg-white rounded-[28px] border border-[#E1EAE4] p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto"
+        className="relative w-full max-w-xl bg-white rounded-[28px] border border-[#DCE6E0] p-5 sm:p-7 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)] max-h-[92vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           type="button"
-          className="absolute top-5 right-5 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 transition-colors cursor-pointer"
+          aria-label="Close dialog"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 transition-colors cursor-pointer"
           onClick={onClose}
         >
-          <X className="w-5 h-5 text-gray-500" />
+          <X className="w-5 h-5" />
         </button>
 
-        {!booked ? (
-          <div>
-            <div className="mb-5 text-left">
-              <ZextaLogo className="w-6 h-6" textClassName="text-[#112219] font-bold text-lg" />
-              <h3 className="text-2xl font-extrabold text-[#112219] tracking-tight mt-3 mb-1.5">
-                Book Your 1-on-1 Growth Strategy Call
-              </h3>
-              <p className="text-sm text-[#55665D] leading-relaxed">
-                Review your offer, identify pipeline bottlenecks, and build your custom outbound roadmap with Shahid Nazir.
-              </p>
-            </div>
+        {/* Modal Header */}
+        <div className="mb-5 text-left pr-8">
+          <ZextaLogo className="w-6 h-6" textClassName="text-[#112219] font-bold text-lg" />
+          <h3 className="text-xl sm:text-2xl font-extrabold text-[#112219] tracking-tight mt-3 mb-1.5">
+            Connect With Zexta
+          </h3>
+          <p className="text-xs sm:text-sm text-[#55665D] leading-relaxed">
+            Choose your preferred channel to connect directly with Shahid Nazir and our core team:
+          </p>
+        </div>
 
-            {/* Direct Cal.com Instant Scheduler Banner */}
-            <div className="mb-6">
-              <a
-                href="https://cal.com/zexta"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50/40 border border-emerald-300 hover:border-emerald-500 text-[#0F2B1D] font-bold text-xs sm:text-sm transition-all group shadow-xs hover:shadow-md"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#153C2D] text-emerald-300 flex items-center justify-center shrink-0">
-                    <Calendar className="w-4 h-4 text-emerald-300" />
-                  </div>
-                  <div className="text-left">
-                    <span className="block font-extrabold text-[#112219]">Instant 1-Click Scheduling</span>
-                    <span className="text-[11px] text-[#55665D] font-normal">Pick a 30-min slot directly on Cal.com</span>
-                  </div>
-                </div>
-                <span className="inline-flex items-center gap-1 bg-[#153C2D] text-white text-xs font-bold px-3 py-1.5 rounded-full group-hover:bg-[#1A4D39] transition-colors shrink-0">
-                  <span>Cal.com ↗</span>
-                </span>
-              </a>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-2 mb-6">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-900 border border-emerald-100 rounded-full text-xs font-semibold">
-                <Clock className="w-3.5 h-3.5 text-emerald-600" />
-                <span>30 Minutes</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-900 border border-emerald-100 rounded-full text-xs font-semibold">
-                <Calendar className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Google Meet / Zoom</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-900 border border-emerald-100 rounded-full text-xs font-semibold">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Free Strategy Audit</span>
-              </div>
-            </div>
-
-            <form onSubmit={handleBook} className="space-y-4 text-left">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-bold text-[#34483E] uppercase tracking-wider mb-1.5">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Alex Morgan"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-[#112219] focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-all bg-[#F9FBFA]"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-[#34483E] uppercase tracking-wider mb-1.5">
-                    Work Email
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="alex@company.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-[#112219] focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-all bg-[#F9FBFA]"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-[#34483E] uppercase tracking-wider mb-1.5">
-                  Company Website
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="https://yourcompany.com"
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-[#112219] focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-all bg-[#F9FBFA]"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-[#34483E] uppercase tracking-wider mb-1.5">
-                  Target Monthly Pipeline Goal
-                </label>
-                <select
-                  value={formData.targetRevenue}
-                  onChange={(e) => setFormData({ ...formData, targetRevenue: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-[#112219] focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-all bg-[#F9FBFA]"
-                >
-                  <option>$20k - $50k / month</option>
-                  <option>$50k - $100k / month</option>
-                  <option>$100k - $250k / month</option>
-                  <option>$250k+ / month</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-[#34483E] uppercase tracking-wider mb-1.5">
-                  Channels of Interest
-                </label>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    'Meta & Google Ads',
-                    'Lead List Building',
-                    'Marketing Automation',
-                    'Cold Email',
-                    'Influencer Outreach',
-                    'MERN & PERN Web Dev',
-                    'AI Full-Stack & Agents',
-                  ].map((c) => (
-                    <button
-                      type="button"
-                      key={c}
-                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer ${
-                        formData.channels.includes(c)
-                          ? 'bg-[#153C2D] text-white border-[#153C2D]'
-                          : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
-                      }`}
-                      onClick={() => toggleChannel(c)}
-                    >
-                      {formData.channels.includes(c) && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />}
-                      <span>{c}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 bg-[#153C2D] hover:bg-[#1E523D] text-white py-3.5 px-6 rounded-full font-bold text-sm shadow-md transition-all cursor-pointer mt-4"
-              >
-                <span>Continue to Cal.com Slot Confirmation</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
+        {/* Quick Highlights / Badges */}
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-5">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 text-emerald-900 border border-emerald-200/80 rounded-full text-[11px] font-semibold">
+            <Clock className="w-3 h-3 text-emerald-600 shrink-0" />
+            <span>30-Min Strategy Call</span>
           </div>
-        ) : (
-          <div className="text-center py-6">
-            <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 mx-auto mb-4">
-              <CheckCircle2 className="w-10 h-10" />
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 text-emerald-900 border border-emerald-200/80 rounded-full text-[11px] font-semibold">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+            <span>WhatsApp Online</span>
+          </div>
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 text-emerald-900 border border-emerald-200/80 rounded-full text-[11px] font-semibold">
+            <Sparkles className="w-3 h-3 text-emerald-600 shrink-0" />
+            <span>Direct Founder Access</span>
+          </div>
+        </div>
+
+        {/* The 3 Direct Contact Channels */}
+        <div className="flex flex-col gap-3 sm:gap-3.5">
+          {/* 1. Cal.com Direct Booking Card */}
+          <div className="p-4 sm:p-4.5 rounded-2xl bg-gradient-to-br from-emerald-50/90 via-[#F3FAF6] to-teal-50/50 border-2 border-emerald-400/80 hover:border-emerald-500 transition-all shadow-xs hover:shadow-md text-left">
+            <div className="flex items-start justify-between gap-3 mb-2">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-[#153C2D] text-emerald-300 flex items-center justify-center shrink-0 shadow-xs">
+                  <Calendar className="w-4 h-4 text-emerald-300" />
+                </div>
+                <div>
+                  <h4 className="font-extrabold text-[#112219] text-sm sm:text-base leading-tight">
+                    Schedule 1-on-1 Strategy Call
+                  </h4>
+                  <span className="text-[11px] text-[#55665D]">Cal.com • Google Meet or Zoom</span>
+                </div>
+              </div>
+              <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-emerald-200/70 text-emerald-900 text-[10px] font-extrabold tracking-wide uppercase shrink-0">
+                Recommended
+              </span>
             </div>
-            <h3 className="text-2xl font-bold mb-2 text-[#112219]">Strategy Call Requested!</h3>
-            <p className="text-gray-600 mb-6 max-w-sm mx-auto text-sm leading-relaxed">
-              We've opened the 30-min Cal.com booking window. If it did not open automatically, click the button below:
+
+            <p className="text-xs text-[#44564D] leading-relaxed mb-3">
+              Pick a 30-min slot on Shahid Nazir's live calendar. We'll audit your outbound pipeline & tech stack.
             </p>
-            <div className="flex flex-col gap-3">
+
+            <a
+              href="https://cal.com/zexta"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full inline-flex items-center justify-center gap-2 bg-[#153C2D] hover:bg-[#1E523D] active:bg-[#0F2B1D] text-white py-2.5 sm:py-3 px-5 rounded-xl font-bold text-xs sm:text-sm shadow-sm transition-all cursor-pointer"
+            >
+              <span>Pick a Slot on Cal.com</span>
+              <ArrowUpRight className="w-4 h-4 text-emerald-300" />
+            </a>
+          </div>
+
+          {/* 2. WhatsApp Direct Chat Card */}
+          <div className="p-4 sm:p-4.5 rounded-2xl bg-white hover:bg-emerald-50/30 border border-[#D6E3DC] hover:border-emerald-400 transition-all shadow-xs hover:shadow-md text-left">
+            <div className="flex items-start justify-between gap-3 mb-2">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-xs">
+                  <WhatsAppIcon className="w-5 h-5 fill-white" />
+                </div>
+                <div>
+                  <h4 className="font-extrabold text-[#112219] text-sm sm:text-base leading-tight">
+                    Chat on WhatsApp
+                  </h4>
+                  <span className="text-[11px] text-emerald-700 font-semibold flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse"></span>
+                    Direct Line • Instant Response
+                  </span>
+                </div>
+              </div>
+              <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-bold tracking-wide shrink-0">
+                Fast Reply
+              </span>
+            </div>
+
+            <p className="text-xs text-[#55665D] leading-relaxed mb-3">
+              Direct mobile messaging with our founding team. Ideal for fast project scopes and quick questions.
+            </p>
+
+            <a
+              href="https://wa.me/923001767257?text=Hi%20Zexta%20team,%20I'd%20like%20to%20inquire%20about%20your%20services"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BA5A] active:bg-[#1A9E4D] text-white py-2.5 sm:py-3 px-5 rounded-xl font-bold text-xs sm:text-sm shadow-sm transition-all cursor-pointer"
+            >
+              <WhatsAppIcon className="w-4 h-4 fill-white" />
+              <span>Start WhatsApp Chat</span>
+              <ArrowUpRight className="w-4 h-4 text-white" />
+            </a>
+          </div>
+
+          {/* 3. Direct Email Card */}
+          <div className="p-4 sm:p-4.5 rounded-2xl bg-white hover:bg-emerald-50/30 border border-[#D6E3DC] hover:border-emerald-400 transition-all shadow-xs hover:shadow-md text-left">
+            <div className="flex items-start justify-between gap-3 mb-2">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-700 border border-blue-200 flex items-center justify-center shrink-0">
+                  <Mail className="w-4 h-4 text-blue-700" />
+                </div>
+                <div>
+                  <h4 className="font-extrabold text-[#112219] text-sm sm:text-base leading-tight">
+                    Direct Studio Email
+                  </h4>
+                  <span className="text-[11px] text-[#55665D]">Official Team Inbox</span>
+                </div>
+              </div>
+              <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-100 text-gray-700 text-[10px] font-semibold tracking-wide shrink-0">
+                Inbox
+              </span>
+            </div>
+
+            <p className="text-xs text-[#55665D] leading-relaxed mb-3">
+              Send your project RFP, technical brief, or partner request directly to our main inbox.
+            </p>
+
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=zextastudio@gmail.com&su=Project%20Inquiry%20via%20Zexta%20Website"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full inline-flex items-center justify-center gap-2 bg-[#112219] hover:bg-[#1C3627] text-white py-2.5 sm:py-3 px-5 rounded-xl font-bold text-xs sm:text-sm shadow-sm transition-all cursor-pointer"
+            >
+              <Mail className="w-4 h-4 text-emerald-300" />
+              <span>Send Direct Email</span>
+              <ArrowUpRight className="w-4 h-4 text-emerald-300" />
+            </a>
+            <div className="mt-2 text-center">
               <a
-                href={`https://cal.com/zexta?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#153C2D] hover:bg-[#1E523D] text-white font-bold text-sm shadow-md transition-all cursor-pointer"
+                href="mailto:zextastudio@gmail.com?subject=Project%20Inquiry%20via%20Zexta%20Website"
+                className="text-[11px] text-[#55665D] hover:text-[#112219] underline transition-colors cursor-pointer"
               >
-                <span>Select 30-Min Slot on Cal.com ↗</span>
-                <ArrowUpRight className="w-4 h-4 text-emerald-400" />
+                Or open default mail app (Outlook / Apple Mail)
               </a>
-              <button
-                type="button"
-                className="text-xs text-gray-500 hover:text-gray-800 transition-colors cursor-pointer py-1"
-                onClick={handleReset}
-              >
-                Close Window
-              </button>
             </div>
           </div>
-        )}
+        </div>
+
+        {/* Modal Sub-footer */}
+        <div className="mt-5 pt-4 border-t border-[#E5EFE8] text-center">
+          <p className="text-[11px] text-[#71867A]">
+            Direct connection to founding partners • No forms or backends required
+          </p>
+        </div>
       </div>
     </div>
   );
