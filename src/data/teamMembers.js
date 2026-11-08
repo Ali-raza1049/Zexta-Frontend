@@ -1,31 +1,31 @@
 // Core Growth Team Members - Official Studio Portraits (Real Headshots Synced)
-import shahidNazirImg from '../assets/team/shahid_nazir.jpg';
+import arshiaLiaqatImg from '../assets/team/arshia_liaqat.jpg';
 import zainAsgharImg from '../assets/team/zain_asghar.jpg';
+import shahidNazirImg from '../assets/team/shahid_nazir.jpg';
 import muhammadAslamImg from '../assets/team/muhammad_aslam.jpg';
 import aliRazaImg from '../assets/team/ali_raza.jpg';
-import arishaTariqImg from '../assets/team/arisha_tariq.jpg';
 
 export const teamMembers = [
   {
-    id: 'shahid-nazir',
-    name: 'Shahid Nazir',
-    role: 'Founder & Outbound Lead',
-    specialty: 'Cold Email & Deliverability Specialist',
-    image: shahidNazirImg,
+    id: 'arshia-liaqat',
+    name: 'Arshia Liaqat',
+    role: 'Influencer Scraping & Outreach',
+    specialty: 'Influencer Scraping and Outreach',
+    image: arshiaLiaqatImg,
     badge: 'Top Rated',
-    jss: '100% Job Success',
+    jss: '100% Verified ROI',
     rating: 'Top Rated',
-    hours: '1,000+ Outbound Hours',
-    bio: 'Architecting high-volume cold email infrastructure, DNS deliverability protocol (SPF, DKIM, DMARC, custom tracking domains), and automated mailbox fleets that guarantee inbox placement and meeting bookings.',
+    hours: 'Creator & B2B Scraping',
+    bio: 'Scraping and vetting high-converting creators, niche influencers, and targeted prospect databases. Deploying automated influencer outreach workflows that secure high-impact brand collaborations and booked pipeline.',
     skills: [
-      'Cold Email Infrastructure',
-      'DNS & Deliverability Protocol',
-      'Smartlead & Instantly',
-      'Mailbox Fleet Scaling',
-      'Automated Warmup Engines',
+      'Influencer Scraping & Discovery',
+      'Creator Outreach Campaigns',
+      'Modash & Instagram Scraping',
+      'YouTube & TikTok Research',
+      'B2B Prospect Enrichment',
     ],
-    linkedinUrl: 'https://www.linkedin.com',
-    upworkUrl: 'https://www.upwork.com/freelancers/raishahidnazir257',
+    linkedinUrl: 'https://www.linkedin.com/in/arsh-leadgenexpert/',
+    upworkUrl: null,
     calendlyUrl: 'https://cal.com/zexta',
   },
   {
@@ -52,25 +52,25 @@ export const teamMembers = [
     calendlyUrl: 'https://cal.com/zexta',
   },
   {
-    id: 'arisha-tariq',
-    name: 'Arisha Tariq',
-    role: 'Influencer Scraping & Outreach',
-    specialty: 'Influencer Scraping and Outreach',
-    image: arishaTariqImg,
+    id: 'shahid-nazir',
+    name: 'Shahid Nazir',
+    role: 'Founder & Outbound Lead',
+    specialty: 'Cold Email & Deliverability Specialist',
+    image: shahidNazirImg,
     badge: 'Top Rated',
-    jss: '100% Verified ROI',
+    jss: '100% Job Success',
     rating: 'Top Rated',
-    hours: 'Creator & B2B Scraping',
-    bio: 'Scraping and vetting high-converting creators, niche influencers, and targeted prospect databases. Deploying automated influencer outreach workflows that secure high-impact brand collaborations and booked pipeline.',
+    hours: '1,000+ Outbound Hours',
+    bio: 'Architecting high-volume cold email infrastructure, DNS deliverability protocol (SPF, DKIM, DMARC, custom tracking domains), and automated mailbox fleets that guarantee inbox placement and meeting bookings.',
     skills: [
-      'Influencer Scraping & Discovery',
-      'Creator Outreach Campaigns',
-      'Modash & Instagram Scraping',
-      'YouTube & TikTok Research',
-      'B2B Prospect Enrichment',
+      'Cold Email Infrastructure',
+      'DNS & Deliverability Protocol',
+      'Smartlead & Instantly',
+      'Mailbox Fleet Scaling',
+      'Automated Warmup Engines',
     ],
-    linkedinUrl: 'https://www.linkedin.com/in/arsh-leadgenexpert/',
-    upworkUrl: null,
+    linkedinUrl: 'https://www.linkedin.com',
+    upworkUrl: 'https://www.upwork.com/freelancers/raishahidnazir257',
     calendlyUrl: 'https://cal.com/zexta',
   },
   {
