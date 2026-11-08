@@ -1,14 +1,15 @@
-// Core Growth Team Members - Official Studio Portraits
+// Core Growth Team Members - Official Studio Portraits (Real Headshots Synced)
 import shahidNazirImg from '../assets/team/shahid_nazir.jpg';
 import zainAsgharImg from '../assets/team/zain_asghar.jpg';
 import muhammadAslamImg from '../assets/team/muhammad_aslam.jpg';
 import aliRazaImg from '../assets/team/ali_raza.jpg';
+import arishaTariqImg from '../assets/team/arisha_tariq.jpg';
 
 export const teamMembers = [
   {
     id: 'shahid-nazir',
     name: 'Shahid Nazir',
-    role: 'Founder & Outbound Infrastructure Lead',
+    role: 'Founder & Outbound Lead',
     specialty: 'Cold Email & Deliverability Specialist',
     image: shahidNazirImg,
     badge: 'Top Rated',
@@ -30,7 +31,7 @@ export const teamMembers = [
   {
     id: 'zain-asghar',
     name: 'Zain Asghar',
-    role: 'Lead Generation & Meta Ads Specialist',
+    role: 'Lead Gen & Meta Ads Specialist',
     specialty: 'Clay Enrichment & Meta Ads',
     image: zainAsgharImg,
     badge: 'Top Rated',
@@ -47,6 +48,28 @@ export const teamMembers = [
       'Lead Validation & Verification',
     ],
     linkedinUrl: 'https://www.linkedin.com/in/muhammad-zain-asghar-51483541a/',
+    upworkUrl: null,
+    calendlyUrl: 'https://cal.com/zexta',
+  },
+  {
+    id: 'arisha-tariq',
+    name: 'Arisha Tariq',
+    role: 'Influencer Scraping & Outreach',
+    specialty: 'Influencer Scraping and Outreach',
+    image: arishaTariqImg,
+    badge: 'Top Rated',
+    jss: '100% Verified ROI',
+    rating: 'Top Rated',
+    hours: 'Creator & B2B Scraping',
+    bio: 'Scraping and vetting high-converting creators, niche influencers, and targeted prospect databases. Deploying automated influencer outreach workflows that secure high-impact brand collaborations and booked pipeline.',
+    skills: [
+      'Influencer Scraping & Discovery',
+      'Creator Outreach Campaigns',
+      'Modash & Instagram Scraping',
+      'YouTube & TikTok Research',
+      'B2B Prospect Enrichment',
+    ],
+    linkedinUrl: 'https://www.linkedin.com/in/arsh-leadgenexpert/',
     upworkUrl: null,
     calendlyUrl: 'https://cal.com/zexta',
   },

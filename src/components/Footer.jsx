@@ -67,26 +67,6 @@ export default function Footer({ onBookCall, onOpenContact }) {
               <li><Link to="/services" className="hover:text-[#112219] hover:translate-x-0.5 transition-all">All Services & Pricing</Link></li>
               <li><Link to="/#process" className="hover:text-[#112219] hover:translate-x-0.5 transition-all">Our 5-Step Process</Link></li>
               <li>
-                <button
-                  type="button"
-                  onClick={onOpenContact}
-                  className="inline-flex items-center gap-1.5 text-sm text-[#112219] hover:text-emerald-800 font-bold transition-colors cursor-pointer"
-                >
-                  <span>Contact Us (WhatsApp • Calendly • Email)</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-emerald-700" />
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={onBookCall}
-                  className="inline-flex items-center gap-1 text-sm text-emerald-700 hover:text-emerald-800 font-bold transition-colors cursor-pointer"
-                >
-                  <span>Book a Strategy Call (Calendly)</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </button>
-              </li>
-              <li>
                 <a
                   href="https://wa.me/923001767257?text=Hi%20Zexta%20team,%20I'd%20like%20to%20inquire%20about%20your%20services"
                   target="_blank"
@@ -100,14 +80,12 @@ export default function Footer({ onBookCall, onOpenContact }) {
               </li>
               <li>
                 <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=zextastudio@gmail.com&su=Project%20Inquiry%20via%20Zexta%20Website"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-gray-700 hover:text-[#112219] font-semibold transition-colors cursor-pointer"
+                  href="mailto:support@zexta.co"
+                  className="inline-flex items-center gap-1.5 text-sm text-[#112219] hover:text-emerald-800 font-semibold transition-colors cursor-pointer"
                 >
-                  <Mail className="w-3.5 h-3.5 text-gray-500" />
-                  <span>Send Direct Email</span>
-                  <ArrowUpRight className="w-3 h-3 text-gray-500" />
+                  <Mail className="w-3.5 h-3.5 text-emerald-700" />
+                  <span>support@zexta.co</span>
+                  <ArrowUpRight className="w-3 h-3 text-emerald-700" />
                 </a>
               </li>
             </ul>
@@ -148,13 +126,12 @@ export default function Footer({ onBookCall, onOpenContact }) {
             <span>•</span>
             <Link to="/testimonials" className="hover:text-[#112219] transition-colors font-medium">Testimonials</Link>
             <span>•</span>
-            <button
-              type="button"
-              onClick={onOpenContact}
-              className="text-[#112219] hover:text-emerald-800 font-semibold transition-colors cursor-pointer"
+            <a
+              href="mailto:support@zexta.co"
+              className="text-[#143B2A] hover:text-emerald-800 font-semibold transition-colors"
             >
-              Contact
-            </button>
+              support@zexta.co
+            </a>
             <span>•</span>
             <button
               type="button"
