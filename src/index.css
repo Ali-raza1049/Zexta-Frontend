@@ -288,38 +288,60 @@ button {
   cursor: pointer;
 }
 
-/* Corner Badge Styling matching Figma `⌞ Label ⌝` */
+/* Precision 4-Corner Viewfinder Badge Styling */
 .corner-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   position: relative;
-  padding: 3px 14px;
+  padding: 4px 14px;
   font-size: 13px;
-  font-weight: 600;
-  color: #17382B;
+  font-weight: 700;
+  color: #123324;
   letter-spacing: -0.01em;
   background-color: transparent;
   width: fit-content;
+  line-height: 1.2;
 }
 
 .corner-tl {
   position: absolute;
   top: 0;
   left: 0;
-  width: 7px;
-  height: 7px;
-  border-left: 1.5px solid #163E2D;
-  border-bottom: 1.5px solid #163E2D;
+  width: 6px;
+  height: 6px;
+  border-left: 1.5px solid #10B981;
+  border-top: 1.5px solid #10B981;
+}
+
+.corner-tr {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid #10B981;
+  border-top: 1.5px solid #10B981;
+}
+
+.corner-bl {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-left: 1.5px solid #10B981;
+  border-bottom: 1.5px solid #10B981;
 }
 
 .corner-br {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 0;
-  width: 7px;
-  height: 7px;
-  border-right: 1.5px solid #163E2D;
-  border-top: 1.5px solid #163E2D;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid #10B981;
+  border-bottom: 1.5px solid #10B981;
 }
 
 /* Buttons */

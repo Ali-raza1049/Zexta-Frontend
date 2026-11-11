@@ -24,9 +24,11 @@ export function ZextaLogo({ className = "w-7 h-7", textClassName = "text-white",
 export function CornerBadge({ label, className = "" }) {
   return (
     <div className={`corner-badge ${className}`}>
-      <span className="corner-tl"></span>
+      <span className="corner-tl" aria-hidden="true"></span>
+      <span className="corner-tr" aria-hidden="true"></span>
       <span className="corner-badge-text">{label}</span>
-      <span className="corner-br"></span>
+      <span className="corner-bl" aria-hidden="true"></span>
+      <span className="corner-br" aria-hidden="true"></span>
     </div>
   );
 }

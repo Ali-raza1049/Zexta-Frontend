@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { LinkedInIcon, TopRatedIcon } from './Icons';
 import { teamMembers } from '../data/teamMembers';
@@ -38,7 +39,7 @@ export default function Team({ onBookCall }) {
               onClick={onBookCall}
               className="inline-flex items-center gap-1.5 bg-[#122B22] hover:bg-[#1A4D39] text-white text-xs font-bold px-4 py-2.5 rounded-full transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md hover:-translate-y-0.5 group shrink-0 border border-emerald-500/20"
             >
-              <span>Deploy Full Squad</span>
+              <span>Book Strategy Call</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </button>
           </div>

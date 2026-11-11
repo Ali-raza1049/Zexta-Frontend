@@ -135,7 +135,7 @@ export default function UpworkSection({ onBookCall }) {
           ))}
         </div>
 
-        {/* Dedicated Direct Cal.com Booking Banner */}
+        {/* Dedicated Upwork Escrow & Contract Guarantee Banner */}
         <div className="mt-14 max-w-4xl mx-auto">
           <div className="relative overflow-hidden bg-gradient-to-r from-[#0D231A] via-[#122B22] to-[#163E2D] border border-emerald-500/20 rounded-[28px] p-6 sm:p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[0_12px_36px_rgba(10,28,21,0.25)]">
             {/* Ambient Background Aura */}
@@ -143,25 +143,23 @@ export default function UpworkSection({ onBookCall }) {
 
             <div className="flex items-center gap-4 text-center sm:text-left relative z-10">
               <div className="w-13 h-13 rounded-2xl bg-emerald-400/15 border border-emerald-400/30 flex items-center justify-center text-emerald-300 shrink-0 shadow-inner">
-                <Calendar className="w-6 h-6 text-emerald-400" />
+                <UpworkLogo className="w-6 h-6 text-emerald-400" />
               </div>
               <div>
                 <h4 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug">
-                  Prefer a direct 1-on-1 strategy call first?
+                  Protected by Upwork Payment Escrow & Hourly Tracking
                 </h4>
                 <p className="text-xs sm:text-sm text-emerald-100/70 mt-1">
-                  Pick a 30-minute slot directly on Cal.com.
+                  100% verified contracts, milestone releases, and top-tier client protections.
                 </p>
               </div>
             </div>
 
             <a
-              href="https://cal.com/zexta"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#upwork"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-400 to-teal-300 hover:from-teal-300 hover:to-emerald-400 text-[#0A1C15] px-6 sm:px-7 py-3.5 rounded-full font-bold text-sm shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:shadow-[0_6px_22px_rgba(16,185,129,0.45)] transition-all hover:scale-[1.03] shrink-0 cursor-pointer relative z-10"
             >
-              <span>Book 30-Min Call</span>
+              <span>Explore All 3 Upwork Profiles</span>
               <ArrowUpRight className="w-4 h-4 text-[#0A1C15]" />
             </a>
           </div>

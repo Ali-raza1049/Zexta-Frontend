@@ -96,14 +96,12 @@ export default function Footer({ onBookCall, onOpenContact }) {
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#143B2A] mb-1">Verified Badges</h4>
             <ul className="flex flex-col gap-2.5 text-sm text-[#4E6056]">
               <li>
-                <a
-                  href="https://www.upwork.com/freelancers/raishahidnazir257"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/#upwork"
                   className="hover:text-[#112219] transition-colors flex items-center gap-1.5"
                 >
                   <span className="text-[#14A800]">★</span> 100% Upwork Job Success ↗
-                </a>
+                </Link>
               </li>
               <li className="flex items-center gap-1.5"><TopRatedIcon className="w-3.5 h-3.5 shrink-0" /> Top Rated Agency</li>
               <li className="flex items-center gap-1.5"><span className="text-emerald-600">✔</span> Clay Certified Partner</li>
@@ -132,14 +130,6 @@ export default function Footer({ onBookCall, onOpenContact }) {
             >
               support@zexta.co
             </a>
-            <span>•</span>
-            <button
-              type="button"
-              onClick={onBookCall}
-              className="text-emerald-700 hover:text-emerald-800 font-semibold transition-colors cursor-pointer"
-            >
-              Book Call (Calendly) ↗
-            </button>
             <span>•</span>
             <a
               href="https://wa.me/923001767257"

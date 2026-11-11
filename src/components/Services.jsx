@@ -25,6 +25,12 @@ import {
   Clock,
   Target,
   BarChart3,
+  Database,
+  Server,
+  Code2,
+  Workflow,
+  Boxes,
+  Brain,
 } from 'lucide-react';
 
 const mernLogs = [
@@ -231,182 +237,280 @@ export default function Services() {
               </div>
             </div>
 
-            {/* Right Column: Dynamic Terminal / Interactive Architecture Visual */}
-            <div className="lg:col-span-6 relative group/terminal">
-              {/* Ambient Neon Backlight Glow */}
-              <div className="absolute -inset-1.5 bg-gradient-to-r from-emerald-500/25 via-teal-500/20 to-emerald-600/25 rounded-3xl blur-xl opacity-60 group-hover/terminal:opacity-95 transition-opacity duration-500 -z-10" />
+            {/* Right Column: Crystal Clear & Fully Responsive Visual Architecture */}
+            <div className="lg:col-span-6 relative">
+              {/* Ethereal background radial glow */}
+              <div className="absolute -inset-1.5 bg-gradient-to-r from-emerald-500/15 via-teal-500/10 to-emerald-600/15 rounded-3xl blur-xl pointer-events-none -z-0" />
 
-              {activeStackTab === 'ai' ? (
-                /* AI Live Execution Sandbox */
-                <div className="bg-[#0A1711] rounded-2xl p-3.5 xs:p-4 sm:p-6 border border-emerald-900/60 shadow-[0_12px_40px_rgba(0,0,0,0.35)] text-left relative overflow-hidden backdrop-blur-md">
-                  {/* Subtle Scanner Beam */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-400/[0.04] to-transparent pointer-events-none animate-sweep" style={{ animationDuration: '4.5s' }} />
-
-                  {/* Header */}
-                  <div className="flex items-center justify-between pb-3.5 border-b border-white/10 mb-4 relative z-10">
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center text-xs font-bold shadow-2xs">
-                        AI
-                      </div>
-                      <span className="text-xs font-semibold text-white tracking-tight">Autonomous Agent Router</span>
-                      <span className="relative flex h-2 w-2 ml-1">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]"></span>
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-800">
-                      Confidence: 99.4%
+              <div className="bg-[#F9FAF9] rounded-2xl p-3 sm:p-5 border border-[#E8EFEA] hover:border-emerald-500/30 transition-all shadow-xs relative overflow-hidden select-none">
+                {/* Header Row: Live Architecture Status with Separated Clean Pills */}
+                <div className="flex items-center justify-between gap-2 pb-2.5 sm:pb-3 border-b border-[#E8EFEA] mb-3 sm:mb-4">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="px-2 py-0.5 rounded-md bg-[#E8F8F0] border border-[#C6EBD7] text-emerald-800 text-[10.5px] sm:text-xs font-black shrink-0 tracking-wider">
+                      {activeStackTab === 'mern' ? 'MERN' : activeStackTab === 'pern' ? 'PERN' : 'AI'}
                     </span>
+                    <h4 className="text-[12px] sm:text-[13.5px] font-bold text-[#112219] truncate">
+                      {activeStackTab === 'mern' && 'Reactive Full-Stack Architecture'}
+                      {activeStackTab === 'pern' && 'Enterprise ACID Relational Engine'}
+                      {activeStackTab === 'ai' && 'Autonomous Multi-Agent Cognitive Loop'}
+                    </h4>
                   </div>
-
-                  {/* 3 Interactive Pipeline Steps with Flowing Connection Connectors */}
-                  <div className="space-y-2 sm:space-y-2.5 text-xs font-mono relative z-10">
-                    <div className="bg-white/[0.04] hover:bg-white/[0.07] rounded-xl p-2.5 sm:p-3 border border-white/5 hover:border-emerald-500/30 flex items-center justify-between transition-all group/step">
-                      <div className="flex items-center gap-2 min-w-0 flex-1 mr-2">
-                        <span className="w-5 h-5 rounded-md bg-emerald-900/60 border border-emerald-700/50 text-emerald-300 text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
-                        <span className="text-gray-200 truncate text-[11px] sm:text-xs">Vector Search (Pinecone / pgvector)</span>
-                      </div>
-                      <span className="text-emerald-400 font-bold bg-emerald-950/60 px-1.5 sm:px-2 py-0.5 rounded border border-emerald-800/60 text-[10px] sm:text-xs shrink-0">0.96 Match</span>
-                    </div>
-
-                    <div className="bg-white/[0.04] hover:bg-white/[0.07] rounded-xl p-2.5 sm:p-3 border border-white/5 hover:border-purple-500/30 flex items-center justify-between transition-all group/step">
-                      <div className="flex items-center gap-2 min-w-0 flex-1 mr-2">
-                        <span className="w-5 h-5 rounded-md bg-purple-900/60 border border-purple-700/50 text-purple-300 text-[10px] font-bold flex items-center justify-center shrink-0">2</span>
-                        <span className="text-gray-200 truncate text-[11px] sm:text-xs">RAG Context &amp; Reasoning</span>
-                      </div>
-                      <span className="text-purple-300 font-bold bg-purple-950/60 px-1.5 sm:px-2 py-0.5 rounded border border-purple-800/60 text-[10px] sm:text-xs shrink-0">LangChain</span>
-                    </div>
-
-                    <div className="bg-white/[0.04] hover:bg-white/[0.07] rounded-xl p-2.5 sm:p-3 border border-white/5 hover:border-teal-500/30 flex items-center justify-between transition-all group/step">
-                      <div className="flex items-center gap-2 min-w-0 flex-1 mr-2">
-                        <span className="w-5 h-5 rounded-md bg-teal-900/60 border border-teal-700/50 text-teal-300 text-[10px] font-bold flex items-center justify-center shrink-0">3</span>
-                        <span className="text-gray-200 truncate text-[11px] sm:text-xs">Multi-Tool Function Calling</span>
-                      </div>
-                      <span className="text-emerald-300 font-bold bg-emerald-950/60 px-1.5 sm:px-2 py-0.5 rounded border border-emerald-800/60 text-[10px] sm:text-xs shrink-0">Realtime</span>
-                    </div>
-                  </div>
-
-                  {/* AI Live Telemetry Log */}
-                  <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-emerald-400 relative z-10">
-                    <div className="flex items-center gap-2 overflow-hidden">
-                      <span className="text-emerald-400 animate-pulse">⚡</span>
-                      <span className="text-white/80 truncate">
-                        {aiLogs[logIndex].text}
-                      </span>
-                    </div>
-                    <span className="text-[9.5px] uppercase font-bold text-emerald-300 bg-emerald-900/40 px-2 py-0.5 rounded border border-emerald-700/40 shrink-0 ml-2">
-                      {aiLogs[logIndex].tag}
+                  <div className="inline-flex items-center gap-1.5 bg-[#E8F8F0] text-emerald-800 px-2 sm:px-2.5 py-0.5 rounded-full border border-[#C6EBD7] text-[10px] sm:text-[11px] font-bold shrink-0">
+                    <span className="relative flex h-2 w-2 shrink-0">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]"></span>
                     </span>
+                    <span>{activeStackTab === 'mern' ? '<35ms Response' : activeStackTab === 'pern' ? 'ACID Guaranteed' : '99.4% Accuracy'}</span>
                   </div>
                 </div>
-              ) : (
-                /* Code Terminal for MERN or PERN with Line Numbers & Real-Time Live Execution */
-                <div className="bg-[#0B1D15] rounded-2xl p-3.5 xs:p-4 sm:p-6 border border-emerald-900/60 shadow-[0_12px_40px_rgba(0,0,0,0.35)] text-left relative overflow-hidden backdrop-blur-md">
-                  {/* Subtle Animated Light Sweep */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-400/[0.035] to-transparent pointer-events-none animate-sweep" style={{ animationDuration: '4.8s' }} />
 
-                  {/* Mac Window Chrome */}
-                  <div className="flex items-center justify-between pb-3 sm:pb-3.5 border-b border-white/10 mb-3.5 sm:mb-4 relative z-10">
-                    <div className="flex items-center gap-2">
-                      {/* Mac Dots */}
-                      <div className="flex items-center gap-1.5 mr-1">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] shadow-[0_0_6px_rgba(255,95,86,0.6)]"></span>
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] shadow-[0_0_6px_rgba(255,189,46,0.6)]"></span>
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] shadow-[0_0_6px_rgba(39,201,63,0.6)]"></span>
+                {/* Architecture Visual Stream: Left Node -> Animated Branching SVG -> Right Nodes */}
+                <div className="overflow-x-auto no-scrollbar py-0.5">
+                  <div className="w-full flex items-center justify-between gap-1.5 sm:gap-2.5 min-w-[340px] sm:min-w-0">
+                    {/* Left Node: Frontend / Source Layer */}
+                    <div className="bg-white border border-[#E4EDE7] rounded-xl p-2.5 sm:p-3 w-[105px] xs:w-[115px] sm:w-[130px] shadow-2xs shrink-0 hover:border-emerald-500/40 transition-all text-left flex flex-col justify-between self-stretch">
+                      <div>
+                        <div className="flex items-center justify-between gap-1 mb-2">
+                          <span className="text-[11px] sm:text-xs font-bold text-[#112219] truncate">
+                            {activeStackTab === 'mern' && 'React 19'}
+                            {activeStackTab === 'pern' && 'Next.js 15'}
+                            {activeStackTab === 'ai' && 'Context Feed'}
+                          </span>
+                          <span className="text-[8px] sm:text-[8.5px] font-bold text-emerald-800 bg-[#E8F8F0] px-1.5 py-0.5 rounded border border-[#C6EBD7] shrink-0">
+                            {activeStackTab === 'mern' ? 'CLIENT' : activeStackTab === 'pern' ? 'TYPED' : 'STREAM'}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 mb-2">
+                          <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-md bg-[#F0FDF4] border border-[#DCFCE7] flex items-center justify-center text-emerald-700 font-bold text-xs shrink-0">
+                            {activeStackTab === 'ai' ? <Brain className="w-3 h-3 text-emerald-700" /> : <Code2 className="w-3 h-3 text-emerald-700" />}
+                          </div>
+                          <div className="min-w-0">
+                            <span className="text-[10.5px] sm:text-xs font-extrabold text-[#112219] block leading-tight truncate">
+                              {activeStackTab === 'mern' && 'Next.js 15'}
+                              {activeStackTab === 'pern' && 'TypeScript Core'}
+                              {activeStackTab === 'ai' && 'Multi-Modal'}
+                            </span>
+                            <span className="text-[9.5px] sm:text-[10px] text-[#55665D] font-medium block truncate">
+                              {activeStackTab === 'mern' && '120 FPS UI'}
+                              {activeStackTab === 'pern' && 'Zero Drift'}
+                              {activeStackTab === 'ai' && 'Live Ingestion'}
+                            </span>
+                          </div>
+                        </div>
                       </div>
 
-                      {/* Active File Tab */}
-                      <div className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 rounded-md bg-emerald-950/70 border border-emerald-800/50 text-[10px] sm:text-[11px] font-mono text-emerald-300">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span className="truncate max-w-[130px] sm:max-w-none">{activeStackTab === 'mern' ? 'models/LeadPipeline.js' : 'prisma/schema.prisma'}</span>
+                      <div className="pt-2 border-t border-[#F0F5F2] flex items-center justify-between text-[9.5px] sm:text-[10px] text-[#55665D] font-medium">
+                        <span className="truncate">{activeStackTab === 'mern' ? 'Vite 8' : activeStackTab === 'pern' ? 'Strict' : 'RAG Embed'}</span>
+                        <span className="text-emerald-700 font-bold shrink-0 flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                          Active
+                        </span>
                       </div>
                     </div>
 
-                    {/* Status Indicators */}
-                    <div className="flex items-center gap-1.5 sm:gap-2">
-                      <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-mono text-emerald-400/90 bg-emerald-950/70 border border-emerald-800/60 px-2 py-0.5 rounded">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                        <span>Live Stream</span>
-                      </span>
-                      <span className="text-[9.5px] sm:text-[10px] font-mono text-white/50 bg-white/5 px-1.5 sm:px-2 py-0.5 rounded border border-white/5">
-                        TS 5.0
-                      </span>
-                    </div>
-                  </div>
+                    {/* Center Animated Branching SVG Flow with Traveling Comets */}
+                    <div className="w-9 xs:w-12 sm:w-16 h-36 flex items-center justify-center shrink-0">
+                      <svg className="w-full h-full overflow-visible" viewBox="0 0 60 120" fill="none" preserveAspectRatio="none">
+                        <defs>
+                          <linearGradient id="mernStreamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#10B981" stopOpacity="0.8" />
+                            <stop offset="50%" stopColor="#34D399" stopOpacity="1" />
+                            <stop offset="100%" stopColor="#059669" stopOpacity="0.9" />
+                          </linearGradient>
+                          <linearGradient id="pernStreamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.8" />
+                            <stop offset="50%" stopColor="#10B981" stopOpacity="1" />
+                            <stop offset="100%" stopColor="#6366F1" stopOpacity="0.9" />
+                          </linearGradient>
+                          <linearGradient id="aiStreamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#10B981" stopOpacity="0.8" />
+                            <stop offset="50%" stopColor="#A855F7" stopOpacity="1" />
+                            <stop offset="100%" stopColor="#06B6D4" stopOpacity="0.9" />
+                          </linearGradient>
+                          <filter id="glowGreenMern" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#10B981" floodOpacity="0.8" />
+                          </filter>
+                          <filter id="glowBlueMern" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#3B82F6" floodOpacity="0.8" />
+                          </filter>
+                          <filter id="glowPurpleMern" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#A855F7" floodOpacity="0.8" />
+                          </filter>
+                        </defs>
 
-                  {/* Code Editor Body with Line Numbers */}
-                  <div className="flex font-mono text-[10.5px] xs:text-[11.5px] sm:text-[12px] lg:text-[12.5px] leading-relaxed relative z-10 select-none">
-                    {/* Line Numbers Column */}
-                    <div className="flex flex-col text-right pr-2.5 sm:pr-3.5 mr-2.5 sm:mr-3.5 border-r border-emerald-900/60 text-emerald-600/50 select-none font-medium">
-                      <span>1</span>
-                      <span>2</span>
-                      <span>3</span>
-                      <span>4</span>
+                        {/* Base Dashed Guide Paths */}
+                        <path d="M 0 60 C 30 60, 30 20, 60 20" stroke="#DCE8E1" strokeWidth="1.5" strokeDasharray="3 3" />
+                        <path d="M 0 60 L 60 60" stroke="#DCE8E1" strokeWidth="1.5" strokeDasharray="3 3" />
+                        <path d="M 0 60 C 30 60, 30 100, 60 100" stroke="#DCE8E1" strokeWidth="1.5" strokeDasharray="3 3" />
+
+                        {/* Active Flowing Dashes */}
+                        <path
+                          d="M 0 60 C 30 60, 30 20, 60 20"
+                          stroke={activeStackTab === 'pern' ? 'url(#pernStreamGrad)' : activeStackTab === 'ai' ? 'url(#aiStreamGrad)' : 'url(#mernStreamGrad)'}
+                          strokeWidth="2"
+                          strokeDasharray="5 7"
+                          strokeLinecap="round"
+                          className="animate-dash-stream"
+                        />
+                        <path
+                          d="M 0 60 L 60 60"
+                          stroke={activeStackTab === 'pern' ? 'url(#pernStreamGrad)' : activeStackTab === 'ai' ? 'url(#aiStreamGrad)' : 'url(#mernStreamGrad)'}
+                          strokeWidth="2"
+                          strokeDasharray="5 7"
+                          strokeLinecap="round"
+                          className="animate-dash-stream"
+                        />
+                        <path
+                          d="M 0 60 C 30 60, 30 100, 60 100"
+                          stroke={activeStackTab === 'pern' ? 'url(#pernStreamGrad)' : activeStackTab === 'ai' ? 'url(#aiStreamGrad)' : 'url(#mernStreamGrad)'}
+                          strokeWidth="2"
+                          strokeDasharray="5 7"
+                          strokeLinecap="round"
+                          className="animate-dash-stream"
+                        />
+
+                        {/* Origin and Target Dots */}
+                        <circle cx="2" cy="60" r="2.5" fill="#10B981" />
+                        <circle cx="58" cy="20" r="2.5" fill="#10B981" />
+                        <circle cx="58" cy="60" r="2.5" fill={activeStackTab === 'ai' ? '#A855F7' : '#3B82F6'} />
+                        <circle cx="58" cy="100" r="2.5" fill="#059669" />
+
+                        {/* Traveling Energy Comets */}
+                        <circle r="3" fill="#10B981" filter="url(#glowGreenMern)">
+                          <animateMotion path="M 0 60 C 30 60, 30 20, 60 20" dur="2s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+                        <circle r="1.5" fill="#FFFFFF">
+                          <animateMotion path="M 0 60 C 30 60, 30 20, 60 20" dur="2s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+
+                        <circle r="3" fill={activeStackTab === 'ai' ? '#A855F7' : '#3B82F6'} filter={activeStackTab === 'ai' ? 'url(#glowPurpleMern)' : 'url(#glowBlueMern)'}>
+                          <animateMotion path="M 0 60 L 60 60" dur="2s" begin="0.4s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+                        <circle r="1.5" fill="#FFFFFF">
+                          <animateMotion path="M 0 60 L 60 60" dur="2s" begin="0.4s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+
+                        <circle r="3" fill="#059669" filter="url(#glowGreenMern)">
+                          <animateMotion path="M 0 60 C 30 60, 30 100, 60 100" dur="2s" begin="0.8s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+                        <circle r="1.5" fill="#FFFFFF">
+                          <animateMotion path="M 0 60 C 30 60, 30 100, 60 100" dur="2s" begin="0.8s" repeatCount="indefinite" calcMode="linear" />
+                        </circle>
+                      </svg>
                     </div>
 
-                    {/* Code Lines */}
-                    <div className="flex-1 space-y-1 overflow-x-auto no-scrollbar">
-                      {activeStackTab === 'mern' ? (
-                        <>
-                          <p className="text-gray-300">
-                            <span className="text-purple-400 font-semibold">const</span>{' '}
-                            <span className="text-blue-300 font-semibold">pipelineSchema</span> ={' '}
-                            <span className="text-purple-400 font-semibold">new</span>{' '}
-                            <span className="text-yellow-300 font-semibold">Schema</span>({'{'}
-                          </p>
-                          <p className="pl-3 sm:pl-4 text-emerald-300">
-                            client: <span className="text-blue-200">String</span>, leadsCount:{' '}
-                            <span className="text-yellow-200">Number</span>, status:{' '}
-                            <span className="text-emerald-400 font-semibold">'SCALING'</span>,
-                          </p>
-                          <p className="pl-3 sm:pl-4 text-gray-300">
-                            cache: <span className="text-blue-300 font-semibold">RedisCluster</span>.<span className="text-yellow-300 font-semibold">fastRoute</span>({'{'} ttl: <span className="text-emerald-400">3600</span> {'}'})
-                          </p>
-                          <p className="text-gray-300">
-                            {'}'});
-                            <span className="inline-block w-1.5 sm:w-2 h-3.5 sm:h-4 bg-emerald-400 ml-1.5 animate-pulse align-middle shadow-[0_0_8px_#10B981]" />
-                          </p>
-                        </>
-                      ) : (
-                        <>
-                          <p className="text-purple-400 font-semibold">
-                            model <span className="text-yellow-300 font-semibold">EnterpriseClient</span> {'{'}
-                          </p>
-                          <p className="pl-3 sm:pl-4 text-emerald-300">
-                            id <span className="text-blue-200">String</span> @id @default(uuid())
-                          </p>
-                          <p className="pl-3 sm:pl-4 text-emerald-300">
-                            dbEngine <span className="text-blue-200">PostgreSQL</span> @relation(fields: [pgId])
-                          </p>
-                          <p className="pl-3 sm:pl-4 text-gray-300">
-                            perfScore <span className="text-yellow-200">Float</span> @default(<span className="text-emerald-400">99.8</span>)
-                          </p>
-                          <p className="text-purple-400">
-                            {'}'}
-                            <span className="inline-block w-1.5 sm:w-2 h-3.5 sm:h-4 bg-emerald-400 ml-1.5 animate-pulse align-middle shadow-[0_0_8px_#10B981]" />
-                          </p>
-                        </>
-                      )}
-                    </div>
-                  </div>
+                    {/* Right Nodes: 3 Stack Engines with Spacious Layout & ZERO Truncation */}
+                    <div className="flex-1 min-w-0 flex flex-col gap-1.5 sm:gap-2 text-left">
+                      {/* Node 1 */}
+                      <div className="bg-white border border-[#E2EAE5] hover:border-emerald-400 rounded-xl p-2 sm:p-2.5 shadow-2xs hover:shadow-xs transition-all">
+                        <div className="flex items-center justify-between gap-1.5">
+                          <div className="flex items-center gap-1.5 min-w-0">
+                            <div className="w-5 h-5 rounded-md bg-[#E8F8F0] border border-[#C6EBD7] flex items-center justify-center shrink-0 text-emerald-700">
+                              {activeStackTab === 'ai' ? <Layers className="w-3 h-3" /> : <Server className="w-3 h-3" />}
+                            </div>
+                            <span className="font-bold text-[11px] sm:text-[12px] text-[#112219] whitespace-nowrap">
+                              {activeStackTab === 'mern' && 'Node.js & Express'}
+                              {activeStackTab === 'pern' && 'Express & NestJS'}
+                              {activeStackTab === 'ai' && 'Pinecone Vector DB'}
+                            </span>
+                          </div>
+                          <span className="text-[9px] sm:text-[9.5px] font-bold text-emerald-800 bg-[#E8F8F0] border border-[#C6EBD7] px-1.5 py-0.5 rounded shrink-0">
+                            {activeStackTab === 'mern' ? '<40ms' : activeStackTab === 'pern' ? 'Edge' : '0.96'}
+                          </span>
+                        </div>
+                        <p className="text-[10px] sm:text-[10.5px] text-[#55665D] font-medium pl-6.5 mt-0.5 leading-tight truncate">
+                          {activeStackTab === 'mern' && 'REST & GraphQL APIs'}
+                          {activeStackTab === 'pern' && 'High-Throughput Gateway'}
+                          {activeStackTab === 'ai' && 'Semantic RAG Search'}
+                        </p>
+                      </div>
 
-                  {/* Live Runtime Execution Drawer / Telemetry Footer */}
-                  <div className="mt-4 pt-3.5 border-t border-emerald-900/60 flex items-center justify-between text-[11px] font-mono relative z-10">
-                    <div className="flex items-center gap-2 overflow-hidden">
-                      <span className="relative flex h-2 w-2 shrink-0">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]"></span>
-                      </span>
-                      <span className="text-white/80 truncate">
-                        {activeStackTab === 'mern' ? mernLogs[logIndex].text : pernLogs[logIndex].text}
-                      </span>
+                      {/* Node 2 */}
+                      <div className="bg-white border border-[#E2EAE5] hover:border-blue-400 rounded-xl p-2 sm:p-2.5 shadow-2xs hover:shadow-xs transition-all">
+                        <div className="flex items-center justify-between gap-1.5">
+                          <div className="flex items-center gap-1.5 min-w-0">
+                            <div className="w-5 h-5 rounded-md bg-[#EFF6FF] border border-[#BFDBFE] flex items-center justify-center shrink-0">
+                              {activeStackTab === 'ai' ? (
+                                <Brain className="w-3 h-3 text-purple-600" />
+                              ) : activeStackTab === 'pern' ? (
+                                <ShieldCheck className="w-3 h-3 text-blue-600" />
+                              ) : (
+                                <Zap className="w-3 h-3 text-amber-500" />
+                              )}
+                            </div>
+                            <span className="font-bold text-[11px] sm:text-[12px] text-[#112219] whitespace-nowrap">
+                              {activeStackTab === 'mern' && 'Redis FastRoute'}
+                              {activeStackTab === 'pern' && 'Prisma ORM'}
+                              {activeStackTab === 'ai' && 'Claude & GPT-4o'}
+                            </span>
+                          </div>
+                          <span className="text-[9px] sm:text-[9.5px] font-bold text-blue-700 bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 rounded shrink-0">
+                            {activeStackTab === 'mern' ? '99.8%' : activeStackTab === 'pern' ? 'Typed' : 'Stream'}
+                          </span>
+                        </div>
+                        <p className="text-[10px] sm:text-[10.5px] text-[#55665D] font-medium pl-6.5 mt-0.5 leading-tight truncate">
+                          {activeStackTab === 'mern' && 'Sub-5ms In-Memory Cache'}
+                          {activeStackTab === 'pern' && 'Zero-Drift Relational Schema'}
+                          {activeStackTab === 'ai' && 'Contextual Reasoning'}
+                        </p>
+                      </div>
+
+                      {/* Node 3 */}
+                      <div className="bg-white border border-[#E2EAE5] hover:border-emerald-400 rounded-xl p-2 sm:p-2.5 shadow-2xs hover:shadow-xs transition-all">
+                        <div className="flex items-center justify-between gap-1.5">
+                          <div className="flex items-center gap-1.5 min-w-0">
+                            <div className="w-5 h-5 rounded-md bg-[#F0FDF4] border border-[#DCFCE7] flex items-center justify-center shrink-0">
+                              {activeStackTab === 'ai' ? (
+                                <Workflow className="w-3 h-3 text-teal-600" />
+                              ) : (
+                                <Database className="w-3 h-3 text-emerald-700" />
+                              )}
+                            </div>
+                            <span className="font-bold text-[11px] sm:text-[12px] text-[#112219] whitespace-nowrap">
+                              {activeStackTab === 'mern' && 'MongoDB Atlas'}
+                              {activeStackTab === 'pern' && 'PostgreSQL DB'}
+                              {activeStackTab === 'ai' && 'Autonomous Agents'}
+                            </span>
+                          </div>
+                          <span className="text-[9px] sm:text-[9.5px] font-bold text-emerald-800 bg-[#E8F8F0] border border-[#C6EBD7] px-1.5 py-0.5 rounded shrink-0">
+                            {activeStackTab === 'mern' ? 'ACID' : activeStackTab === 'pern' ? 'ACID' : 'Live'}
+                          </span>
+                        </div>
+                        <p className="text-[10px] sm:text-[10.5px] text-[#55665D] font-medium pl-6.5 mt-0.5 leading-tight truncate">
+                          {activeStackTab === 'mern' && 'Auto-Sharded Cloud Cluster'}
+                          {activeStackTab === 'pern' && 'Strict ACID Reliability'}
+                          {activeStackTab === 'ai' && 'Multi-Tool Function Calls'}
+                        </p>
+                      </div>
                     </div>
-                    <span className="text-[9.5px] uppercase font-bold text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/80 shrink-0 ml-2">
-                      {activeStackTab === 'mern' ? mernLogs[logIndex].tag : pernLogs[logIndex].tag}
-                    </span>
                   </div>
                 </div>
-              )}
+
+                {/* Bottom Telemetry Strip */}
+                <div className="mt-3 sm:mt-3.5 pt-2.5 sm:pt-3 border-t border-[#EEF4F0] flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 text-[9.5px] sm:text-[10.5px] text-[#52635A]">
+                  <div className="flex items-center gap-1.5 overflow-hidden">
+                    <span className="relative flex h-2 w-2 shrink-0">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]"></span>
+                    </span>
+                    <span className="text-[#112219] font-mono font-medium truncate">
+                      {activeStackTab === 'mern'
+                        ? mernLogs[logIndex].text
+                        : activeStackTab === 'pern'
+                        ? pernLogs[logIndex].text
+                        : aiLogs[logIndex].text}
+                    </span>
+                  </div>
+                  <span className="text-[9px] sm:text-[9.5px] font-bold text-emerald-800 bg-[#E8F8F0] px-2 py-0.5 rounded-full border border-[#C6EBD7] shrink-0 font-mono">
+                    {activeStackTab === 'mern'
+                      ? mernLogs[logIndex].tag
+                      : activeStackTab === 'pern'
+                      ? pernLogs[logIndex].tag
+                      : aiLogs[logIndex].tag}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Star, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { upworkLeftReviews, upworkRightReviews } from '../data/upworkReviews';
 
 export default function HeroCardStack({
@@ -19,7 +19,7 @@ export default function HeroCardStack({
     return true;
   });
 
-  // Listen to pointer/hover media changes if user docks/undocks or rotates device
+  // Detect mouse hover capability (prevents layout jump on mobile taps)
   useEffect(() => {
     if (typeof window !== 'undefined' && window.matchMedia) {
       const match = window.matchMedia('(hover: hover) and (pointer: fine)');
@@ -30,21 +30,6 @@ export default function HeroCardStack({
       }
     }
   }, []);
-
-  // Responsive resting rotations and offsets tuned for stacked card appearance
-  // The top card has 0deg rotation so its typography renders with 100% horizontal pixel clarity (no ClearType blur)
-  const restingTransforms = {
-    left: [
-      { transform: 'rotate(0deg) translate(0px, 0px)', zIndex: 10 },
-      { transform: 'rotate(2deg) translate(3px, 4px)', zIndex: 5 },
-      { transform: 'rotate(-1.5deg) translate(6px, 8px)', zIndex: 2 },
-    ],
-    right: [
-      { transform: 'rotate(0deg) translate(0px, 0px)', zIndex: 10 },
-      { transform: 'rotate(-2deg) translate(-3px, 4px)', zIndex: 5 },
-      { transform: 'rotate(1.5deg) translate(-6px, 8px)', zIndex: 2 },
-    ],
-  };
 
   const getCardOrder = (idx) => {
     return (idx - topCardIdx + cards.length) % cards.length;
@@ -65,31 +50,43 @@ export default function HeroCardStack({
       setTopCardIdx(idx);
     } else {
       if (topCardIdx === idx) {
-        // Tapping top card advances to the next review
         setTopCardIdx((prev) => (prev + 1) % cards.length);
       } else {
-        // Tapping a peeked background card brings it to the top
         setTopCardIdx(idx);
       }
     }
   };
 
-  // Only expand on hover if device has genuine mouse hover capability
+  // Only expand downwards on genuine mouse hover
   const isExpanded = allowExpand && hasHoverSupport && isDeckHovered;
 
-  // Exact uniform compact card dimensions: sleek, lightweight & not overwhelming
-  const cardHeight = 176;
-  const cardGap = 8;
-  const verticalStep = cardHeight + cardGap; // 184px per slot
+  // Exact Figma card dimensions
+  const cardHeight = 133.33;
+  const cardGap = 12;
+  const verticalStep = cardHeight + cardGap; // 145.33px per slot
+
+  // Exact Figma angle (-10.14 deg) and resting stack translations
+  const restingTransforms = {
+    left: [
+      { transform: 'rotate(-10.14deg) translate(0px, 0px)', zIndex: 30 },
+      { transform: 'rotate(-3deg) translate(6px, -2px)', zIndex: 20 },
+      { transform: 'rotate(4deg) translate(11px, 4px)', zIndex: 10 },
+    ],
+    right: [
+      { transform: 'rotate(10.14deg) translate(0px, 0px)', zIndex: 30 },
+      { transform: 'rotate(3deg) translate(-6px, -2px)', zIndex: 20 },
+      { transform: 'rotate(-4deg) translate(-11px, 4px)', zIndex: 10 },
+    ],
+  };
 
   const getCardStyle = (idx) => {
     const isThisCardHovered = hoveredCardIdx === idx;
     const order = getCardOrder(idx);
 
-    // Resting stacked state
+    // 1. Resting stacked state (when not hovered)
     if (!isExpanded) {
       const resting = restingTransforms[side]?.[order] || {
-        transform: `rotate(${order === 1 ? '1.5deg' : '-1.5deg'}) translate(${order * 3}px, ${order * 4}px)`,
+        transform: `rotate(${order === 1 ? '3deg' : '-3deg'}) translate(${order * 4}px, ${order * 4}px)`,
         zIndex: 10 - order,
       };
 
@@ -97,29 +94,31 @@ export default function HeroCardStack({
         transform: resting.transform,
         zIndex: resting.zIndex,
         opacity: order > 2 ? 0 : 1,
+        pointerEvents: order > 2 ? 'none' : 'auto',
       };
     }
 
-    // Hovered/Expanded state: all cards move down cleanly with equal spacing and NO overlap
+    // 2. Hovered/Expanded state: all cards cascade down vertically with 0deg rotation for maximum readability
     const verticalOffset = idx * verticalStep;
 
-    // NO scale() to ensure text stays 100% sharp, crisp, and never blur!
     if (isThisCardHovered) {
       return {
-        transform: `translateY(${verticalOffset - 2}px)`,
+        transform: `translateY(${verticalOffset - 3}px) rotate(0deg)`,
         zIndex: 50,
+        opacity: 1,
       };
     }
 
     return {
-      transform: `translateY(${verticalOffset}px)`,
+      transform: `translateY(${verticalOffset}px) rotate(0deg)`,
       zIndex: 10 + idx,
+      opacity: 1,
     };
   };
 
   return (
     <div
-      className={`select-none side-${side} relative w-full pt-0.5 transition-all duration-500 ease-out ${className}`}
+      className={`select-none relative w-full pt-1 transition-all duration-400 ease-out ${className}`}
       onMouseEnter={() => {
         if (hasHoverSupport && allowExpand) setIsDeckHovered(true);
       }}
@@ -128,16 +127,20 @@ export default function HeroCardStack({
         setHoveredCardIdx(null);
       }}
     >
-      {/* Cards Canvas: expands smoothly when hovered so all cards move down cleanly */}
+      {/* Cards Canvas: expands smoothly when hovered so all cards cascade downwards */}
       <div
-        className={`relative w-full transition-all duration-500 ease-out ${
-          isExpanded ? 'h-[555px]' : 'h-[184px] sm:h-[188px]'
+        className={`relative w-full transition-all duration-400 ease-out flex justify-center ${
+          isExpanded ? 'h-[435px]' : 'h-[148px] sm:h-[154px]'
         }`}
       >
         {cards.map((card, idx) => {
           const style = getCardStyle(idx);
           const isThisCardHovered = hoveredCardIdx === idx;
           const isTop = topCardIdx === idx;
+          const order = getCardOrder(idx);
+
+          // Hide cards beyond 3 in resting stack to maintain minimal aesthetic
+          if (!isExpanded && order > 2) return null;
 
           return (
             <div
@@ -149,77 +152,84 @@ export default function HeroCardStack({
               onMouseLeave={() => {
                 if (hasHoverSupport) setHoveredCardIdx(null);
               }}
-              className={`absolute top-0 left-0 right-0 h-[176px] bg-white border rounded-[14px] xl:rounded-[16px] p-2.5 sm:p-3 text-left cursor-pointer flex flex-col justify-between transition-all duration-300 ease-out [backface-visibility:hidden] [text-rendering:optimizeLegibility] ${
+              className={`absolute top-0 cursor-pointer transition-all duration-300 ease-out will-change-transform [text-rendering:optimizeLegibility] antialiased ${
                 isThisCardHovered || (isTop && !isExpanded)
-                  ? 'border-emerald-600/80 shadow-[0_10px_24px_-4px_rgba(21,60,45,0.16)] ring-1 ring-emerald-500/20'
-                  : 'border-[#DEE7E1] shadow-[0_3px_12px_-3px_rgba(18,43,34,0.05)] hover:border-emerald-400/50'
+                  ? 'shadow-[0_12px_28px_-4px_rgba(159,170,193,0.32),0_4px_12px_-2px_rgba(159,170,193,0.18)]'
+                  : 'shadow-[0_6px_18px_-4px_rgba(159,170,193,0.18),0_2px_6px_-1px_rgba(159,170,193,0.1)]'
               }`}
-              style={style}
+              style={{
+                width: '221.33px',
+                height: '133.33px',
+                borderRadius: '16px',
+                background: '#FFFFFF',
+                border: '0.13px solid #9FAAC1',
+                borderWidth: '0.13px',
+                borderColor: '#9FAAC1',
+                borderStyle: 'solid',
+                opacity: 1,
+                boxShadow: isThisCardHovered || (isTop && !isExpanded)
+                  ? '0 12px 28px -4px rgba(159,170,193,0.35), 0 4px 10px -2px rgba(159,170,193,0.2)'
+                  : '0 6px 16px -4px rgba(159,170,193,0.2)',
+                ...style,
+              }}
             >
-              {/* Card Header: Author, Role & Verified Review Pill */}
-              <div className="flex items-center justify-between gap-1 pb-1 border-b border-[#F0F5F2]">
-                <div className="flex items-center gap-1.5 min-w-0">
-                  {/* Initials Badge */}
-                  <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#122B22] to-[#1E4D3B] text-white text-[8px] font-bold font-sans flex items-center justify-center shrink-0 border border-emerald-100 shadow-2xs">
-                    {card.initials || 'CL'}
-                  </div>
-
-                  <div className="flex flex-col min-w-0">
-                    <h4 className="text-[11.5px] xl:text-[12px] font-extrabold text-[#081810] font-sans truncate leading-tight tracking-tight">
-                      {card.author}
-                    </h4>
-                    <p className="text-[9px] xl:text-[9.5px] text-[#223B2D] font-medium font-sans truncate leading-tight mt-0.5">
-                      {card.role}
-                    </p>
-                  </div>
+              <div
+                className="w-full h-full flex flex-col justify-between text-left"
+                style={{
+                  paddingLeft: '26.67px',
+                  paddingRight: '26.67px',
+                  paddingTop: '16px',
+                  paddingBottom: '16px',
+                  gap: '2.67px',
+                }}
+              >
+                {/* Review Quote + Aesthetic Quote Mark (#9FAAC1) */}
+                <div className="flex items-start justify-between gap-1.5">
+                  <p
+                    className="leading-[1.38] text-[#556070] font-medium tracking-tight pr-0.5"
+                    style={{
+                      fontSize: '11px',
+                      fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                    }}
+                  >
+                    {card.quote}
+                  </p>
+                  <svg
+                    width="14"
+                    height="12"
+                    viewBox="0 0 14 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="shrink-0 select-none mt-0.5"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3.75 0C1.68 0 0 1.68 0 3.75C0 5.4 1.05 6.8 2.5 7.28L1.6 10.5C1.48 10.9 1.78 11.3 2.2 11.3H3.4C3.68 11.3 3.93 11.12 4.03 10.85L5.45 6.7C5.65 6.1 5.75 5.5 5.75 4.88V1.5C5.75 0.67 5.08 0 4.25 0H3.75ZM11.75 0C9.68 0 8 1.68 8 3.75C8 5.4 9.05 6.8 10.5 7.28L9.6 10.5C9.48 10.9 9.78 11.3 10.2 11.3H11.4C11.68 11.3 11.93 11.12 12.03 10.85L13.45 6.7C13.65 6.1 13.75 5.5 13.75 4.88V1.5C13.75 0.67 13.08 0 12.25 0H11.75Z"
+                      fill="#9FAAC1"
+                    />
+                  </svg>
                 </div>
 
-                <span className="inline-flex items-center gap-1 text-[8px] xl:text-[8.5px] font-bold text-[#065F20] bg-[#E8F8EE] border border-[#BDE8C8] px-1.5 py-0.5 rounded-full shrink-0 font-sans shadow-2xs">
-                  <CheckCircle2 className="w-2.5 h-2.5 text-[#14A800] shrink-0" />
-                  <span className="whitespace-nowrap">{card.verifiedLabel || 'Verified'}</span>
-                </span>
-              </div>
-
-              {/* Impact Metric Strip */}
-              <div className="my-1 py-0.5 px-2 bg-[#F4F9F6] border border-[#DFEDE4] rounded-md flex items-center justify-between">
-                <div className="flex items-center gap-1.5 min-w-0">
-                  <span className="text-[11.5px] xl:text-[12px] font-black text-[#081810] font-sans tracking-tight leading-none">
-                    {card.metric}
+                {/* Only Client Name: • Karin Gabriella */}
+                <div className="mt-auto flex items-center gap-1.5">
+                  <span className="text-[#151619] font-black text-[10px] leading-none select-none">•</span>
+                  <span
+                    className="font-bold text-[#151619] truncate"
+                    style={{
+                      fontSize: '11.5px',
+                      fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+                    }}
+                  >
+                    {card.author}
                   </span>
-                  <span className="text-[10px] xl:text-[10.5px] font-bold text-[#223B2D] font-sans tracking-tight truncate leading-none">
-                    {card.metricLabel}
-                  </span>
                 </div>
-
-                <div className="flex items-center gap-0.5 text-amber-400 shrink-0 ml-1">
-                  {[...Array(card.rating || 5)].map((_, i) => (
-                    <Star key={i} className="w-2 h-2 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-              </div>
-
-              {/* Quotation text: FULLY SHOWN with complete text, crystal-clear dark font */}
-              <div className="flex-1 flex items-center py-0.5">
-                <p className="text-[10px] xl:text-[10.5px] leading-[1.38] text-[#081810] font-medium font-sans antialiased">
-                  “{card.quote}”
-                </p>
-              </div>
-
-              {/* Bottom Tag & Deck Indicator */}
-              <div className="flex items-center justify-between pt-1 border-t border-[#EEF4F0] text-[8.5px] xl:text-[9px] text-[#223B2D] font-sans">
-                <span className="font-extrabold text-[#081810] font-sans truncate max-w-[120px] xl:max-w-[150px]">
-                  {card.tag}
-                </span>
-                <span className="text-[#0A6C25] font-bold font-sans shrink-0">
-                  {isExpanded ? 'Verified Review' : 'Hover to expand ↓'}
-                </span>
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Interactive Navigation Dots & Controls */}
+      {/* Sleek Minimal Indicators & Arrows (for touch/mobile) */}
       {showControls && (
         <div
           className={`items-center justify-between px-1 pt-2 sm:pt-2.5 ${
@@ -227,28 +237,22 @@ export default function HeroCardStack({
           }`}
         >
           <div className="flex items-center gap-1.5">
-            {cards.map((_, dotIdx) => {
-              const isActive = topCardIdx === dotIdx;
-              return (
-                <button
-                  key={dotIdx}
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setTopCardIdx(dotIdx);
-                  }}
-                  aria-label={`Show review ${dotIdx + 1} of ${cards.length}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? 'w-5 sm:w-6 bg-[#153C2D]'
-                      : 'w-1.5 bg-[#CBDDD2] hover:bg-[#9BB8A5]'
-                  }`}
-                />
-              );
-            })}
-            <span className="text-[9.5px] text-[#607469] font-medium font-sans ml-1">
-              {topCardIdx + 1}/{cards.length}
-            </span>
+            {cards.map((_, dotIdx) => (
+              <button
+                key={dotIdx}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setTopCardIdx(dotIdx);
+                }}
+                aria-label={`Go to review ${dotIdx + 1}`}
+                className={`h-1 rounded-full transition-all duration-300 cursor-pointer ${
+                  topCardIdx === dotIdx
+                    ? 'w-5 bg-[#08150E]'
+                    : 'w-1 bg-[#CBDCD1] hover:bg-[#9BB8A5]'
+                }`}
+              />
+            ))}
           </div>
 
           <div className="flex items-center gap-1">
@@ -256,17 +260,17 @@ export default function HeroCardStack({
               type="button"
               onClick={handlePrev}
               aria-label="Previous review"
-              className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white hover:bg-[#EAF3EE] border border-[#D8E6DE] text-[#122B22] flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
+              className="w-5 h-5 rounded-full bg-white hover:bg-[#EAF3EE] border border-[#D8E6DE] text-[#08150E] flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
             >
-              <ChevronLeft className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              <ChevronLeft className="w-3 h-3" />
             </button>
             <button
               type="button"
               onClick={handleNext}
               aria-label="Next review"
-              className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white hover:bg-[#EAF3EE] border border-[#D8E6DE] text-[#122B22] flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
+              className="w-5 h-5 rounded-full bg-white hover:bg-[#EAF3EE] border border-[#D8E6DE] text-[#08150E] flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
             >
-              <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              <ChevronRight className="w-3 h-3" />
             </button>
           </div>
         </div>

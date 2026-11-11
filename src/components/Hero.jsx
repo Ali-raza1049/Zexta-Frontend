@@ -110,7 +110,7 @@ export default function Hero({ onBookCall }) {
         {/* 3-Column Flanking Layout for Laptop & Desktop (Visible from 1024px lg upwards) */}
         <div className="hero-flanking-layout flex items-start justify-between gap-3 lg:gap-4 xl:gap-6 2xl:gap-8 max-w-[1400px] mx-auto">
           {/* Left 3-Cards Stack: visible on laptops (1024px+) & desktops without controls */}
-          <div className="hero-flank-column flank-left hidden lg:block w-[218px] xl:w-[235px] 2xl:w-[250px] flex-shrink-0 text-left pt-2 transition-all duration-300">
+          <div className="hero-flank-column flank-left hidden lg:block w-[226px] xl:w-[245px] 2xl:w-[260px] flex-shrink-0 text-left pt-4 transition-all duration-300">
             <HeroCardStack side="left" cards={leftTestimonialCards} showControls={false} />
           </div>
 
@@ -155,7 +155,7 @@ export default function Hero({ onBookCall }) {
           </div>
 
           {/* Right 3-Cards Stack: visible on laptops (1024px+) & desktops without controls */}
-          <div className="hero-flank-column flank-right hidden lg:block w-[218px] xl:w-[235px] 2xl:w-[250px] flex-shrink-0 text-left pt-2 transition-all duration-300">
+          <div className="hero-flank-column flank-right hidden lg:block w-[226px] xl:w-[245px] 2xl:w-[260px] flex-shrink-0 text-left pt-4 transition-all duration-300">
             <HeroCardStack side="right" cards={rightTestimonialCards} showControls={false} />
           </div>
         </div>

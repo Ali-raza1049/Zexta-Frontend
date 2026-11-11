@@ -72,25 +72,23 @@ export default function ImpactStats() {
             ))}
           </div>
 
-          {/* Integrated Book a Call Strip */}
+          {/* Verified Guarantee & Infrastructure Strip */}
           <div className="pt-6 sm:pt-8 border-t border-[#EEF4F0] flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-5 bg-[#F9FCFA] -mx-5 -mb-5 sm:-mx-8 sm:-mb-8 md:-mx-12 md:-mb-12 p-5 sm:p-6 md:p-8 rounded-b-[24px] sm:rounded-b-[32px]">
             <div className="flex items-center gap-3 sm:gap-3.5 text-center sm:text-left">
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
-                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-700" />
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-700" />
               </div>
               <div>
-                <h4 className="text-sm sm:text-base font-bold text-[#112219]">Ready to build your acquisition pipeline?</h4>
-                <p className="text-xs sm:text-sm text-[#52635A]">Book a direct 30-minute growth strategy session with Shahid Nazir.</p>
+                <h4 className="text-sm sm:text-base font-bold text-[#112219]">Engineered for 99.4% Deliverability & Predictable Pipeline</h4>
+                <p className="text-xs sm:text-sm text-[#52635A]">Dedicated infrastructure, DNS authentication protocols, and automated mailbox fleets.</p>
               </div>
             </div>
 
             <a
-              href="https://cal.com/zexta"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#services"
               className="w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 bg-[#122B22] hover:bg-[#1A4D39] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-md hover:-translate-y-0.5 transition-all cursor-pointer shrink-0"
             >
-              <span>Book a 30-Min Call ↗</span>
+              <span>Explore Capabilities ↗</span>
               <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
             </a>
           </div>
