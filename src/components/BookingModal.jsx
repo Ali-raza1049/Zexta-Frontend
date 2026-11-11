@@ -31,7 +31,7 @@ export default function BookingModal({ isOpen, onClose }) {
             Book Your 1-on-1 Strategy Call
           </h3>
           <p className="text-xs sm:text-sm text-[#55665D] leading-relaxed">
-            Reserve a dedicated 30-minute growth strategy session with Shahid Nazir on our live calendar.
+            Reserve a dedicated 30-minute growth strategy session with the Zexta team on our live calendar.
           </p>
         </div>
 
@@ -59,7 +59,7 @@ export default function BookingModal({ isOpen, onClose }) {
             </div>
             <div>
               <h4 className="font-extrabold text-[#112219] text-base leading-tight">
-                Shahid Nazir's Live Calendar
+                Zexta's Live Calendar
               </h4>
               <span className="text-xs text-emerald-700 font-semibold">
                 Available slots synced in real time
@@ -93,7 +93,7 @@ export default function BookingModal({ isOpen, onClose }) {
             className="w-full inline-flex items-center justify-center gap-2 bg-[#122B22] hover:bg-[#1A4D39] active:bg-[#0F221B] text-white py-3.5 px-6 rounded-xl font-bold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer"
           >
             <Calendar className="w-4 h-4 text-emerald-300" />
-            <span>Pick a Time on Calendar (Calendly / Cal.com)</span>
+            <span>Pick a Time on Zexta Calendar (Calendly)</span>
             <ArrowUpRight className="w-4 h-4 text-emerald-300" />
           </a>
         </div>

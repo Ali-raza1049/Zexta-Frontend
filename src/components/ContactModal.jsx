@@ -31,7 +31,7 @@ export default function ContactModal({ isOpen, onClose }) {
             Contact Zexta
           </h3>
           <p className="text-xs sm:text-sm text-[#55665D] leading-relaxed">
-            Choose your preferred channel to connect directly with Shahid Nazir and our core team:
+            Choose your preferred channel to connect directly with Zexta and our core team:
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export default function ContactModal({ isOpen, onClose }) {
                 </div>
                 <div>
                   <h4 className="font-extrabold text-[#112219] text-sm sm:text-base leading-tight">
-                    Schedule 1-on-1 Call (Calendly / Cal.com)
+                    Schedule 1-on-1 Call (Zexta Calendly)
                   </h4>
                   <span className="text-[11px] text-[#55665D]">30-Min Strategy Call • Google Meet or Zoom</span>
                 </div>
@@ -111,7 +111,7 @@ export default function ContactModal({ isOpen, onClose }) {
             </div>
 
             <p className="text-xs text-[#44564D] leading-relaxed mb-3">
-              Pick a 30-min slot on Shahid Nazir's live calendar. We'll audit your outbound pipeline & tech stack.
+              Pick a 30-min slot on Zexta's live calendar. We'll audit your outbound pipeline & tech stack.
             </p>
 
             <a
@@ -121,7 +121,7 @@ export default function ContactModal({ isOpen, onClose }) {
               className="w-full inline-flex items-center justify-center gap-2 bg-[#153C2D] hover:bg-[#1E523D] active:bg-[#0F2B1D] text-white py-2.5 sm:py-3 px-5 rounded-xl font-bold text-xs sm:text-sm shadow-sm transition-all cursor-pointer"
             >
               <Calendar className="w-4 h-4 text-emerald-300" />
-              <span>Pick a Slot on Calendar</span>
+              <span>Pick a Slot on Zexta Calendar</span>
               <ArrowUpRight className="w-4 h-4 text-emerald-300" />
             </a>
           </div>

@@ -242,7 +242,7 @@ ${formData.notes || 'Looking forward to connecting with your team.'}`;
                 className="inline-flex items-center gap-1.5 font-bold text-emerald-300 hover:text-white underline underline-offset-4 decoration-emerald-400/60 transition-colors cursor-pointer"
               >
                 <Calendar className="w-4 h-4 text-emerald-300" />
-                <span>Book 30-Min Call Directly on Cal.com</span>
+                <span>Book 30-Min Call Directly on Zexta Calendar</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-emerald-300" />
               </a>
             </div>
