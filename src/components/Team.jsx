@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
-import { LinkedInIcon, TopRatedIcon } from './Icons';
+import { CornerBadge, LinkedInIcon, TopRatedIcon } from './Icons';
 import { teamMembers } from '../data/teamMembers';
 
 export default function Team({ onBookCall }) {
@@ -11,15 +11,8 @@ export default function Team({ onBookCall }) {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-8 sm:mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 mb-2 sm:mb-2.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">
-                Core Growth Specialists
-              </span>
-              <span className="text-gray-300">•</span>
-              <span className="text-xs text-[#52635A] font-semibold">
-                Direct Specialist Access
-              </span>
+            <div className="mb-2.5">
+              <CornerBadge label="Core Growth Specialists" />
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-[#0F1E17] tracking-tight leading-tight">

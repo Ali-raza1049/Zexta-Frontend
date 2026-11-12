@@ -116,6 +116,96 @@
   animation: starTwinkle 3.2s ease-in-out infinite;
 }
 
+/* ==========================================================================
+   Balanced Architectural Frosted Glass Wall Backdrop for Hero
+   ========================================================================== */
+.hero-glass-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  background: linear-gradient(180deg, #EFF5F3 0%, #E7F3EE 45%, #F0F7F4 82%, #F6F9F7 100%);
+}
+
+.hero-glass-wall {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero-glass-pillar-left {
+  position: absolute;
+  left: -2%;
+  top: -4%;
+  width: 46%;
+  height: 90%;
+  background: radial-gradient(ellipse at 48% 38%, rgba(146, 214, 198, 0.72) 0%, rgba(180, 228, 216, 0.45) 46%, rgba(231, 243, 238, 0) 76%);
+  filter: blur(44px);
+}
+
+.hero-glass-pillar-right {
+  position: absolute;
+  right: -2%;
+  top: -4%;
+  width: 46%;
+  height: 90%;
+  background: radial-gradient(ellipse at 52% 38%, rgba(148, 215, 199, 0.72) 0%, rgba(182, 229, 217, 0.45) 46%, rgba(231, 243, 238, 0) 76%);
+  filter: blur(44px);
+}
+
+.hero-glass-center-glow {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 42%;
+  min-width: 320px;
+  max-width: 620px;
+  height: 90%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.78) 18%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.78) 82%,
+    rgba(255, 255, 255, 0.25) 100%
+  );
+  backdrop-filter: blur(22px);
+  border-left: 1px solid rgba(255, 255, 255, 0.75);
+  border-right: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.55);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 62%, rgba(0, 0, 0, 0) 96%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 62%, rgba(0, 0, 0, 0) 96%);
+}
+
+/* Subtle Architectural Fluted Glass Panels */
+.hero-glass-ribs {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.92) 60%, rgba(0, 0, 0, 0) 95%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.92) 60%, rgba(0, 0, 0, 0) 95%);
+}
+
+.hero-glass-rib {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.34) 0%,
+    rgba(255, 255, 255, 0.08) 32%,
+    rgba(160, 214, 200, 0.09) 82%,
+    rgba(15, 76, 58, 0.04) 100%
+  );
+  border-right: 1px solid rgba(15, 76, 58, 0.045);
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(14px);
+}
+
 /* Aurora Ambient Shift */
 @keyframes auroraShift {
   0%, 100% {
@@ -160,6 +250,13 @@
   display: flex;
   width: max-content;
   animation: roamMarquee 50s linear infinite;
+  will-change: transform;
+}
+
+.animate-logo-marquee {
+  display: flex;
+  width: max-content;
+  animation: roamMarquee 36s linear infinite;
   will-change: transform;
 }
 
@@ -288,60 +385,49 @@ button {
   cursor: pointer;
 }
 
-/* Precision 4-Corner Viewfinder Badge Styling */
+/* Precision 2-Corner Diagonal Bracket Badge Styling (matching Figma Our Impact) */
 .corner-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 4px 14px;
-  font-size: 13px;
-  font-weight: 700;
-  color: #123324;
+  padding: 6px 16px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #111827;
   letter-spacing: -0.01em;
   background-color: transparent;
   width: fit-content;
-  line-height: 1.2;
-}
-
-.corner-tl {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 6px;
-  border-left: 1.5px solid #10B981;
-  border-top: 1.5px solid #10B981;
+  line-height: 1.25;
 }
 
 .corner-tr {
   position: absolute;
   top: 0;
   right: 0;
-  width: 6px;
-  height: 6px;
-  border-right: 1.5px solid #10B981;
-  border-top: 1.5px solid #10B981;
+  width: 11px;
+  height: 11px;
+  border-right: 2px solid #123828;
+  border-top: 2px solid #123828;
 }
 
 .corner-bl {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 6px;
-  height: 6px;
-  border-left: 1.5px solid #10B981;
-  border-bottom: 1.5px solid #10B981;
+  width: 11px;
+  height: 11px;
+  border-left: 2px solid #123828;
+  border-bottom: 2px solid #123828;
 }
 
-.corner-br {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 6px;
-  height: 6px;
-  border-right: 1.5px solid #10B981;
-  border-bottom: 1.5px solid #10B981;
+.corner-badge-dark {
+  color: #FFFFFF;
+}
+
+.corner-badge-dark .corner-tr,
+.corner-badge-dark .corner-bl {
+  border-color: #34D399;
 }
 
 /* Buttons */

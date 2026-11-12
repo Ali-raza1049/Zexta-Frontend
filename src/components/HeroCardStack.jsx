@@ -61,21 +61,22 @@ export default function HeroCardStack({
   const isExpanded = allowExpand && hasHoverSupport && isDeckHovered;
 
   // Exact Figma card dimensions
+  const cardWidth = 221.33;
   const cardHeight = 133.33;
-  const cardGap = 12;
-  const verticalStep = cardHeight + cardGap; // 145.33px per slot
+  const cardGap = 8;
+  const verticalStep = cardHeight + cardGap; // 141.33px per slot
 
-  // Exact Figma angle (-10.14 deg) and resting stack translations
+  // Exact Figma angles (Left: 14.92 deg CCW -> -14.92deg CSS; Right: -10.14 deg CW -> 10.14deg CSS)
   const restingTransforms = {
     left: [
-      { transform: 'rotate(-10.14deg) translate(0px, 0px)', zIndex: 30 },
-      { transform: 'rotate(-3deg) translate(6px, -2px)', zIndex: 20 },
-      { transform: 'rotate(4deg) translate(11px, 4px)', zIndex: 10 },
+      { transform: 'rotate(-14.92deg) translate(0px, 0px)', zIndex: 30 },
+      { transform: 'rotate(-4deg) translate(6px, -4px)', zIndex: 20 },
+      { transform: 'rotate(5deg) translate(-6px, 4px)', zIndex: 10 },
     ],
     right: [
       { transform: 'rotate(10.14deg) translate(0px, 0px)', zIndex: 30 },
-      { transform: 'rotate(3deg) translate(-6px, -2px)', zIndex: 20 },
-      { transform: 'rotate(-4deg) translate(-11px, 4px)', zIndex: 10 },
+      { transform: 'rotate(2deg) translate(-6px, -4px)', zIndex: 20 },
+      { transform: 'rotate(-5.5deg) translate(6px, 4px)', zIndex: 10 },
     ],
   };
 
@@ -83,7 +84,7 @@ export default function HeroCardStack({
     const isThisCardHovered = hoveredCardIdx === idx;
     const order = getCardOrder(idx);
 
-    // 1. Resting stacked state (when not hovered)
+    // 1. Compact stacked deck state at rest
     if (!isExpanded) {
       const resting = restingTransforms[side]?.[order] || {
         transform: `rotate(${order === 1 ? '3deg' : '-3deg'}) translate(${order * 4}px, ${order * 4}px)`,
@@ -98,41 +99,52 @@ export default function HeroCardStack({
       };
     }
 
-    // 2. Hovered/Expanded state: all cards cascade down vertically with 0deg rotation for maximum readability
+    // 2. Hover-expanded cascade: all 3 cards glide smoothly downward while container height grows so below screens never overlap
     const verticalOffset = idx * verticalStep;
 
     if (isThisCardHovered) {
       return {
-        transform: `translateY(${verticalOffset - 3}px) rotate(0deg)`,
-        zIndex: 50,
+        transform: `translateY(${verticalOffset - 2}px) rotate(0deg) scale(1.02)`,
+        zIndex: 60,
         opacity: 1,
       };
     }
 
     return {
-      transform: `translateY(${verticalOffset}px) rotate(0deg)`,
-      zIndex: 10 + idx,
+      transform: `translateY(${verticalOffset}px) rotate(0deg) scale(1)`,
+      zIndex: 40 + idx,
       opacity: 1,
     };
   };
 
   return (
     <div
-      className={`select-none relative w-full pt-1 transition-all duration-400 ease-out ${className}`}
+      className={`group/deck select-none relative w-full pt-1 transition-all duration-300 ease-out ${
+        isExpanded ? 'z-50' : 'z-30'
+      } ${className}`}
       onMouseEnter={() => {
-        if (hasHoverSupport && allowExpand) setIsDeckHovered(true);
+        if (hasHoverSupport) setIsDeckHovered(true);
       }}
       onMouseLeave={() => {
         setIsDeckHovered(false);
         setHoveredCardIdx(null);
       }}
     >
-      {/* Cards Canvas: expands smoothly when hovered so all cards cascade downwards */}
+      {/* Cards Canvas: smoothly expands height on hover so the below screen moves out of the way and cards NEVER sit on top of it */}
       <div
-        className={`relative w-full transition-all duration-400 ease-out flex justify-center ${
-          isExpanded ? 'h-[435px]' : 'h-[148px] sm:h-[154px]'
-        }`}
+        className="relative w-full transition-[height] duration-300 ease-out flex justify-center overflow-visible"
+        style={{
+          height: isExpanded ? `${cards.length * verticalStep - cardGap}px` : '156px',
+        }}
       >
+        {isExpanded && (
+          <div
+            className="absolute inset-x-0 top-0 pointer-events-auto z-0"
+            style={{ height: `${cards.length * verticalStep}px` }}
+            aria-hidden="true"
+          />
+        )}
+
         {cards.map((card, idx) => {
           const style = getCardStyle(idx);
           const isThisCardHovered = hoveredCardIdx === idx;
@@ -152,43 +164,42 @@ export default function HeroCardStack({
               onMouseLeave={() => {
                 if (hasHoverSupport) setHoveredCardIdx(null);
               }}
-              className={`absolute top-0 cursor-pointer transition-all duration-300 ease-out will-change-transform [text-rendering:optimizeLegibility] antialiased ${
-                isThisCardHovered || (isTop && !isExpanded)
-                  ? 'shadow-[0_12px_28px_-4px_rgba(159,170,193,0.32),0_4px_12px_-2px_rgba(159,170,193,0.18)]'
-                  : 'shadow-[0_6px_18px_-4px_rgba(159,170,193,0.18),0_2px_6px_-1px_rgba(159,170,193,0.1)]'
-              }`}
+              className="absolute top-0 cursor-pointer transition-all duration-300 ease-out will-change-transform [text-rendering:optimizeLegibility] antialiased"
               style={{
-                width: '221.33px',
-                height: '133.33px',
+                width: `${cardWidth}px`,
+                height: `${cardHeight}px`,
                 borderRadius: '16px',
                 background: '#FFFFFF',
-                border: '0.13px solid #9FAAC1',
-                borderWidth: '0.13px',
-                borderColor: '#9FAAC1',
+                borderWidth: isThisCardHovered ? '0.75px' : '0.5px',
                 borderStyle: 'solid',
+                borderColor: isThisCardHovered ? 'rgba(16, 185, 129, 0.65)' : '#9FAAC1',
+                boxShadow: isThisCardHovered
+                  ? '0 16px 36px -6px rgba(15, 30, 23, 0.16), 0 4px 12px -2px rgba(16, 185, 129, 0.15)'
+                  : isExpanded
+                  ? '0 12px 28px -6px rgba(159, 170, 193, 0.34), 0 4px 10px -2px rgba(159, 170, 193, 0.2)'
+                  : isTop && !isExpanded
+                  ? '0 10px 24px -4px rgba(159, 170, 193, 0.34), 0 3px 8px -2px rgba(159, 170, 193, 0.2)'
+                  : '0 6px 18px -4px rgba(159, 170, 193, 0.26), 0 2px 6px -1px rgba(159, 170, 193, 0.15)',
                 opacity: 1,
-                boxShadow: isThisCardHovered || (isTop && !isExpanded)
-                  ? '0 12px 28px -4px rgba(159,170,193,0.35), 0 4px 10px -2px rgba(159,170,193,0.2)'
-                  : '0 6px 16px -4px rgba(159,170,193,0.2)',
                 ...style,
               }}
             >
               <div
-                className="w-full h-full flex flex-col justify-between text-left"
+                className="w-full h-full flex flex-col justify-center text-left"
                 style={{
                   paddingLeft: '26.67px',
                   paddingRight: '26.67px',
-                  paddingTop: '16px',
-                  paddingBottom: '16px',
+                  paddingTop: '12px',
+                  paddingBottom: '12px',
                   gap: '2.67px',
                 }}
               >
                 {/* Review Quote + Aesthetic Quote Mark (#9FAAC1) */}
                 <div className="flex items-start justify-between gap-1.5">
                   <p
-                    className="leading-[1.38] text-[#556070] font-medium tracking-tight pr-0.5"
+                    className="leading-[1.36] text-[#556070] font-medium tracking-tight pr-0.5"
                     style={{
-                      fontSize: '11px',
+                      fontSize: '10.5px',
                       fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
                     }}
                   >
@@ -211,12 +222,12 @@ export default function HeroCardStack({
                 </div>
 
                 {/* Only Client Name: • Karin Gabriella */}
-                <div className="mt-auto flex items-center gap-1.5">
-                  <span className="text-[#151619] font-black text-[10px] leading-none select-none">•</span>
+                <div className="flex items-center gap-1.5 mt-0.5">
+                  <span className="text-[#111827] font-black text-[10px] leading-none select-none">•</span>
                   <span
-                    className="font-bold text-[#151619] truncate"
+                    className="font-bold text-[#111827] truncate"
                     style={{
-                      fontSize: '11.5px',
+                      fontSize: '11.2px',
                       fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
                     }}
                   >
@@ -229,11 +240,17 @@ export default function HeroCardStack({
         })}
       </div>
 
-      {/* Sleek Minimal Indicators & Arrows (for touch/mobile) */}
+      {/* Sleek Minimal Indicators & Arrows */}
       {showControls && (
         <div
-          className={`items-center justify-between px-1 pt-2 sm:pt-2.5 ${
-            showControls === 'mobile-only' ? 'flex lg:hidden' : showControls === true ? 'flex' : 'hidden'
+          className={`items-center justify-between px-3 pt-2 sm:pt-2.5 transition-opacity duration-200 ${
+            showControls === 'mobile-only'
+              ? 'flex lg:hidden'
+              : showControls === 'hover-only'
+              ? 'flex opacity-0 group-hover/deck:opacity-100'
+              : showControls === true
+              ? 'flex'
+              : 'hidden'
           }`}
         >
           <div className="flex items-center gap-1.5">

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
 import ContactModal from './components/ContactModal';
+import UpworkModal from './components/UpworkModal';
 import Home from './pages/Home';
 import ServicesPage from './pages/ServicesPage';
 import TestimonialsPage from './pages/TestimonialsPage';
@@ -21,6 +22,7 @@ function ScrollToTop() {
 export default function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isUpworkOpen, setIsUpworkOpen] = useState(false);
 
   const handleOpenBooking = () => {
     setIsBookingOpen(true);
@@ -38,6 +40,14 @@ export default function App() {
     setIsContactOpen(false);
   };
 
+  const handleOpenUpwork = () => {
+    setIsUpworkOpen(true);
+  };
+
+  const handleCloseUpwork = () => {
+    setIsUpworkOpen(false);
+  };
+
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -48,21 +58,24 @@ export default function App() {
         {/* Route Viewport */}
         <main id="main-content" className="flex-1">
           <Routes>
-            <Route path="/" element={<Home onBookCall={handleOpenBooking} onOpenContact={handleOpenContact} />} />
-            <Route path="/services" element={<ServicesPage onBookCall={handleOpenBooking} onOpenContact={handleOpenContact} />} />
-            <Route path="/testimonials" element={<TestimonialsPage onBookCall={handleOpenBooking} onOpenContact={handleOpenContact} />} />
+            <Route path="/" element={<Home onBookCall={handleOpenBooking} onOpenContact={handleOpenContact} onOpenUpwork={handleOpenUpwork} />} />
+            <Route path="/services" element={<ServicesPage onBookCall={handleOpenBooking} onOpenContact={handleOpenContact} onOpenUpwork={handleOpenUpwork} />} />
+            <Route path="/testimonials" element={<TestimonialsPage onBookCall={handleOpenBooking} onOpenContact={handleOpenContact} onOpenUpwork={handleOpenUpwork} />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
 
         {/* Global Footer */}
-        <Footer onBookCall={handleOpenBooking} onOpenContact={handleOpenContact} />
+        <Footer onBookCall={handleOpenBooking} onOpenContact={handleOpenContact} onOpenUpwork={handleOpenUpwork} />
 
         {/* 1. Book a Call Modal - Exclusively Calendly / Cal.com */}
         <BookingModal isOpen={isBookingOpen} onClose={handleCloseBooking} />
 
         {/* 2. Contact Modal - WhatsApp, Calendly, and Email */}
         <ContactModal isOpen={isContactOpen} onClose={handleCloseContact} />
+
+        {/* 3. Team Upwork Profiles Modal */}
+        <UpworkModal isOpen={isUpworkOpen} onClose={handleCloseUpwork} />
       </div>
     </BrowserRouter>
   );

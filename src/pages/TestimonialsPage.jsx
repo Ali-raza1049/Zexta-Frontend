@@ -6,7 +6,7 @@ import { allUpworkReviews } from '../data/upworkReviews';
 
 const reviewCards = allUpworkReviews;
 
-export default function TestimonialsPage({ onBookCall, onOpenContact }) {
+export default function TestimonialsPage({ onBookCall, onOpenContact, onOpenUpwork }) {
   const [activeFilter, setActiveFilter] = useState('all');
 
   const filteredReviews =
@@ -82,7 +82,9 @@ export default function TestimonialsPage({ onBookCall, onOpenContact }) {
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-8 sm:mb-10">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">Wall of Love</span>
+              <div className="mb-2">
+                <CornerBadge label="Wall of Love" />
+              </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F1E17] mt-1">Verified Upwork Client Reviews</h2>
             </div>
 
@@ -191,14 +193,15 @@ export default function TestimonialsPage({ onBookCall, onOpenContact }) {
               </div>
 
               <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full md:w-auto">
-                <a
-                  href="/#upwork"
+                <button
+                  type="button"
+                  onClick={onOpenUpwork}
                   className="w-full sm:w-auto text-center justify-center bg-gradient-to-r from-[#122B22] via-[#163E2D] to-[#122B22] text-white px-6 py-3 sm:py-3.5 rounded-full font-bold text-xs sm:text-sm shadow-[0_8px_24px_rgba(18,43,34,0.22)] hover:shadow-[0_12px_32px_rgba(16,185,129,0.32)] hover:-translate-y-0.5 border border-emerald-500/20 transition-all cursor-pointer inline-flex items-center gap-2"
                   style={{ borderRadius: '9999px' }}
                 >
                   <UpworkLogo className="w-4 h-4 text-emerald-400" />
                   <span>View All Specialist Profiles ↗</span>
-                </a>
+                </button>
                 <a
                   href="https://cal.com/zexta"
                   target="_blank"

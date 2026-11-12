@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, CheckCircle2, Calendar, Sparkles, Check } from 'lucide-react';
-import { WhatsAppIcon } from './Icons';
+import { ArrowUpRight, CheckCircle2, Calendar, Check } from 'lucide-react';
+import { CornerBadge, WhatsAppIcon } from './Icons';
 
 const SERVICES_LIST = [
   { id: 'meta-google-ads', name: 'Meta & Google Ads', tag: 'High ROAS' },
@@ -76,12 +76,9 @@ ${formData.notes || 'Looking forward to connecting with your team.'}`;
           <div className="absolute -bottom-32 right-1/4 w-[480px] h-[300px] bg-emerald-600/15 blur-3xl pointer-events-none rounded-full" />
 
           <div className="relative z-10 max-w-3xl mx-auto">
-            {/* Top Corner Pill Badge */}
+            {/* Top Diagonal Corner Bracket Badge */}
             <div className="flex justify-center mb-5">
-              <div className="relative inline-flex items-center gap-1.5 px-4 py-1 text-xs font-semibold tracking-wide text-emerald-300 bg-emerald-950/60 border border-emerald-500/30 rounded-full backdrop-blur-md shadow-xs">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Ready to Scale?</span>
-              </div>
+              <CornerBadge label="Ready to Scale?" variant="dark" />
             </div>
 
             <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-extrabold text-white tracking-tight leading-[1.18] mb-4">

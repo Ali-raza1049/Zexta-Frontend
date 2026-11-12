@@ -21,14 +21,52 @@ export function ZextaLogo({ className = "w-7 h-7", textClassName = "text-white",
   );
 }
 
-export function CornerBadge({ label, className = "" }) {
+export function ZextaWordmark({ className = "w-full h-auto" }) {
   return (
-    <div className={`corner-badge ${className}`}>
-      <span className="corner-tl" aria-hidden="true"></span>
+    <svg
+      viewBox="0 0 200 54"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      {/* Z */}
+      <path
+        d="M1 1H35V8L11 46H35V52H1V45L26 8H1V1Z"
+        fill="currentColor"
+      />
+      {/* e */}
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M50 12H78V35H50V46H76V52H49L43 46V19L50 12ZM50 19V29H71V19H50Z"
+        fill="currentColor"
+      />
+      {/* x */}
+      <path d="M85 12H94L126 52H117L85 12Z" fill="currentColor" />
+      <path d="M116 12H125L93 52H84L116 12Z" fill="currentColor" />
+      {/* t */}
+      <path
+        d="M139 2H141V13H158V21H141V46H158V52H140L133 45V6L139 2Z"
+        fill="currentColor"
+      />
+      {/* a */}
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M165 12H193L199 18V52H170L164 46V29H192V19H165V12ZM171 35V46H192V35H171Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function CornerBadge({ label, className = "", variant = "light" }) {
+  return (
+    <div className={`corner-badge ${variant === "dark" ? "corner-badge-dark" : ""} ${className}`}>
       <span className="corner-tr" aria-hidden="true"></span>
       <span className="corner-badge-text">{label}</span>
       <span className="corner-bl" aria-hidden="true"></span>
-      <span className="corner-br" aria-hidden="true"></span>
     </div>
   );
 }
@@ -286,6 +324,48 @@ export function WhatsAppIcon({ className = "w-4 h-4" }) {
     </svg>
   );
 }
+
+const PARTNER_LOGOS = [
+  { id: 'clay', Component: ClayLogo },
+  { id: 'highlevel', Component: HighLevelLogo },
+  { id: 'meta', Component: MetaLogo },
+  { id: 'instantly', Component: InstantlyLogo },
+  { id: 'klaviyo', Component: KlaviyoLogo },
+];
+
+const DUPLICATED_PARTNER_LOGOS = [...PARTNER_LOGOS, ...PARTNER_LOGOS, ...PARTNER_LOGOS];
+
+export function PartnerLogosMarquee({ className = '' }) {
+  return (
+    <div
+      className={`roam-marquee-container relative w-full max-w-[780px] mx-auto overflow-hidden py-1 ${className}`}
+      style={{
+        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 22%, black 78%, transparent 100%)',
+        maskImage: 'linear-gradient(to right, transparent 0%, black 22%, black 78%, transparent 100%)',
+      }}
+    >
+      <div className="flex w-max select-none">
+        {[0, 1].map((trackIdx) => (
+          <div
+            key={`logo-track-${trackIdx}`}
+            className="flex shrink-0 items-center gap-10 sm:gap-12 pr-10 sm:pr-12 animate-logo-marquee"
+            aria-hidden={trackIdx === 1}
+          >
+            {DUPLICATED_PARTNER_LOGOS.map(({ id, Component }, idx) => (
+              <div
+                key={`logo-track${trackIdx}-${id}-${idx}`}
+                className="trust-logo-item grayscale contrast-75 opacity-60 hover:opacity-95 hover:grayscale-0 transition-all duration-300 flex items-center shrink-0"
+              >
+                <Component className="h-5 sm:h-6 w-auto text-[#4B5563]" />
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 
 
 

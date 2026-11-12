@@ -2,27 +2,108 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { CornerBadge, UpworkLogo } from './Icons';
 import { Star, CheckCircle2, ArrowUpRight, MessageSquareQuote, Clock } from 'lucide-react';
-import { allUpworkReviews } from '../data/upworkReviews';
+import { allUpworkReviews, upworkLeftReviews } from '../data/upworkReviews';
+import avatarKarin from '../assets/avatar_karin.jpg';
 
-// Curated 6 flagship verified client reviews representing our core capabilities
-const featuredHomeReviews = [
-  // 1. Cold Email & Deliverability (Louis Gudema)
-  allUpworkReviews.find((r) => r.id === 'upwork-louis') || allUpworkReviews[0],
-  // 2. Email Automation & Webhooks (Arlenny Abreu)
-  allUpworkReviews.find((r) => r.id === 'upwork-arlenny-1') || allUpworkReviews[1],
-  // 3. Meta Ads Scaling (Leisha Ryan)
-  allUpworkReviews.find((r) => r.id === 'upwork-leisha-all') || allUpworkReviews.find((r) => r.id === 'upwork-leisha') || allUpworkReviews[2],
-  // 4. GTM & Conversion Tracking (Hafiz M. Abdullah)
-  allUpworkReviews.find((r) => r.id === 'upwork-hafiz') || allUpworkReviews[3],
-  // 5. Paid Acquisition Strategy (Henry Schein)
-  allUpworkReviews.find((r) => r.id === 'upwork-henry') || allUpworkReviews[4],
-  // 6. Lead Generation & Scraping (Javier Mejia)
-  allUpworkReviews.find((r) => r.id === 'upwork-javier') || allUpworkReviews[5],
-].filter(Boolean);
+// Pull verified reviews from the shared dataset while preserving clean single-source copy
+const findReview = (id, fallbackIndex = 0) =>
+  allUpworkReviews.find((r) => r.id === id) ||
+  upworkLeftReviews.find((r) => r.id === id) ||
+  allUpworkReviews[fallbackIndex];
 
-export default function Testimonials() {
+const formatQuote = (quote = '') => `“${quote.replace(/^["'“”]|["'“”]$/g, '')}”`;
+
+const FEATURED_STORY = {
+  ...findReview('upwork-leisha-all', 16),
+  statValue: '+180%',
+  statLabel: 'Increase in engagement & reach',
+};
+
+const TOP_RIGHT_REVIEW = {
+  ...findReview('upwork-karin', 0),
+  statValue: '3.8X',
+  statLabel: 'Increase in pipeline growth',
+  avatar: avatarKarin,
+};
+
+const DARK_HIGHLIGHT_REVIEW = findReview('upwork-louis', 3);
+const LIGHT_HIGHLIGHT_REVIEW = findReview('upwork-henry', 17);
+
+function QuoteMark({ className = 'text-[#143F30]' }) {
   return (
-    <section id="testimonials" className="py-20 sm:py-24 relative overflow-hidden bg-gradient-to-b from-[#FAFDFB] via-[#F4F8F5] to-white">
+    <svg
+      width="20"
+      height="16"
+      viewBox="0 0 20 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`shrink-0 select-none ${className}`}
+      aria-hidden="true"
+    >
+      <path
+        d="M5.35 0C2.4 0 0 2.4 0 5.35C0 7.71 1.5 9.71 3.57 10.4L2.28 15C2.11 15.57 2.54 16 3.14 16H4.85C5.25 16 5.61 15.74 5.75 15.35L7.78 9.57C8.07 8.71 8.21 7.85 8.21 6.97V2.14C8.21 0.95 7.25 0 6.07 0H5.35ZM16.78 0C13.82 0 11.42 2.4 11.42 5.35C11.42 7.71 12.92 9.71 15 10.4L13.71 15C13.54 15.57 13.97 16 14.57 16H16.28C16.68 16 17.04 15.74 17.18 15.35L19.21 9.57C19.5 8.71 19.64 7.85 19.64 6.97V2.14C19.64 0.95 18.68 0 17.5 0H16.78Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function ReviewerFooter({ review, dark = false, showCornerDot = false }) {
+  return (
+    <div className="flex items-center justify-between gap-3 pt-6 mt-auto">
+      <div className="flex items-center gap-3 min-w-0">
+        {review.avatar ? (
+          <img
+            src={review.avatar}
+            alt={review.author}
+            className="w-9 h-9 rounded-full object-cover shrink-0 border border-[#DCE6DF]"
+          />
+        ) : (
+          <div
+            className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-extrabold shrink-0 ${
+              dark
+                ? 'bg-white/15 text-white border border-white/20'
+                : 'bg-[#E9F3ED] text-[#143F30] border border-[#CFE2D7]'
+            }`}
+          >
+            {review.initials}
+          </div>
+        )}
+
+        <div className="min-w-0">
+          <p
+            className={`text-xs sm:text-[13px] font-bold truncate leading-tight ${
+              dark ? 'text-white' : 'text-[#111827]'
+            }`}
+          >
+            {review.author}
+          </p>
+          <p
+            className={`text-[11px] truncate mt-0.5 ${
+              dark ? 'text-emerald-100/75' : 'text-[#64748B]'
+            }`}
+          >
+            {review.role}
+          </p>
+        </div>
+      </div>
+
+      {showCornerDot && (
+        <span
+          className="w-4 h-4 rounded-full bg-[#E5E7EB] shrink-0"
+          aria-hidden="true"
+        />
+      )}
+    </div>
+  );
+}
+
+export default function Testimonials({ onOpenUpwork }) {
+  return (
+    <section
+      id="testimonials"
+      className="py-20 sm:py-24 relative overflow-hidden bg-gradient-to-b from-[#FAFDFB] via-[#F4F8F5] to-white"
+    >
       {/* Background ambient decorative mint glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] bg-gradient-to-r from-emerald-100/40 via-teal-100/25 to-transparent blur-3xl pointer-events-none rounded-full" />
 
@@ -74,73 +155,89 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* 6 Curated Flagship Reviews in Aesthetic Cards (Only Review & Client Name) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-10">
-          {featuredHomeReviews.map((review) => (
-            <div
-              key={review.id}
-              className="bg-white rounded-2xl p-6 sm:p-7 transition-all duration-300 flex flex-col justify-between text-left hover:-translate-y-1.5 hover:shadow-[0_16px_36px_-6px_rgba(159,170,193,0.35)] shadow-[0_6px_20px_-4px_rgba(159,170,193,0.18)] cursor-default group"
-              style={{
-                borderRadius: '16px',
-                border: '0.13px solid #9FAAC1',
-                borderWidth: '0.13px',
-                borderColor: '#9FAAC1',
-                borderStyle: 'solid',
-                background: '#FFFFFF',
-              }}
-            >
-              {/* Review Quote + Aesthetic Quote Mark (#9FAAC1) */}
-              <div className="flex items-start justify-between gap-3 mb-6">
-                <p
-                  className="leading-[1.6] text-[#556070] font-medium tracking-tight pr-1"
-                  style={{
-                    fontSize: '13.5px',
-                    fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-                  }}
-                >
-                  {review.quote.replace(/^["']|["']$/g, '')}
+        {/* Asymmetric 4-Card Bento Testimonial Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 mb-10 items-stretch text-left">
+          {/* Left Tall Feature Card */}
+          <div className="bg-white rounded-[24px] p-6 sm:p-8 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div className="text-4xl sm:text-5xl font-extrabold text-[#111827] tracking-tight leading-none">
+                {FEATURED_STORY.statValue}
+              </div>
+              <p className="text-base sm:text-lg font-medium text-[#1F2937] mt-2.5 mb-5">
+                {FEATURED_STORY.statLabel}
+              </p>
+
+              <QuoteMark className="text-[#143F30] mb-3.5" />
+
+              <p className="text-sm sm:text-[15px] leading-[1.68] text-[#556070] font-normal">
+                {formatQuote(FEATURED_STORY.quote)}
+              </p>
+            </div>
+
+            <ReviewerFooter review={FEATURED_STORY} showCornerDot />
+          </div>
+
+          {/* Right Stacked Column: 1 Wide Top Card + 2 Split Bottom Cards */}
+          <div className="flex flex-col gap-4 sm:gap-5">
+            {/* Top-Right Wide Metric Card */}
+            <div className="bg-white rounded-[24px] p-6 sm:p-7 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="flex flex-wrap items-baseline gap-2.5 mb-4">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-[#111827] tracking-tight leading-none">
+                    {TOP_RIGHT_REVIEW.statValue}
+                  </span>
+                  <span className="text-sm sm:text-base font-medium text-[#1F2937]">
+                    {TOP_RIGHT_REVIEW.statLabel}
+                  </span>
+                </div>
+
+                <QuoteMark className="text-[#143F30] mb-3" />
+
+                <p className="text-sm leading-[1.65] text-[#556070]">
+                  {formatQuote(TOP_RIGHT_REVIEW.quote)}
                 </p>
-                <svg
-                  width="16"
-                  height="14"
-                  viewBox="0 0 14 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="shrink-0 select-none mt-1 group-hover:scale-110 transition-transform"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M3.75 0C1.68 0 0 1.68 0 3.75C0 5.4 1.05 6.8 2.5 7.28L1.6 10.5C1.48 10.9 1.78 11.3 2.2 11.3H3.4C3.68 11.3 3.93 11.12 4.03 10.85L5.45 6.7C5.65 6.1 5.75 5.5 5.75 4.88V1.5C5.75 0.67 5.08 0 4.25 0H3.75ZM11.75 0C9.68 0 8 1.68 8 3.75C8 5.4 9.05 6.8 10.5 7.28L9.6 10.5C9.48 10.9 9.78 11.3 10.2 11.3H11.4C11.68 11.3 11.93 11.12 12.03 10.85L13.45 6.7C13.65 6.1 13.75 5.5 13.75 4.88V1.5C13.75 0.67 13.08 0 12.25 0H11.75Z"
-                    fill="#9FAAC1"
-                  />
-                </svg>
               </div>
 
-              {/* Only Client Name: • {review.author} */}
-              <div className="mt-auto flex items-center gap-2">
-                <span className="text-[#151619] font-black text-xs leading-none select-none">•</span>
-                <span
-                  className="font-bold text-[#151619] tracking-tight"
-                  style={{
-                    fontSize: '13px',
-                    fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-                  }}
-                >
-                  {review.author}
-                </span>
+              <ReviewerFooter review={TOP_RIGHT_REVIEW} showCornerDot />
+            </div>
+
+            {/* Bottom-Right 2-Card Split */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 flex-1">
+              {/* Dark Forest Green Highlight Card */}
+              <div className="bg-[#143F30] text-white rounded-[24px] p-6 border border-[#1E5441] shadow-[0_10px_28px_-6px_rgba(17,45,35,0.3)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <QuoteMark className="text-white mb-3.5" />
+                  <p className="text-[13.5px] sm:text-sm leading-[1.65] text-white/95">
+                    {formatQuote(DARK_HIGHLIGHT_REVIEW.quote)}
+                  </p>
+                </div>
+
+                <ReviewerFooter review={DARK_HIGHLIGHT_REVIEW} dark />
+              </div>
+
+              {/* Clean White Highlight Card */}
+              <div className="bg-white rounded-[24px] p-6 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <QuoteMark className="text-[#143F30] mb-3.5" />
+                  <p className="text-[13.5px] sm:text-sm leading-[1.65] text-[#556070]">
+                    {formatQuote(LIGHT_HIGHLIGHT_REVIEW.quote)}
+                  </p>
+                </div>
+
+                <ReviewerFooter review={LIGHT_HIGHLIGHT_REVIEW} />
               </div>
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* Link to Dedicated Testimonials Page (which shows ALL reviews) */}
+        {/* View All Testimonials Page CTA */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           <Link
             to="/testimonials"
             className="inline-flex items-center gap-2 bg-[#122B22] hover:bg-[#1A4535] text-white px-7 py-3 rounded-full text-xs sm:text-sm font-bold shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer border border-emerald-500/20 group"
           >
             <MessageSquareQuote className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
-            <span>View All Reviews on Wall of Love ({allUpworkReviews.length}+)</span>
+            <span>View All Testimonials ({allUpworkReviews.length}+)</span>
             <ArrowUpRight className="w-4 h-4 text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
@@ -167,13 +264,14 @@ export default function Testimonials() {
             <span className="text-xs text-[#6F8278]">Based on {allUpworkReviews.length}+ verified reviews</span>
           </div>
 
-          <a
-            href="#upwork"
+          <button
+            type="button"
+            onClick={onOpenUpwork}
             className="inline-flex items-center gap-1.5 border border-[#122B22] bg-[#122B22] text-white hover:bg-[#1A4535] px-5 py-2 rounded-full text-xs font-bold transition-all shadow-xs hover:shadow-sm cursor-pointer"
           >
             <span>View All Upwork Profiles</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-emerald-400" />
-          </a>
+          </button>
         </div>
       </div>
     </section>

@@ -48,7 +48,7 @@ export const teamMembers = [
       'Lead Validation & Verification',
     ],
     linkedinUrl: 'https://www.linkedin.com/in/muhammad-zain-asghar-51483541a/',
-    upworkUrl: null,
+    upworkUrl: 'https://www.upwork.com/freelancers/~01ce6f889a2594dac9?companyReference=2024968013173862131&mp_source=share',
     calendlyUrl: 'https://cal.com/zexta',
   },
   {
@@ -114,7 +114,7 @@ export const teamMembers = [
       'Database & Backend Architecture',
     ],
     linkedinUrl: 'https://www.linkedin.com',
-    upworkUrl: null,
+    upworkUrl: 'https://www.upwork.com/freelancers/~01e001a6bc7d4dc1f9',
     calendlyUrl: 'https://cal.com/zexta',
   },
 ];

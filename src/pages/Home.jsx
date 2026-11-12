@@ -7,9 +7,11 @@ import Portfolio from '../components/Portfolio';
 import Testimonials from '../components/Testimonials';
 import Team from '../components/Team';
 import Process from '../components/Process';
+import FAQ from '../components/FAQ';
+import BookCallSection from '../components/BookCallSection';
 import CTASection from '../components/CTASection';
 
-export default function Home({ onBookCall, onOpenContact }) {
+export default function Home({ onBookCall, onOpenContact, onOpenUpwork }) {
   return (
     <main id="main-content">
       {/* 1. Hero Section with Aura Glow, Playing Cards & Live Reel */}
@@ -19,7 +21,7 @@ export default function Home({ onBookCall, onOpenContact }) {
       <ImpactStats />
 
       {/* 3. Upwork Profiles / Work with us on Upwork */}
-      <UpworkSection onBookCall={onBookCall} />
+      <UpworkSection onOpenUpwork={onOpenUpwork} />
 
       {/* 4. Capabilities Bento Grid (MERN, PERN, AI, Cold Email, Ads) */}
       <Services />
@@ -28,7 +30,7 @@ export default function Home({ onBookCall, onOpenContact }) {
       <Portfolio />
 
       {/* 6. Results & Testimonials Section */}
-      <Testimonials />
+      <Testimonials onOpenUpwork={onOpenUpwork} />
 
       {/* 7. Dedicated Core Specialists & Leadership Team */}
       <Team onBookCall={onBookCall} />
@@ -36,7 +38,13 @@ export default function Home({ onBookCall, onOpenContact }) {
       {/* 8. Proven 5-Step Outreach Process Timeline */}
       <Process />
 
-      {/* 9. Ready to Scale CTA Banner */}
+      {/* 9. Frequently Asked Questions */}
+      <FAQ onOpenContact={onOpenContact} />
+
+      {/* 10. Book a 15-Min Call Conversion Banner */}
+      <BookCallSection onBookCall={onBookCall} />
+
+      {/* 11. Ready to Scale CTA Banner */}
       <CTASection onBookCall={onBookCall} />
     </main>
   );

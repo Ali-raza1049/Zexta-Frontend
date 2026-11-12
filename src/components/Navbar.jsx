@@ -24,12 +24,12 @@ export default function Navbar({ onBookCall, onOpenContact }) {
     <header className="fixed top-4 sm:top-5 left-0 right-0 z-50 flex justify-center pointer-events-none px-3 sm:px-4">
       <nav
         style={{ backgroundColor: '#122B22' }}
-        className={`pointer-events-auto border border-white/15 rounded-full py-1.5 sm:py-2 pl-4 sm:pl-5 pr-2 sm:pr-2.5 flex items-center justify-between gap-3 sm:gap-8 shadow-[0_12px_36px_-4px_rgba(10,28,21,0.35),0_4px_12px_rgba(0,0,0,0.15)] backdrop-blur-xl transition-all duration-300 ${
+        className={`pointer-events-auto border border-white/15 rounded-full py-1.5 sm:py-2 pl-4 sm:pl-5 pr-2 sm:pr-2.5 flex items-center justify-between gap-3 md:gap-4 lg:gap-7 shadow-[0_12px_36px_-4px_rgba(10,28,21,0.35),0_4px_12px_rgba(0,0,0,0.15)] backdrop-blur-xl transition-all duration-300 max-w-full ${
           scrolled ? '-translate-y-0.5 shadow-[0_18px_45px_-4px_rgba(10,28,21,0.45)] border-emerald-400/40' : ''
         }`}
       >
         {/* Brand matching Footer Logotype */}
-        <Link to="/" className="flex items-center group">
+        <Link to="/" className="flex items-center group shrink-0">
           <img
             src={zextaFullLogo}
             alt="Zexta"
@@ -38,7 +38,7 @@ export default function Navbar({ onBookCall, onOpenContact }) {
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-7">
+        <div className="hidden md:flex items-center md:gap-4 lg:gap-6 xl:gap-7">
           <Link
             to="/"
             className={`text-sm font-semibold transition-colors duration-200 ${
@@ -93,11 +93,11 @@ export default function Navbar({ onBookCall, onOpenContact }) {
         </div>
 
         {/* CTA Button */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           <button
             type="button"
             onClick={onBookCall}
-            className="group bg-white hover:bg-[#E8F7EE] text-[#122B22] px-4 py-2 rounded-full font-bold text-[13.5px] inline-flex items-center gap-1 shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 cursor-pointer"
+            className="group bg-white hover:bg-[#E8F7EE] text-[#122B22] px-3.5 sm:px-4 py-2 rounded-full font-bold text-[12.5px] sm:text-[13.5px] inline-flex items-center gap-1 shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 cursor-pointer whitespace-nowrap"
           >
             <span>Book a Call</span>
             <ChevronRight className="w-4 h-4 text-emerald-800 group-hover:translate-x-0.5 transition-transform" />
@@ -119,7 +119,7 @@ export default function Navbar({ onBookCall, onOpenContact }) {
       {mobileMenuOpen && (
         <div
           style={{ backgroundColor: '#122B22' }}
-          className="fixed top-20 left-5 right-5 border border-white/15 rounded-2xl p-6 flex flex-col gap-4 pointer-events-auto shadow-2xl md:hidden z-50 text-white"
+          className="fixed top-20 left-4 right-4 max-h-[calc(100vh-6rem)] overflow-y-auto border border-white/15 rounded-2xl p-5 sm:p-6 flex flex-col gap-3.5 pointer-events-auto shadow-2xl md:hidden z-50 text-white"
         >
           <div className="flex items-center justify-between pb-3 border-b border-white/10">
             <img

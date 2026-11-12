@@ -1,165 +1,96 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CornerBadge } from './Icons';
-import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
 
-const steps = [
+const PROCESS_STEPS = [
   {
     number: '01',
     title: 'Discovery & Audit',
     desc: 'We learn your offer, your ideal customer, and your goals, then plan the right channels and targeting.',
-    deliverables: [
-      'ICP & buyer persona workshop',
-      'Competitor outreach teardown',
-      'Channel viability scoring (Email vs LinkedIn vs Paid)',
-    ],
   },
   {
     number: '02',
     title: 'List Building and Research',
     desc: 'We build and verify a targeted lead list so every message reaches a real decision maker.',
-    deliverables: [
-      'Multi-source scraping (Apollo, Clay, Sales Navigator)',
-      'Waterfall email deliverability verification (0% bounce rate guarantee)',
-      'Custom intent triggers & funding signals',
-    ],
   },
   {
     number: '03',
     title: 'Setup and Infrastructure',
     desc: 'We configure domains, mailboxes, warmup, ad accounts, and automations so everything runs smoothly.',
-    deliverables: [
-      'Secondary domain registration & inbox provisioning',
-      'SPF, DKIM, DMARC, and custom tracking domains configured',
-      '21-day algorithmic warmup & reputation scoring',
-    ],
   },
   {
     number: '04',
     title: 'Launch and Outreach',
     desc: 'We write the copy, launch the campaigns, and start booking conversations with your prospects.',
-    deliverables: [
-      'High-converting copy with A/B variant testing',
-      'Staggered campaign launches & spam word checks',
-      'Direct CRM sync and instant lead notifications',
-    ],
   },
   {
     number: '05',
     title: 'Report and Optimize',
     desc: 'We track opens, replies, and meetings every week and keep improving what works.',
-    deliverables: [
-      'Weekly performance dashboards & Loom walkthroughs',
-      'Continuous subject line & offer angle iteration',
-      'Bi-weekly strategy syncs to scale winning segments',
-    ],
   },
 ];
 
 export default function Process() {
-  const [activeStep, setActiveStep] = useState(0);
-
   return (
-    <section id="process" className="py-20 relative">
+    <section id="process" className="py-20 sm:py-24 relative bg-[#F6F9F7]">
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Sticky Header */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28">
-            <div className="space-y-4">
-              <CornerBadge label="Our Process" />
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#112219] tracking-tight leading-tight">
-                A proven and simple
-                <br />
-                outreach process.
-              </h2>
-              <p className="text-base text-[#55665D] leading-relaxed">
-                See how we take you from zero to a working lead generation system.
-              </p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          {/* Left Sticky Header Column */}
+          <div className="lg:col-span-5 lg:sticky lg:top-28 text-left">
+            <CornerBadge label="Our Process" />
 
-              {/* Progress Indicator Card */}
-              <div className="mt-8 bg-white border border-[#E1EAE4] rounded-2xl p-5 shadow-xs">
-                <div className="flex items-center justify-between text-sm font-semibold mb-3">
-                  <span className="text-[#112219]">Implementation Cycle</span>
-                  <span className="text-emerald-700 font-bold">14 Days to Launch</span>
-                </div>
-                <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-300 rounded-full"
-                    style={{ width: `${((activeStep + 1) / steps.length) * 100}%` }}
-                  ></div>
-                </div>
-                <p className="text-xs text-gray-500 mt-2.5">
-                  Currently viewing Step {steps[activeStep].number}: {steps[activeStep].title}
-                </p>
-              </div>
-            </div>
+            <h2 className="text-[28px] xs:text-[32px] sm:text-[38px] lg:text-[42px] font-medium text-[#111827] tracking-[-0.025em] leading-[1.16] mt-4 mb-3.5">
+              A proven and simple
+              <br />
+              outreach process.
+            </h2>
+
+            <p className="text-[14px] sm:text-[15px] text-[#5F6D66] leading-[1.6] max-w-[300px] font-normal">
+              See how we take you from zero to a working lead generation system.
+            </p>
           </div>
 
-          {/* Right Column: Timeline */}
+          {/* Right Open-Rail Timeline Column */}
           <div className="lg:col-span-7">
-            <div className="relative pl-6 sm:pl-8 space-y-6">
-              {/* Continuous vertical green line */}
-              <div className="absolute left-2.5 sm:left-3.5 top-3 bottom-3 w-0.5 bg-[#CBDAD1]"></div>
-
-              {steps.map((step, idx) => {
-                const isActive = activeStep === idx;
+            <div className="flex flex-col">
+              {PROCESS_STEPS.map((step, idx) => {
+                const isLast = idx === PROCESS_STEPS.length - 1;
                 return (
                   <div
                     key={step.number}
-                    className="relative group cursor-pointer transition-all duration-200"
-                    onClick={() => setActiveStep(idx)}
+                    className="group flex gap-5 sm:gap-8 items-stretch text-left"
                   >
-                    {/* Number Node with Circle */}
-                    <div className="absolute -left-6 sm:-left-8 top-1.5">
-                      <div
-                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all ${
-                          isActive
-                            ? 'bg-[#153C2D] border-[#153C2D] text-white shadow-md shadow-[#153C2D]/20 scale-105'
-                            : 'bg-white border-[#CBDAD1] text-[#71857A] group-hover:border-[#153C2D]'
-                        }`}
-                      >
+                    {/* Step Number Badge + Segmented Dark-Green Vertical Line */}
+                    <div className="flex flex-col items-center shrink-0 w-8 sm:w-9">
+                      <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border border-[#EAEFEA] shadow-[0_1px_4px_rgba(17,24,39,0.06)] group-hover:border-[#123828] transition-colors duration-200 flex items-center justify-center text-[11px] sm:text-xs font-medium text-[#111827] tabular-nums select-none">
                         {step.number}
-                      </div>
+                      </span>
+                      <span
+                        className={`w-[1.5px] flex-1 bg-[#123828] mt-2 ${
+                          isLast ? 'mb-0 min-h-[96px]' : 'mb-2 min-h-[108px] sm:min-h-[120px]'
+                        }`}
+                        aria-hidden="true"
+                      />
                     </div>
 
-                    {/* Step Content Box */}
+                    {/* Open Framed Step Content aligned alongside the connector line */}
                     <div
-                      className={`rounded-2xl p-6 transition-all duration-300 border ${
-                        isActive
-                          ? 'bg-white border-[#153C2D] shadow-[0_8px_30px_-6px_rgba(18,43,34,0.08)]'
-                          : 'bg-white border-[#E1EAE4] hover:border-[#CBDAD1] shadow-xs'
+                      className={`flex-1 pt-7 sm:pt-11 ${
+                        isLast ? 'pb-4 sm:pb-6' : 'pb-6 sm:pb-9'
                       }`}
                     >
-                      <div className="flex items-center justify-between gap-4 mb-2">
-                        <h3 className="text-lg font-bold text-[#112219]">{step.title}</h3>
-                        <div
-                          className={`w-7 h-7 rounded-full flex items-center justify-center transition-all ${
-                            isActive
-                              ? 'bg-[#153C2D] text-white rotate-45'
-                              : 'bg-gray-100 text-gray-500 group-hover:bg-gray-200'
-                          }`}
-                        >
-                          <ArrowUpRight className="w-4 h-4" />
-                        </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <h3 className="text-[18px] sm:text-[21px] font-medium text-[#111827] tracking-[-0.02em] leading-[1.3]">
+                          {step.title}
+                        </h3>
+                        <span
+                          className="w-2.5 h-2.5 border-t-[1.5px] border-r-[1.5px] border-[#123828] mt-1 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                          aria-hidden="true"
+                        />
                       </div>
 
-                      <p className="text-sm text-[#55665D] leading-relaxed">{step.desc}</p>
-
-                      {/* Expandable Deliverables on active */}
-                      {isActive && (
-                        <div className="mt-4 pt-4 border-t border-[#EEF4F0] animate-fadeIn">
-                          <div className="text-xs font-bold uppercase tracking-wider text-[#153C2D] mb-2.5">
-                            Key Deliverables:
-                          </div>
-                          <ul className="space-y-2">
-                            {step.deliverables.map((del, dIdx) => (
-                              <li key={dIdx} className="flex items-center gap-2 text-xs sm:text-sm text-[#34483E]">
-                                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                                <span>{del}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
+                      <p className="text-[13.5px] sm:text-[14px] text-[#5F6D66] leading-[1.6] mt-2.5 max-w-[420px] font-normal">
+                        {step.desc}
+                      </p>
                     </div>
                   </div>
                 );

@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { ArrowRight, ArrowUpRight, Star } from 'lucide-react';
-import { ClayLogo, HighLevelLogo, MetaLogo, InstantlyLogo, KlaviyoLogo } from './Icons';
+import { PartnerLogosMarquee } from './Icons';
 import HeroCardStack from './HeroCardStack';
 import { upworkLeftReviews, upworkRightReviews } from '../data/upworkReviews';
+
+import avatarKarin from '../assets/avatar_karin.jpg';
+import avatarAslam from '../assets/team/muhammad_aslam.jpg';
+import avatarAli from '../assets/team/ali_raza.jpg';
 
 import frameFlowgrid from '../assets/frame_flowgrid.png';
 import frameFlowline from '../assets/frame_flowline.png';
@@ -86,45 +90,52 @@ export default function Hero({ onBookCall }) {
   const [mobileActiveTab, setMobileActiveTab] = useState('left');
 
   return (
-    <section id="hero" className="hero-section relative overflow-hidden pt-28 sm:pt-32 pb-14 sm:pb-16">
-      {/* Background vertical mint aura glow columns with gentle organic breathing */}
-      <div className="hero-glow-bg pointer-events-none absolute inset-x-0 top-0 flex justify-center gap-24 sm:gap-44 h-[640px] z-0">
-        <div className="glow-strip glow-strip-1 w-32 sm:w-44 h-full bg-gradient-to-b from-emerald-200/35 via-emerald-100/10 to-transparent blur-3xl animate-pulse-slow"></div>
-        <div className="glow-strip glow-strip-2 w-48 sm:w-72 h-full bg-gradient-to-b from-emerald-300/40 via-emerald-100/15 to-transparent blur-3xl animate-pulse-slow [animation-delay:1.5s]"></div>
-        <div className="glow-strip glow-strip-3 w-32 sm:w-44 h-full bg-gradient-to-b from-emerald-200/35 via-emerald-100/10 to-transparent blur-3xl animate-pulse-slow [animation-delay:3s]"></div>
+    <section id="hero" className="hero-section relative overflow-hidden pt-24 sm:pt-28 pb-14 sm:pb-16">
+      {/* Background Architectural Frosted Glass Wall Backdrop */}
+      <div className="hero-glass-backdrop">
+        <div className="hero-glass-wall">
+          {/* Mint glass pillars behind the left and right cards */}
+          <div className="hero-glass-pillar-left"></div>
+          <div className="hero-glass-pillar-right"></div>
+          {/* Luminous frosted glass glow behind center text */}
+          <div className="hero-glass-center-glow"></div>
+          {/* Frosted vertical glass panel ribs */}
+          <div className="hero-glass-ribs">
+            {[...Array(9)].map((_, i) => (
+              <div key={i} className="hero-glass-rib"></div>
+            ))}
+          </div>
+        </div>
       </div>
 
-      <div className="container hero-container relative z-10 mx-auto px-3 sm:px-6 text-center max-w-[1400px]">
-        {/* Top pill badge with subtle float */}
-        <div className="hero-badge-wrapper flex justify-center mb-5 sm:mb-6">
+      <div className="hero-container w-full relative z-10 mx-auto px-3 sm:px-6 text-center max-w-[1260px]">
+        {/* Top pill badge matching Figma */}
+        <div className="hero-badge-wrapper flex justify-center mb-5 sm:mb-6 relative z-20">
           <a
             href="#testimonials"
-            className="hero-pill-badge inline-flex items-center gap-2 sm:gap-2.5 bg-white border border-[#DFE8E2] px-3.5 sm:px-4 py-1.5 rounded-full text-[12px] sm:text-[13px] font-medium text-[#17382B] shadow-sm hover:border-[#BDCEC4] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+            className="hero-pill-badge group inline-flex items-center gap-2 bg-white/95 border border-[#DFE8E2] px-4 py-1.5 rounded-full text-[12px] sm:text-[13px] font-medium text-[#111827] shadow-[0_2px_10px_rgba(15,30,23,0.05)] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
           >
-            <span className="pulse-dot"></span>
-            <span>Top Rated by 100+ clients worldwide</span>
-            <ArrowRight className="w-3.5 h-3.5 text-gray-500 group-hover:translate-x-0.5 transition-transform" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#123324]"></span>
+            <span>5.0 rated by 100+ clients worldwide</span>
+            <ArrowRight className="w-3.5 h-3.5 text-[#111827] group-hover:translate-x-0.5 transition-transform" />
           </a>
         </div>
 
-        {/* 3-Column Flanking Layout for Laptop & Desktop (Visible from 1024px lg upwards) */}
-        <div className="hero-flanking-layout flex items-start justify-between gap-3 lg:gap-4 xl:gap-6 2xl:gap-8 max-w-[1400px] mx-auto">
-          {/* Left 3-Cards Stack: visible on laptops (1024px+) & desktops without controls */}
-          <div className="hero-flank-column flank-left hidden lg:block w-[226px] xl:w-[245px] 2xl:w-[260px] flex-shrink-0 text-left pt-4 transition-all duration-300">
-            <HeroCardStack side="left" cards={leftTestimonialCards} showControls={false} />
+        {/* Balanced Centered 3-Column Flanking Layout (keeps cards framed snugly beside hero copy) */}
+        <div className="hero-flanking-layout relative z-30 flex items-start justify-center gap-4 lg:gap-6 xl:gap-10 max-w-[1180px] mx-auto">
+          {/* Left 3-Cards Stack: tilts cleanly at rest, cascades all 3 cards downward cleanly on hover */}
+          <div className="hero-flank-column flank-left relative z-30 hover:z-50 hidden lg:block w-[232px] xl:w-[244px] flex-shrink-0 text-left pt-4 xl:pt-6 transition-all duration-300">
+            <HeroCardStack side="left" cards={leftTestimonialCards} allowExpand={true} showControls={false} />
           </div>
 
           {/* Center Main Header Content */}
-          <div className="hero-header-content flex-1 max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto px-1 sm:px-4">
-            <h1 className="hero-title text-3xl sm:text-4xl lg:text-[38px] xl:text-[46px] 2xl:text-[52px] font-extrabold text-[#0F1E17] tracking-tight leading-[1.14] mb-4 sm:mb-5">
-              Predictable Leads and Growth
-              <br className="hidden sm:inline" />{' '}
-              <span className="bg-gradient-to-r from-[#0F1E17] via-[#153C2D] to-[#10B981] bg-clip-text text-transparent">
-                For Ambitious B2B Businesses
-              </span>
+          <div className="hero-header-content relative z-20 flex-1 min-w-0 max-w-[660px] mx-auto px-1 sm:px-3">
+            <h1 className="hero-title text-[23px] xs:text-[26px] sm:text-[34px] md:text-[38px] lg:text-[27px] xl:text-[38px] 2xl:text-[44px] font-bold text-[#0F1E17] tracking-[-0.02em] leading-[1.2] mb-4 sm:mb-5">
+              <span className="block sm:whitespace-nowrap">Predictable Leads and Growth</span>
+              <span className="block sm:whitespace-nowrap mt-1 sm:mt-1.5">For Ambitious B2B Businesses</span>
             </h1>
 
-            <p className="hero-subtitle text-[14px] sm:text-[15.5px] xl:text-[16px] text-[#495D53] max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+            <p className="hero-subtitle text-[14px] sm:text-[15px] xl:text-[15.5px] text-[#475569] max-w-[540px] mx-auto mb-6 sm:mb-7 leading-[1.6]">
               We build cold outreach systems, targeted lead lists, and paid ad campaigns that fill your calendar with qualified sales calls every month.
             </p>
 
@@ -132,31 +143,56 @@ export default function Hero({ onBookCall }) {
             <div className="hero-cta-wrapper flex justify-center mb-5 sm:mb-6">
               <button
                 type="button"
-                className="btn-primary hero-main-btn group inline-flex items-center gap-2 sm:gap-2.5 bg-gradient-to-r from-[#122B22] via-[#163E2D] to-[#122B22] text-white px-6 sm:px-9 py-3 sm:py-4 rounded-full font-bold text-[14px] sm:text-[15.5px] shadow-[0_8px_24px_rgba(18,43,34,0.22)] hover:shadow-[0_12px_32px_rgba(16,185,129,0.32)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer border border-emerald-500/20"
+                className="hero-main-btn group inline-flex items-center gap-2.5 bg-[#133827] hover:bg-[#1A4D36] text-white pl-6 pr-2.5 sm:pr-3 py-2.5 sm:py-3 rounded-full font-semibold text-[14px] sm:text-[15px] shadow-[0_10px_24px_-4px_rgba(19,56,39,0.34)] hover:shadow-[0_14px_30px_-4px_rgba(19,56,39,0.45)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
                 style={{ borderRadius: '9999px' }}
                 onClick={onBookCall}
               >
                 <span>Book a Free Strategy Call</span>
-                <ArrowUpRight className="w-4 h-4 text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/15 group-hover:bg-white/25 flex items-center justify-center transition-colors">
+                  <ArrowUpRight className="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </span>
               </button>
             </div>
 
-            {/* Social Proof Rating */}
-            <div className="hero-social-proof inline-flex items-center gap-2 sm:gap-2.5 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-gray-200/80 shadow-xs hover:shadow-sm transition-shadow">
-              <div className="stars-row flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                ))}
+            {/* Social Proof Rating (z-10 -> z-40 left to right so +2K sits cleanly in front) */}
+            <div className="hero-social-proof flex items-center justify-center gap-3">
+              <div className="flex items-center">
+                <img
+                  src={avatarKarin}
+                  alt="Client"
+                  className="relative z-10 w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover shadow-2xs"
+                />
+                <img
+                  src={avatarAslam}
+                  alt="Client"
+                  className="relative z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover -ml-2.5 shadow-2xs"
+                />
+                <img
+                  src={avatarAli}
+                  alt="Client"
+                  className="relative z-30 w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover -ml-2.5 shadow-2xs"
+                />
+                <div className="relative z-40 w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white bg-white text-[#111827] font-bold text-[10px] sm:text-[11px] flex items-center justify-center -ml-2.5 shadow-xs">
+                  +2K
+                </div>
               </div>
-              <span className="review-count-text text-xs sm:text-[12.5px] font-semibold text-[#2C3E34]">
-                Rated 5.0 from 100+ clients worldwide
-              </span>
+
+              <div className="flex flex-col items-start text-left">
+                <div className="flex items-center gap-0.5 text-[#111827]">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-[#111827] text-[#111827]" />
+                  ))}
+                </div>
+                <span className="text-[11px] sm:text-[11.5px] text-[#556070] font-medium leading-tight mt-0.5">
+                  From 1.5K reviews
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Right 3-Cards Stack: visible on laptops (1024px+) & desktops without controls */}
-          <div className="hero-flank-column flank-right hidden lg:block w-[226px] xl:w-[245px] 2xl:w-[260px] flex-shrink-0 text-left pt-4 transition-all duration-300">
-            <HeroCardStack side="right" cards={rightTestimonialCards} showControls={false} />
+          {/* Right 3-Cards Stack: tilts cleanly at rest, cascades all 3 cards downward cleanly on hover */}
+          <div className="hero-flank-column flank-right relative z-30 hover:z-50 hidden lg:block w-[232px] xl:w-[244px] flex-shrink-0 text-left pt-4 xl:pt-6 transition-all duration-300">
+            <HeroCardStack side="right" cards={rightTestimonialCards} allowExpand={true} showControls={false} />
           </div>
         </div>
 
@@ -193,6 +229,7 @@ export default function Hero({ onBookCall }) {
             <HeroCardStack
               side={mobileActiveTab}
               cards={mobileActiveTab === 'left' ? leftTestimonialCards : rightTestimonialCards}
+              allowExpand={false}
             />
           </div>
 
@@ -203,20 +240,20 @@ export default function Hero({ onBookCall }) {
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                 <span>Cold Email & Warmup</span>
               </div>
-              <HeroCardStack side="left" cards={leftTestimonialCards} />
+              <HeroCardStack side="left" cards={leftTestimonialCards} allowExpand={false} />
             </div>
             <div>
               <div className="text-xs font-bold text-[#153C2D] mb-2 px-1 flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                 <span>Paid Ads & Tracking</span>
               </div>
-              <HeroCardStack side="right" cards={rightTestimonialCards} />
+              <HeroCardStack side="right" cards={rightTestimonialCards} allowExpand={false} />
             </div>
           </div>
         </div>
 
         {/* Continuous Roaming Screen Frames Showcase */}
-        <div className="hero-showcase-section mt-12 sm:mt-16 relative">
+        <div className="hero-showcase-section mt-14 sm:mt-16 relative z-10">
           {/* Full-width continuous roaming screen frames marquee with zero horizontal scroll overflow */}
           <div className="roam-marquee-container relative w-screen max-w-[100vw] left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden py-4">
             {/* Left & Right gradient vignettes for edge fades */}
@@ -253,28 +290,12 @@ export default function Hero({ onBookCall }) {
           </div>
         </div>
 
-        {/* Partner Logos Bar ("Powered by the tools that top teams trust") */}
-        <div className="hero-trust-bar mt-12 sm:mt-14 pt-8 sm:pt-10 border-t border-[#E5EBE7]">
-          <p className="trust-bar-heading text-[11px] sm:text-xs font-semibold text-[#72827A] uppercase tracking-widest mb-5 sm:mb-6">
+        {/* Partner Logos Bar ("Powered by the tools that top teams trust") - Centered Half-Screen Monochrome Marquee */}
+        <div className="hero-trust-bar mt-10 sm:mt-14 pt-6 sm:pt-8">
+          <p className="trust-bar-heading text-xs sm:text-[13px] font-medium text-[#6B7280] mb-6 sm:mb-7">
             Powered by the tools that top teams trust
           </p>
-          <div className="trust-logos-row flex items-center justify-center gap-6 sm:gap-10 md:gap-14 flex-wrap px-2">
-            <div className="trust-logo-item opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-105 flex items-center">
-              <ClayLogo className="h-5 sm:h-7 w-auto text-gray-700" />
-            </div>
-            <div className="trust-logo-item opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-105 flex items-center">
-              <HighLevelLogo className="h-5 sm:h-7 w-auto text-gray-700" />
-            </div>
-            <div className="trust-logo-item opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-105 flex items-center">
-              <MetaLogo className="h-5 sm:h-7 w-auto text-gray-700" />
-            </div>
-            <div className="trust-logo-item opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-105 flex items-center">
-              <InstantlyLogo className="h-5 sm:h-7 w-auto text-gray-700" />
-            </div>
-            <div className="trust-logo-item opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-105 flex items-center">
-              <KlaviyoLogo className="h-5 sm:h-7 w-auto text-gray-700" />
-            </div>
-          </div>
+          <PartnerLogosMarquee />
         </div>
       </div>
     </section>
