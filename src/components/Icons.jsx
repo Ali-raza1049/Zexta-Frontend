@@ -143,7 +143,7 @@ export function HighLevelIcon({ className = "w-5 h-5" }) {
 
 export function MetaLogo({ className = "h-6 w-auto" }) {
   return (
-    <svg className={className} viewBox="0 0 512 104" preserveAspectRatio="xMidYMid" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} viewBox="0 -34 512 172" preserveAspectRatio="xMidYMid" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient x1="13.88%" y1="55.93%" x2="89.14%" y2="58.69%" id="metaGradOfficial1">
           <stop stopColor="#0064E1" offset="0%" />

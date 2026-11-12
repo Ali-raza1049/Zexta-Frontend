@@ -15,6 +15,8 @@ const formatQuote = (quote = '') => `“${quote.replace(/^["'“”]|["'“”]$
 
 const FEATURED_STORY = {
   ...findReview('upwork-arlenny-1', 2),
+  quote:
+    "Javed did an excellent job working on ConectaFleet's email automation infrastructure using Resend. He demonstrated strong technical knowledge in email automation, marketing automation, API integrations, webhooks, and event-driven workflows.\n\nWhat I appreciated most was his willingness to understand the bigger picture of the platform instead of simply completing individual tasks. He approached the project with ConectaFleet's future growth and automation needs in mind.",
   statValue: '100%',
   statLabel: 'Scalable email automation infrastructure',
 };
@@ -155,10 +157,10 @@ export default function Testimonials({ onOpenUpwork }) {
           </div>
         </div>
 
-        {/* Asymmetric 4-Card Bento Testimonial Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 mb-10 items-start text-left">
-          {/* Left Tall Feature Card */}
-          <div className="bg-white rounded-[24px] p-6 sm:p-8 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] transition-all duration-300 flex flex-col">
+        {/* Balanced 4-Card Bento Testimonial Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 mb-10 items-stretch text-left">
+          {/* Left Feature Card */}
+          <div className="bg-white rounded-[24px] p-6 sm:p-8 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] transition-all duration-300 flex flex-col justify-between h-full">
             <div>
               <div className="text-4xl sm:text-5xl font-extrabold text-[#111827] tracking-tight leading-none">
                 {FEATURED_STORY.statValue}
@@ -187,9 +189,9 @@ export default function Testimonials({ onOpenUpwork }) {
           </div>
 
           {/* Right Stacked Column: 1 Wide Top Card + 2 Split Bottom Cards */}
-          <div className="flex flex-col gap-4 sm:gap-5">
+          <div className="flex flex-col gap-4 sm:gap-5 h-full">
             {/* Top-Right Wide Metric Card */}
-            <div className="bg-white rounded-[24px] p-6 sm:p-7 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] transition-all duration-300 flex flex-col">
+            <div className="bg-white rounded-[24px] p-6 sm:p-7 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] transition-all duration-300 flex flex-col justify-between shrink-0">
               <div>
                 <div className="flex flex-wrap items-baseline gap-2.5 mb-4">
                   <span className="text-2xl sm:text-3xl font-extrabold text-[#111827] tracking-tight leading-none">
@@ -211,9 +213,9 @@ export default function Testimonials({ onOpenUpwork }) {
             </div>
 
             {/* Bottom-Right 2-Card Split */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 items-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 items-stretch flex-1">
               {/* Dark Forest Green Highlight Card */}
-              <div className="bg-[#143F30] text-white rounded-[24px] p-6 border border-[#1E5441] shadow-[0_10px_28px_-6px_rgba(17,45,35,0.3)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col">
+              <div className="bg-[#143F30] text-white rounded-[24px] p-6 border border-[#1E5441] shadow-[0_10px_28px_-6px_rgba(17,45,35,0.3)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between h-full">
                 <div>
                   <QuoteMark className="text-white mb-3.5" />
                   <p className="text-[13.5px] sm:text-sm leading-[1.65] text-white/95">
@@ -225,7 +227,7 @@ export default function Testimonials({ onOpenUpwork }) {
               </div>
 
               {/* Clean White Highlight Card */}
-              <div className="bg-white rounded-[24px] p-6 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col">
+              <div className="bg-white rounded-[24px] p-6 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between h-full">
                 <div>
                   <QuoteMark className="text-[#143F30] mb-3.5" />
                   <p className="text-[13.5px] sm:text-sm leading-[1.65] text-[#556070]">

@@ -93,7 +93,7 @@ export default function BookingModal({ isOpen, onClose }) {
             className="w-full inline-flex items-center justify-center gap-2 bg-[#122B22] hover:bg-[#1A4D39] active:bg-[#0F221B] text-white py-3.5 px-6 rounded-xl font-bold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer"
           >
             <Calendar className="w-4 h-4 text-emerald-300" />
-            <span>Pick a Time on Zexta Calendar (Calendly)</span>
+            <span>Pick a Time on Zexta Calendar</span>
             <ArrowUpRight className="w-4 h-4 text-emerald-300" />
           </a>
         </div>

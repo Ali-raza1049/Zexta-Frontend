@@ -151,7 +151,7 @@ export default function Hero({ onBookCall }) {
               </button>
             </div>
 
-            {/* Social Proof Rating (z-10 -> z-40 left to right so +2K sits cleanly in front) */}
+            {/* Social Proof Rating (z-10 -> z-40 left to right so +1K sits cleanly in front) */}
             <div className="hero-social-proof flex items-center justify-center gap-3">
               <div className="flex items-center">
                 <img
@@ -170,7 +170,7 @@ export default function Hero({ onBookCall }) {
                   className="relative z-30 w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover -ml-2.5 shadow-2xs"
                 />
                 <div className="relative z-40 w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white bg-white text-[#111827] font-bold text-[10px] sm:text-[11px] flex items-center justify-center -ml-2.5 shadow-xs">
-                  +2K
+                  +1K
                 </div>
               </div>
 
