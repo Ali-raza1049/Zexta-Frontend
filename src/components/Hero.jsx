@@ -4,15 +4,16 @@ import { PartnerLogosMarquee } from './Icons';
 import HeroCardStack from './HeroCardStack';
 import { upworkLeftReviews, upworkRightReviews } from '../data/upworkReviews';
 
-import avatarKarin from '../assets/avatar_karin.jpg';
-import avatarAslam from '../assets/team/muhammad_aslam.jpg';
-import avatarAli from '../assets/team/ali_raza.jpg';
+import avatarClient1 from '../assets/avatar_client_1.jpg';
+import avatarClient2 from '../assets/avatar_client_2.jpg';
+import avatarClient3 from '../assets/avatar_client_3.jpg';
 
 import frameFlowgrid from '../assets/frame_flowgrid.png';
 import frameFlowline from '../assets/frame_flowline.png';
 import frameWeihu from '../assets/frame_weihu.png';
 import frameBoltshift from '../assets/frame_boltshift.png';
 import frameHelixon from '../assets/frame_helixon.png';
+import heroGlassBg from '../assets/hero_glass_bg.png';
 
 const leftTestimonialCards = upworkLeftReviews;
 const rightTestimonialCards = upworkRightReviews;
@@ -91,21 +92,17 @@ export default function Hero({ onBookCall }) {
 
   return (
     <section id="hero" className="hero-section relative overflow-hidden pt-24 sm:pt-28 pb-14 sm:pb-16">
-      {/* Background Architectural Frosted Glass Wall Backdrop */}
-      <div className="hero-glass-backdrop">
-        <div className="hero-glass-wall">
-          {/* Mint glass pillars behind the left and right cards */}
-          <div className="hero-glass-pillar-left"></div>
-          <div className="hero-glass-pillar-right"></div>
-          {/* Luminous frosted glass glow behind center text */}
-          <div className="hero-glass-center-glow"></div>
-          {/* Frosted vertical glass panel ribs */}
-          <div className="hero-glass-ribs">
-            {[...Array(9)].map((_, i) => (
-              <div key={i} className="hero-glass-rib"></div>
-            ))}
-          </div>
-        </div>
+      {/* Background Fluted Glass Backdrop */}
+      <div className="hero-glass-backdrop" aria-hidden="true">
+        <img
+          src={heroGlassBg}
+          alt=""
+          className="w-full h-[580px] sm:h-[680px] lg:h-[760px] object-cover object-top select-none"
+          style={{
+            WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)',
+            maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)',
+          }}
+        />
       </div>
 
       <div className="hero-container w-full relative z-10 mx-auto px-3 sm:px-6 text-center max-w-[1260px]">
@@ -158,17 +155,17 @@ export default function Hero({ onBookCall }) {
             <div className="hero-social-proof flex items-center justify-center gap-3">
               <div className="flex items-center">
                 <img
-                  src={avatarKarin}
+                  src={avatarClient1}
                   alt="Client"
                   className="relative z-10 w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover shadow-2xs"
                 />
                 <img
-                  src={avatarAslam}
+                  src={avatarClient2}
                   alt="Client"
                   className="relative z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover -ml-2.5 shadow-2xs"
                 />
                 <img
-                  src={avatarAli}
+                  src={avatarClient3}
                   alt="Client"
                   className="relative z-30 w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover -ml-2.5 shadow-2xs"
                 />

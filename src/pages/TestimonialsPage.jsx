@@ -8,6 +8,11 @@ const reviewCards = allUpworkReviews;
 
 export default function TestimonialsPage({ onBookCall, onOpenContact, onOpenUpwork }) {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [expandedId, setExpandedId] = useState(null);
+
+  const toggleExpand = (id) => {
+    setExpandedId((prev) => (prev === id ? null : id));
+  };
 
   const filteredReviews =
     activeFilter === 'all'
@@ -114,62 +119,95 @@ export default function TestimonialsPage({ onBookCall, onOpenContact, onOpenUpwo
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {filteredReviews.map((rev, idx) => (
-              <div
-                key={rev.id || idx}
-                className="bg-white rounded-2xl p-6 sm:p-7 transition-all duration-300 flex flex-col justify-between text-left hover:-translate-y-1.5 hover:shadow-[0_16px_36px_-6px_rgba(159,170,193,0.35)] shadow-[0_6px_20px_-4px_rgba(159,170,193,0.18)] cursor-default group"
-                style={{
-                  borderRadius: '16px',
-                  border: '0.13px solid #9FAAC1',
-                  borderWidth: '0.13px',
-                  borderColor: '#9FAAC1',
-                  borderStyle: 'solid',
-                  background: '#FFFFFF',
-                }}
-              >
-                {/* Review Quote + Aesthetic Quote Mark (#9FAAC1) */}
-                <div className="flex items-start justify-between gap-3 mb-6">
-                  <p
-                    className="leading-[1.6] text-[#556070] font-medium tracking-tight pr-1"
-                    style={{
-                      fontSize: '13.5px',
-                      fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-                    }}
-                  >
-                    {rev.quote.replace(/^["'“”]|["'“”]$/g, '')}
-                  </p>
-                  <svg
-                    width="16"
-                    height="14"
-                    viewBox="0 0 14 12"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="shrink-0 select-none mt-1 group-hover:scale-110 transition-transform"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M3.75 0C1.68 0 0 1.68 0 3.75C0 5.4 1.05 6.8 2.5 7.28L1.6 10.5C1.48 10.9 1.78 11.3 2.2 11.3H3.4C3.68 11.3 3.93 11.12 4.03 10.85L5.45 6.7C5.65 6.1 5.75 5.5 5.75 4.88V1.5C5.75 0.67 5.08 0 4.25 0H3.75ZM11.75 0C9.68 0 8 1.68 8 3.75C8 5.4 9.05 6.8 10.5 7.28L9.6 10.5C9.48 10.9 9.78 11.3 10.2 11.3H11.4C11.68 11.3 11.93 11.12 12.03 10.85L13.45 6.7C13.65 6.1 13.75 5.5 13.75 4.88V1.5C13.75 0.67 13.08 0 12.25 0H11.75Z"
-                      fill="#9FAAC1"
-                    />
-                  </svg>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
+            {filteredReviews.map((rev, idx) => {
+              const cardKey = rev.id || String(idx);
+              const cleanQuote = rev.quote.replace(/^["'“”]|["'“”]$/g, '');
+              const isLong = cleanQuote.length > 175;
+              const isExpanded = expandedId === cardKey;
 
-                {/* Only Client Name: • {rev.author} */}
-                <div className="mt-auto flex items-center gap-2">
-                  <span className="text-[#151619] font-black text-xs leading-none select-none">•</span>
-                  <span
-                    className="font-bold text-[#151619] tracking-tight"
-                    style={{
-                      fontSize: '13px',
-                      fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-                    }}
-                  >
-                    {rev.author}
-                  </span>
-                </div>
-              </div>
-            ))}
+              return (
+                <article
+                  key={cardKey}
+                  className={`bg-white rounded-[22px] p-6 border border-[#DCE6DF] hover:border-emerald-500/40 shadow-[0_4px_20px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_30px_-8px_rgba(17,34,25,0.1)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between text-left group ${
+                    isExpanded ? 'h-auto' : 'h-full min-h-[245px]'
+                  }`}
+                >
+                  <div>
+                    {/* Top Meta Row: Stars + Category Pill + Signature Quote Mark */}
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <div className="flex items-center gap-0.5 text-amber-400 shrink-0" aria-label="5 out of 5 stars">
+                          {[...Array(rev.rating || 5)].map((_, sIdx) => (
+                            <Star key={sIdx} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                          ))}
+                        </div>
+                        {(rev.categoryLabel || rev.tag) && (
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-[#F2F7F4] border border-[#DCE8E1] text-[10.5px] font-semibold text-[#143F30] truncate">
+                            {rev.categoryLabel || rev.tag}
+                          </span>
+                        )}
+                      </div>
+
+                      <svg
+                        width="18"
+                        height="14"
+                        viewBox="0 0 20 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="shrink-0 select-none text-[#143F30]/80 group-hover:text-[#143F30] transition-colors"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M5.35 0C2.4 0 0 2.4 0 5.35C0 7.71 1.5 9.71 3.57 10.4L2.28 15C2.11 15.57 2.54 16 3.14 16H4.85C5.25 16 5.61 15.74 5.75 15.35L7.78 9.57C8.07 8.71 8.21 7.85 8.21 6.97V2.14C8.21 0.95 7.25 0 6.07 0H5.35ZM16.78 0C13.82 0 11.42 2.4 11.42 5.35C11.42 7.71 12.92 9.71 15 10.4L13.71 15C13.54 15.57 13.97 16 14.57 16H16.28C16.68 16 17.04 15.74 17.18 15.35L19.21 9.57C19.5 8.71 19.64 7.85 19.64 6.97V2.14C19.64 0.95 18.68 0 17.5 0H16.78Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+
+                    {/* Review Quote clamped to uniform height unless expanded */}
+                    <p
+                      className={`text-[13.5px] sm:text-[14px] leading-[1.6] text-[#475569] font-normal whitespace-pre-line ${
+                        isExpanded ? '' : 'line-clamp-4'
+                      }`}
+                    >
+                      “{cleanQuote}”
+                    </p>
+
+                    {isLong && (
+                      <button
+                        type="button"
+                        onClick={() => toggleExpand(cardKey)}
+                        className="mt-2 text-xs font-semibold text-[#143F30] hover:text-emerald-700 underline underline-offset-2 cursor-pointer"
+                      >
+                        {isExpanded ? 'Show less' : 'Read full review'}
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Clean Author Footer */}
+                  <div className="flex items-center justify-between gap-3 pt-4 mt-5 border-t border-[#EFF4F1]">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="w-8 h-8 rounded-full bg-[#E9F3ED] border border-[#CFE2D7] text-[#143F30] flex items-center justify-center text-[11px] font-extrabold shrink-0">
+                        {rev.initials}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[13px] font-bold text-[#111827] truncate leading-tight">
+                          {rev.author}
+                        </p>
+                        {rev.role && (
+                          <p className="text-[11px] text-[#64748B] truncate mt-0.5">
+                            {rev.role}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    <UpworkLogo className="w-3.5 h-3.5 opacity-75 shrink-0" />
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -181,7 +219,7 @@ export default function TestimonialsPage({ onBookCall, onOpenContact, onOpenUpwo
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
               <div className="max-w-xl text-left">
                 <div className="inline-flex items-center gap-2 bg-[#F0FDF4] text-[#14A800] px-3.5 py-1 rounded-full text-xs font-bold mb-3 sm:mb-4 shadow-xs">
-                  <UpworkLogo className="w-4 h-4 text-[#14A800]" />
+                  <UpworkLogo className="w-4 h-4" />
                   <span>Top Rated Agency on Upwork</span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2 sm:mb-3">
@@ -199,7 +237,7 @@ export default function TestimonialsPage({ onBookCall, onOpenContact, onOpenUpwo
                   className="w-full sm:w-auto text-center justify-center bg-gradient-to-r from-[#122B22] via-[#163E2D] to-[#122B22] text-white px-6 py-3 sm:py-3.5 rounded-full font-bold text-xs sm:text-sm shadow-[0_8px_24px_rgba(18,43,34,0.22)] hover:shadow-[0_12px_32px_rgba(16,185,129,0.32)] hover:-translate-y-0.5 border border-emerald-500/20 transition-all cursor-pointer inline-flex items-center gap-2"
                   style={{ borderRadius: '9999px' }}
                 >
-                  <UpworkLogo className="w-4 h-4 text-emerald-400" />
+                  <UpworkLogo className="w-4 h-4 brightness-0 invert" />
                   <span>View All Specialist Profiles ↗</span>
                 </button>
                 <a

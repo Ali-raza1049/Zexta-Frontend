@@ -14,9 +14,9 @@ const findReview = (id, fallbackIndex = 0) =>
 const formatQuote = (quote = '') => `“${quote.replace(/^["'“”]|["'“”]$/g, '')}”`;
 
 const FEATURED_STORY = {
-  ...findReview('upwork-leisha-all', 16),
-  statValue: '+180%',
-  statLabel: 'Increase in engagement & reach',
+  ...findReview('upwork-arlenny-1', 2),
+  statValue: '100%',
+  statLabel: 'Scalable email automation infrastructure',
 };
 
 const TOP_RIGHT_REVIEW = {
@@ -27,7 +27,7 @@ const TOP_RIGHT_REVIEW = {
 };
 
 const DARK_HIGHLIGHT_REVIEW = findReview('upwork-louis', 3);
-const LIGHT_HIGHLIGHT_REVIEW = findReview('upwork-henry', 17);
+const LIGHT_HIGHLIGHT_REVIEW = findReview('upwork-arshia-1', 20);
 
 function QuoteMark({ className = 'text-[#143F30]' }) {
   return (
@@ -50,7 +50,7 @@ function QuoteMark({ className = 'text-[#143F30]' }) {
 
 function ReviewerFooter({ review, dark = false, showCornerDot = false }) {
   return (
-    <div className="flex items-center justify-between gap-3 pt-6 mt-auto">
+    <div className="flex items-center justify-between gap-3 pt-5">
       <div className="flex items-center gap-3 min-w-0">
         {review.avatar ? (
           <img
@@ -156,9 +156,9 @@ export default function Testimonials({ onOpenUpwork }) {
         </div>
 
         {/* Asymmetric 4-Card Bento Testimonial Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 mb-10 items-stretch text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 mb-10 items-start text-left">
           {/* Left Tall Feature Card */}
-          <div className="bg-white rounded-[24px] p-6 sm:p-8 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] transition-all duration-300 flex flex-col justify-between">
+          <div className="bg-white rounded-[24px] p-6 sm:p-8 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] transition-all duration-300 flex flex-col">
             <div>
               <div className="text-4xl sm:text-5xl font-extrabold text-[#111827] tracking-tight leading-none">
                 {FEATURED_STORY.statValue}
@@ -169,9 +169,18 @@ export default function Testimonials({ onOpenUpwork }) {
 
               <QuoteMark className="text-[#143F30] mb-3.5" />
 
-              <p className="text-sm sm:text-[15px] leading-[1.68] text-[#556070] font-normal">
-                {formatQuote(FEATURED_STORY.quote)}
-              </p>
+              <div className="space-y-2.5 text-[13px] sm:text-[13.5px] leading-[1.6] text-[#556070] font-normal">
+                {FEATURED_STORY.quote
+                  .replace(/^["'“”]|["'“”]$/g, '')
+                  .split(/\n\n+/)
+                  .map((para, pIdx, arr) => (
+                    <p key={pIdx} className="text-[#556070]">
+                      {pIdx === 0 ? '“' : ''}
+                      {para}
+                      {pIdx === arr.length - 1 ? '”' : ''}
+                    </p>
+                  ))}
+              </div>
             </div>
 
             <ReviewerFooter review={FEATURED_STORY} showCornerDot />
@@ -180,7 +189,7 @@ export default function Testimonials({ onOpenUpwork }) {
           {/* Right Stacked Column: 1 Wide Top Card + 2 Split Bottom Cards */}
           <div className="flex flex-col gap-4 sm:gap-5">
             {/* Top-Right Wide Metric Card */}
-            <div className="bg-white rounded-[24px] p-6 sm:p-7 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] transition-all duration-300 flex flex-col justify-between">
+            <div className="bg-white rounded-[24px] p-6 sm:p-7 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] transition-all duration-300 flex flex-col">
               <div>
                 <div className="flex flex-wrap items-baseline gap-2.5 mb-4">
                   <span className="text-2xl sm:text-3xl font-extrabold text-[#111827] tracking-tight leading-none">
@@ -202,9 +211,9 @@ export default function Testimonials({ onOpenUpwork }) {
             </div>
 
             {/* Bottom-Right 2-Card Split */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 flex-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 items-start">
               {/* Dark Forest Green Highlight Card */}
-              <div className="bg-[#143F30] text-white rounded-[24px] p-6 border border-[#1E5441] shadow-[0_10px_28px_-6px_rgba(17,45,35,0.3)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between">
+              <div className="bg-[#143F30] text-white rounded-[24px] p-6 border border-[#1E5441] shadow-[0_10px_28px_-6px_rgba(17,45,35,0.3)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col">
                 <div>
                   <QuoteMark className="text-white mb-3.5" />
                   <p className="text-[13.5px] sm:text-sm leading-[1.65] text-white/95">
@@ -216,7 +225,7 @@ export default function Testimonials({ onOpenUpwork }) {
               </div>
 
               {/* Clean White Highlight Card */}
-              <div className="bg-white rounded-[24px] p-6 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between">
+              <div className="bg-white rounded-[24px] p-6 border border-[#E3ECE6] shadow-[0_6px_24px_-6px_rgba(17,34,25,0.06)] hover:shadow-[0_14px_34px_-8px_rgba(17,34,25,0.1)] hover:-translate-y-0.5 transition-all duration-300 flex flex-col">
                 <div>
                   <QuoteMark className="text-[#143F30] mb-3.5" />
                   <p className="text-[13.5px] sm:text-sm leading-[1.65] text-[#556070]">

@@ -37,8 +37,8 @@ export default function UpworkSection({ onOpenUpwork }) {
             <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
 
             <div className="flex items-center gap-4 text-center sm:text-left relative z-10">
-              <div className="w-13 h-13 rounded-2xl bg-emerald-400/15 border border-emerald-400/30 flex items-center justify-center text-emerald-300 shrink-0 shadow-inner">
-                <UpworkLogo className="w-6 h-6 text-emerald-400" />
+              <div className="w-13 h-13 rounded-2xl bg-white border border-emerald-200/60 flex items-center justify-center shrink-0 shadow-inner p-2.5">
+                <UpworkLogo className="w-6 h-6" />
               </div>
               <div>
                 <h4 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug">
@@ -55,6 +55,7 @@ export default function UpworkSection({ onOpenUpwork }) {
               onClick={onOpenUpwork}
               className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-400 to-teal-300 hover:from-teal-300 hover:to-emerald-400 text-[#0A1C15] px-6 sm:px-7 py-3.5 rounded-full font-bold text-sm shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:shadow-[0_6px_22px_rgba(16,185,129,0.45)] transition-all hover:scale-[1.03] shrink-0 cursor-pointer relative z-10"
             >
+              <UpworkLogo className="w-4 h-4" />
               <span>Hire on Upwork</span>
               <ArrowUpRight className="w-4 h-4 text-[#0A1C15]" />
             </button>

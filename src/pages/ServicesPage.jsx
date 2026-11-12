@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CornerBadge } from '../components/Icons';
+import { CornerBadge, UpworkLogo } from '../components/Icons';
 import {
   Code2,
   Cpu,
@@ -164,9 +164,10 @@ export default function ServicesPage({ onBookCall, onOpenContact }) {
                   href="https://upwork.com/freelancers/~01bdb47ba4630db792"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full xs:w-auto text-center justify-center bg-gradient-to-r from-[#122B22] via-[#163E2D] to-[#122B22] text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-[0_4px_16px_rgba(18,43,34,0.18)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.3)] hover:-translate-y-0.5 border border-emerald-500/20 transition-all cursor-pointer inline-flex items-center gap-1.5"
+                  className="w-full xs:w-auto text-center justify-center bg-gradient-to-r from-[#122B22] via-[#163E2D] to-[#122B22] text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-[0_4px_16px_rgba(18,43,34,0.18)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.3)] hover:-translate-y-0.5 border border-emerald-500/20 transition-all cursor-pointer inline-flex items-center gap-2"
                   style={{ borderRadius: '9999px' }}
                 >
+                  <UpworkLogo className="w-3.5 h-3.5 brightness-0 invert" />
                   <span>Hire on Upwork ↗</span>
                 </a>
                 <a
@@ -588,8 +589,9 @@ export default function ServicesPage({ onBookCall, onOpenContact }) {
                   href="https://upwork.com/freelancers/~01549881dcc4c8599c?mp_source=share"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full xs:w-auto justify-center bg-gradient-to-r from-[#122B22] via-[#163E2D] to-[#122B22] text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-[0_4px_16px_rgba(18,43,34,0.18)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.3)] hover:-translate-y-0.5 border border-emerald-500/20 transition-all cursor-pointer inline-flex items-center gap-1.5"
+                  className="w-full xs:w-auto justify-center bg-gradient-to-r from-[#122B22] via-[#163E2D] to-[#122B22] text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-[0_4px_16px_rgba(18,43,34,0.18)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.3)] hover:-translate-y-0.5 border border-emerald-500/20 transition-all cursor-pointer inline-flex items-center gap-2"
                 >
+                  <UpworkLogo className="w-3.5 h-3.5 brightness-0 invert" />
                   <span>Hire on Upwork ↗</span>
                 </a>
                 <a
@@ -765,8 +767,9 @@ export default function ServicesPage({ onBookCall, onOpenContact }) {
                   href="https://www.upwork.com/freelancers/raishahidnazir257"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full xs:w-auto justify-center bg-gradient-to-r from-[#122B22] via-[#163E2D] to-[#122B22] text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-[0_4px_16px_rgba(18,43,34,0.18)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.3)] hover:-translate-y-0.5 border border-emerald-500/20 transition-all cursor-pointer inline-flex items-center gap-1.5"
+                  className="w-full xs:w-auto justify-center bg-gradient-to-r from-[#122B22] via-[#163E2D] to-[#122B22] text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-[0_4px_16px_rgba(18,43,34,0.18)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.3)] hover:-translate-y-0.5 border border-emerald-500/20 transition-all cursor-pointer inline-flex items-center gap-2"
                 >
+                  <UpworkLogo className="w-3.5 h-3.5 brightness-0 invert" />
                   <span>Hire on Upwork ↗</span>
                 </a>
                 <a

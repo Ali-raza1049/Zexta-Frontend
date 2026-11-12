@@ -3,28 +3,42 @@ import { X, ArrowUpRight, CheckCircle2, ShieldCheck, Star } from 'lucide-react';
 import { TopRatedIcon, UpworkLogo } from './Icons';
 import { teamMembers } from '../data/teamMembers';
 
+const findMember = (id) => teamMembers.find((m) => m.id === id);
+
+const buildMemberProfile = (id, overrides = {}) => {
+  const member = findMember(id);
+  if (!member || !member.upworkUrl) return null;
+  return {
+    id: member.id,
+    name: member.name,
+    role: overrides.role || member.role,
+    specialty: overrides.specialty || member.specialty,
+    jss: member.jss || '100% Job Success',
+    badge: member.badge || 'Top Rated',
+    url: member.upworkUrl,
+  };
+};
+
+// Ordered sequence: Shahid Nazir -> Ali Raza -> Arshia Liaqat -> Javed Iqbal -> Muhammad Aslam -> Zain Asghar
 const TEAM_UPWORK_PROFILES = [
-  ...teamMembers
-    .filter((member) => Boolean(member.upworkUrl))
-    .map((member) => ({
-      id: member.id,
-      name: member.name,
-      role: member.role,
-      specialty: member.specialty,
-      jss: member.jss || '100% Job Success',
-      badge: member.badge || 'Top Rated',
-      url: member.upworkUrl,
-    })),
+  buildMemberProfile('shahid-nazir'),
+  buildMemberProfile('ali-raza'),
+  buildMemberProfile('arshia-liaqat', {
+    role: 'Cold Email and Influencer Outreach Expert',
+    specialty: 'Cold Email & Influencer Outreach',
+  }),
   {
-    id: 'email-automation-specialist',
-    name: 'Email Automation Specialist',
-    role: 'Workflows & Webhooks',
-    specialty: 'Email Automation & CRM Sync',
+    id: 'javed-iqbal',
+    name: 'Javed Iqbal',
+    role: 'Email Marketing and Automation Specialist',
+    specialty: 'Email Automation, Workflows & Webhooks',
     jss: '100% Job Success',
     badge: 'Top Rated',
-    url: 'https://upwork.com/freelancers/~01549881dcc4c8599c?mp_source=share',
+    url: 'https://www.upwork.com/freelancers/~01549881dcc4c8599c?mp_source=share',
   },
-];
+  buildMemberProfile('muhammad-aslam'),
+  buildMemberProfile('zain-asghar'),
+].filter(Boolean);
 
 export default function UpworkModal({ isOpen, onClose }) {
   useEffect(() => {
@@ -63,7 +77,7 @@ export default function UpworkModal({ isOpen, onClose }) {
         {/* Modal Header */}
         <div className="mb-5 pr-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8F8F0] border border-[#C6EBD7] text-[#143B2C] text-xs font-bold mb-3">
-            <UpworkLogo className="w-4 h-4 text-[#14A800]" />
+            <UpworkLogo className="w-4 h-4" />
             <span>Verified Upwork Agency Team</span>
           </div>
 
@@ -108,8 +122,8 @@ export default function UpworkModal({ isOpen, onClose }) {
                 }`}
               >
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#E8F8F0] border border-[#C6EBD7] flex items-center justify-center shrink-0">
-                    <UpworkLogo className="w-5 h-5 text-[#14A800]" />
+                  <div className="w-10 h-10 rounded-xl bg-white border border-[#DCE6E0] flex items-center justify-center shrink-0 shadow-2xs">
+                    <UpworkLogo className="w-5 h-5" />
                   </div>
 
                   <div className="min-w-0 flex-1">
@@ -140,7 +154,7 @@ export default function UpworkModal({ isOpen, onClose }) {
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center gap-2 bg-[#122B22] hover:bg-[#14A800] text-white py-2.5 px-4 rounded-full text-xs font-bold transition-all duration-200 shadow-xs cursor-pointer group/link"
                   >
-                    <UpworkLogo className="w-3.5 h-3.5 text-emerald-300 group-hover/link:text-white transition-colors" />
+                    <UpworkLogo className="w-3.5 h-3.5 brightness-0 invert" />
                     <span>View Upwork Profile</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-emerald-300 group-hover/link:text-white group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all" />
                   </a>

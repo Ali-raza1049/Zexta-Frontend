@@ -2,6 +2,7 @@ import React from 'react';
 import zextaLogoWhite from '../assets/company-logo-white.png';
 import zextaLogoDark from '../assets/company-logo-dark.png';
 import clayLogoPng from '../assets/logos/clay_logo.png';
+import upworkLogoPng from '../assets/upwork_logo.png';
 
 export function ZextaLogo({ className = "w-7 h-7", textClassName = "text-white", theme = "auto" }) {
   const isLight = theme === 'dark' || (textClassName && (textClassName.includes('112219') || textClassName.includes('black') || textClassName.includes('gray')));
@@ -242,11 +243,13 @@ export function SpotifyLogo({ className = "w-4 h-4" }) {
   );
 }
 
-export function UpworkLogo({ className = "w-5 h-5 text-[#14A800]" }) {
+export function UpworkLogo({ className = "w-5 h-5" }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c0 1.506-1.224 2.73-2.73 2.73s-2.73-1.224-2.73-2.73V3.492H0v7.112c0 3.012 2.451 5.463 5.463 5.463 3.011 0 5.462-2.451 5.462-5.463v-.895c.52 1.346 1.242 2.775 2.146 3.992l-1.808 8.544h2.825l1.31-6.19c1.01.65 2.148 1.054 3.364 1.054 3.013 0 5.463-2.451 5.463-5.463.001-3.012-2.45-5.463-5.462-5.463z" />
-    </svg>
+    <img
+      src={upworkLogoPng}
+      alt="Upwork"
+      className={`inline-block shrink-0 object-contain select-none ${className}`}
+    />
   );
 }
 

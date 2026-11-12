@@ -25,7 +25,7 @@ export const teamMembers = [
       'B2B Prospect Enrichment',
     ],
     linkedinUrl: 'https://www.linkedin.com/in/arsh-leadgenexpert/',
-    upworkUrl: null,
+    upworkUrl: 'https://upwork.com/freelancers/~01251b86f07d1dd224?mp_source=share',
     calendlyUrl: 'https://cal.com/zexta',
   },
   {

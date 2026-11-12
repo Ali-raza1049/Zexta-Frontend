@@ -60,11 +60,11 @@ export default function HeroCardStack({
   // Only expand downwards on genuine mouse hover
   const isExpanded = allowExpand && hasHoverSupport && isDeckHovered;
 
-  // Exact Figma card dimensions
-  const cardWidth = 221.33;
-  const cardHeight = 133.33;
+  // Clean integer dimensions so Chromium renders crisp subpixel text without fractional-pixel blur
+  const cardWidth = 224;
+  const cardHeight = 136;
   const cardGap = 8;
-  const verticalStep = cardHeight + cardGap; // 141.33px per slot
+  const verticalStep = cardHeight + cardGap; // 144px per slot
 
   // Exact Figma angles (Left: 14.92 deg CCW -> -14.92deg CSS; Right: -10.14 deg CW -> 10.14deg CSS)
   const restingTransforms = {
@@ -104,14 +104,14 @@ export default function HeroCardStack({
 
     if (isThisCardHovered) {
       return {
-        transform: `translateY(${verticalOffset - 2}px) rotate(0deg) scale(1.02)`,
+        transform: `translateY(${verticalOffset - 2}px) rotate(0deg)`,
         zIndex: 60,
         opacity: 1,
       };
     }
 
     return {
-      transform: `translateY(${verticalOffset}px) rotate(0deg) scale(1)`,
+      transform: `translateY(${verticalOffset}px) rotate(0deg)`,
       zIndex: 40 + idx,
       opacity: 1,
     };
@@ -164,22 +164,22 @@ export default function HeroCardStack({
               onMouseLeave={() => {
                 if (hasHoverSupport) setHoveredCardIdx(null);
               }}
-              className="absolute top-0 cursor-pointer transition-all duration-300 ease-out will-change-transform [text-rendering:optimizeLegibility] antialiased"
+              className="absolute top-0 cursor-pointer transition-[transform,box-shadow,border-color] duration-300 ease-out"
               style={{
                 width: `${cardWidth}px`,
                 height: `${cardHeight}px`,
                 borderRadius: '16px',
                 background: '#FFFFFF',
-                borderWidth: isThisCardHovered ? '0.75px' : '0.5px',
+                borderWidth: '1px',
                 borderStyle: 'solid',
-                borderColor: isThisCardHovered ? 'rgba(16, 185, 129, 0.65)' : '#9FAAC1',
+                borderColor: isThisCardHovered ? 'rgba(16, 185, 129, 0.75)' : '#DCE4EE',
                 boxShadow: isThisCardHovered
-                  ? '0 16px 36px -6px rgba(15, 30, 23, 0.16), 0 4px 12px -2px rgba(16, 185, 129, 0.15)'
+                  ? '0 10px 22px -6px rgba(16, 185, 129, 0.14), 0 2px 6px rgba(15, 30, 23, 0.04)'
                   : isExpanded
-                  ? '0 12px 28px -6px rgba(159, 170, 193, 0.34), 0 4px 10px -2px rgba(159, 170, 193, 0.2)'
-                  : isTop && !isExpanded
-                  ? '0 10px 24px -4px rgba(159, 170, 193, 0.34), 0 3px 8px -2px rgba(159, 170, 193, 0.2)'
-                  : '0 6px 18px -4px rgba(159, 170, 193, 0.26), 0 2px 6px -1px rgba(159, 170, 193, 0.15)',
+                  ? '0 6px 16px -6px rgba(15, 30, 23, 0.06)'
+                  : isTop
+                  ? '0 8px 20px -6px rgba(15, 30, 23, 0.08)'
+                  : 'none',
                 opacity: 1,
                 ...style,
               }}
@@ -187,19 +187,19 @@ export default function HeroCardStack({
               <div
                 className="w-full h-full flex flex-col justify-center text-left"
                 style={{
-                  paddingLeft: '26.67px',
-                  paddingRight: '26.67px',
+                  paddingLeft: '20px',
+                  paddingRight: '20px',
                   paddingTop: '12px',
                   paddingBottom: '12px',
-                  gap: '2.67px',
+                  gap: '4px',
                 }}
               >
-                {/* Review Quote + Aesthetic Quote Mark (#9FAAC1) */}
-                <div className="flex items-start justify-between gap-1.5">
+                {/* Review Quote + Crisp Quote Mark */}
+                <div className="flex items-start justify-between gap-2">
                   <p
-                    className="leading-[1.36] text-[#556070] font-medium tracking-tight pr-0.5"
+                    className="leading-[1.38] text-[#1E293B] font-medium tracking-[-0.01em] pr-0.5 line-clamp-4"
                     style={{
-                      fontSize: '10.5px',
+                      fontSize: '11.5px',
                       fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
                     }}
                   >
@@ -216,18 +216,18 @@ export default function HeroCardStack({
                   >
                     <path
                       d="M3.75 0C1.68 0 0 1.68 0 3.75C0 5.4 1.05 6.8 2.5 7.28L1.6 10.5C1.48 10.9 1.78 11.3 2.2 11.3H3.4C3.68 11.3 3.93 11.12 4.03 10.85L5.45 6.7C5.65 6.1 5.75 5.5 5.75 4.88V1.5C5.75 0.67 5.08 0 4.25 0H3.75ZM11.75 0C9.68 0 8 1.68 8 3.75C8 5.4 9.05 6.8 10.5 7.28L9.6 10.5C9.48 10.9 9.78 11.3 10.2 11.3H11.4C11.68 11.3 11.93 11.12 12.03 10.85L13.45 6.7C13.65 6.1 13.75 5.5 13.75 4.88V1.5C13.75 0.67 13.08 0 12.25 0H11.75Z"
-                      fill="#9FAAC1"
+                      fill="#94A3B8"
                     />
                   </svg>
                 </div>
 
-                {/* Only Client Name: • Karin Gabriella */}
+                {/* Only Client Name: • Author */}
                 <div className="flex items-center gap-1.5 mt-0.5">
-                  <span className="text-[#111827] font-black text-[10px] leading-none select-none">•</span>
+                  <span className="text-[#0F172A] font-black text-[10px] leading-none select-none">•</span>
                   <span
-                    className="font-bold text-[#111827] truncate"
+                    className="font-bold text-[#0F172A] truncate"
                     style={{
-                      fontSize: '11.2px',
+                      fontSize: '12px',
                       fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
                     }}
                   >
